@@ -2,18 +2,18 @@
  * @author OHsooyoung
  * @email osy9757@gmai.com
  * @create date 2024-02-11 04:18:04
- * @modify date 2024-02-11 04:18:46
+ * @modify date 2024-02-12 17:15:52
  * @desc [description]
  */
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function LoginScreen() {
-  const history = useHistory();
+  const Navigate = useNavigate();
 
   const handleLogin = () => {
     //카카오 api
-    history.push('/main');
+    Navigate.push('/main');
   };
 
   return (
