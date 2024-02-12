@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-// 이미지 불러오기
 import fruitIcon from '../../assets/images/fruit_icon.png';
 
 const BottomNavbar = () => {
@@ -9,9 +8,9 @@ const BottomNavbar = () => {
 
   const navItems = [
     { path: '/', label: 'Home', icon: fruitIcon },
-    { path: '/', label: 'Search', icon: fruitIcon },
-    { path: '/', label: 'Profile', icon: fruitIcon },
-    { path: '/', label: 'Settings', icon: fruitIcon },
+    { path: '/Login', label: 'Search', icon: fruitIcon },
+    { path: '/location', label: 'Location', icon: fruitIcon },
+    { path: '/Login', label: 'Settings', icon: fruitIcon },
   ];
 
   return (
