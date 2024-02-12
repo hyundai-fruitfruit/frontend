@@ -18,6 +18,7 @@ function MainPage() {
     <div className="flex flex-col items-center justify-center min-h-screen p-4">
       <h1 className="text-2xl font-bold mt-4 mb-4">흰둥이😊</h1>
       <div className="mb-4">
+        테스트테스트
         <img
           src="/assets/images/mainpage_img.png"
           alt="캐릭터"
