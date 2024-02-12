@@ -1,26 +1,35 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const Navbar = () => {
+// 이미지 불러오기
+import fruitIcon from '../../assets/images/fruit_icon.png';
+
+const BottomNavbar = () => {
+  const location = useLocation();
+
+  const navItems = [
+    { path: '/', label: 'Home', icon: fruitIcon },
+    { path: '/', label: 'Search', icon: fruitIcon },
+    { path: '/', label: 'Profile', icon: fruitIcon },
+    { path: '/', label: 'Settings', icon: fruitIcon },
+  ];
+
   return (
-    <nav className="bg-gray-800 text-white p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="text-lg font-bold">
-          <Link to="/" className="hover:text-gray-300">
-            MyApp
+    <div className="fixed inset-x-0 bottom-0 bg-white border-t border-gray-200">
+      <div className="flex justify-around">
+        {navItems.map((item) => (
+          <Link
+            to={item.path}
+            key={item.label}
+            className={`flex flex-col items-center space-y-2 p-2 ${location.pathname === item.path ? 'text-black' : 'text-gray-400'}`}
+          >
+            <img src={item.icon} alt={item.label} className="w-6 h-6" />
+            <span className="text-xs">{item.label}</span>
           </Link>
-        </div>
-        <div className="space-x-4">
-          <Link to="/login" className="hover:text-gray-300">
-            Login
-          </Link>
-          <Link to="/about" className="hover:text-gray-300">
-            About
-          </Link>
-        </div>
+        ))}
       </div>
-    </nav>
+    </div>
   );
 };
 
-export default Navbar;
+export default BottomNavbar;
