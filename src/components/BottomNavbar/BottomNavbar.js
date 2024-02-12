@@ -1,3 +1,10 @@
+/**
+ * @author OHsooyoung
+ * @email osy9757@gmai.com
+ * @create date 2024-02-13 02:24:44
+ * @modify date 2024-02-13 02:24:45
+ * @desc [description]
+ */
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import fruitIcon from '../../assets/images/fruit_icon.png';

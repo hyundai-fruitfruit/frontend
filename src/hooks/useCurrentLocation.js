@@ -1,3 +1,10 @@
+/**
+ * @author OHsooyoung
+ * @email osy9757@gmai.com
+ * @create date 2024-02-13 02:24:26
+ * @modify date 2024-02-13 02:24:27
+ * @desc [description]
+ */
 import { useState, useEffect } from 'react';
 
 const useCurrentLocation = () => {
