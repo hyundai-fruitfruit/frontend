@@ -2,7 +2,7 @@
  * @author OHsooyoung
  * @email osy9757@gmai.com
  * @create date 2024-02-11 04:18:04
- * @modify date 2024-02-12 17:15:52
+ * @modify date 2024-02-13 01:13:32
  * @desc [description]
  */
 import React from 'react';
@@ -13,7 +13,7 @@ function LoginScreen() {
 
   const handleLogin = () => {
     //카카오 api
-    Navigate.push('/main');
+    Navigate.push('/');
   };
 
   return (

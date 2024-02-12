@@ -20,6 +20,7 @@ const useCurrentLocation = () => {
       (err) => {
         setError(err.message);
       },
+      { enableHighAccuracy: true },
     );
   }, []);
 

@@ -4,6 +4,8 @@ import useCurrentLocation from '../../hooks/useCurrentLocation';
 const LocationDisplay = () => {
   const { location, error } = useCurrentLocation();
 
+  console.log('LocationDisplay 렌더링...', { location, error });
+
   return (
     <div>
       {error ? (
