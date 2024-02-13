@@ -13,9 +13,10 @@ const router = createBrowserRouter([
       { index: true, element: <MainPage /> },
       { path: 'login', element: <Login /> },
       { path: 'location', element: <LocationPage /> },
-      { path: 'qrscanner', element: <QRScannerPage /> },
+      // { path: 'qrscanner', element: <QRScannerPage /> },
     ],
   },
+  { path: '/qrscanner', element: <QRScannerPage /> },
 ]);
 
 const App = () => {
