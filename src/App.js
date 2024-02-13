@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import RootLayout from './pages/Layouts/RootLayout';
+import Login from './pages/Login/Login';
+import MainPage from './pages/MainPage/Mainpage';
+import LocationPage from './pages/Location/LocationPage';
+import QRScannerPage from './pages/QRScannerPage/QRScannerPage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <MainPage /> },
+      { path: 'login', element: <Login /> },
+      { path: 'location', element: <LocationPage /> },
+      // { path: 'qrscanner', element: <QRScannerPage /> },
+    ],
+  },
+  { path: '/qrscanner', element: <QRScannerPage /> },
+]);
 
+const App = () => {
+  return <RouterProvider router={router} />;
+};
 export default App;

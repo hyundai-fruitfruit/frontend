@@ -1,0 +1,19 @@
+/**
+ * @author OHsooyoung
+ * @email osy9757@gmai.com
+ * @create date 2024-02-13 02:24:06
+ * @modify date 2024-02-13 15:36:39
+ * @desc [description]
+ */
+import React from 'react';
+import QRScannerComponent from '../../components/QRScanner/QRScannerComponent';
+
+const QRScannerPage = () => {
+  return (
+    <div className="qr-scanner-page">
+      <QRScannerComponent />
+    </div>
+  );
+};
+
+export default QRScannerPage;
