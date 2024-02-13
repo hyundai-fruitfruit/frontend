@@ -2,7 +2,7 @@
  * @author OHsooyoung
  * @email osy9757@gmail.com
  * @create date 2024-02-13 02:24:26
- * @modify date 2024-02-13 12:12:59
+ * @modify date 2024-02-13 12:30:46
  * @desc [description]
  */
 import { useState, useEffect } from 'react';
@@ -14,9 +14,10 @@ const useCurrentLocation = () => {
   const [lastChecked, setLastChecked] = useState(null);
 
   let outOfAreaCounts = 0;
+  let distance = 0;
 
   const targetArea = { latitude: 37.560319, longitude: 127.0645393 };
-  const allowedDistance = 3; //미터단위
+  const allowedDistance = 50; //미터단위
   const checkInterval = 3000;
 
   useEffect(() => {
@@ -36,13 +37,13 @@ const useCurrentLocation = () => {
               longitude: position.coords.longitude,
             });
 
-            const distance = calculateDistance(
+            distance = calculateDistance(
               position.coords.latitude,
               position.coords.longitude,
               targetArea.latitude,
               targetArea.longitude,
             );
-            if (distance > allowedDistance / 1000) {
+            if (distance > allowedDistance) {
               outOfAreaCounts++;
             } else {
               outOfAreaCounts = 0;
@@ -70,7 +71,7 @@ const useCurrentLocation = () => {
 };
 
 function calculateDistance(lat1, lon1, lat2, lon2) {
-  var R = 6371; // 지구의 반지름 (킬로미터)
+  var R = 6371000; // 지구의 반지름 (미터)
   var dLat = deg2rad(lat2 - lat1);
   var dLon = deg2rad(lon2 - lon1);
   var a =
@@ -80,7 +81,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
       Math.sin(dLon / 2) *
       Math.sin(dLon / 2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  var d = R * c; // 거리 (킬로미터)
+  var d = R * c; // 거리 (미터)
   return d;
 }
 
