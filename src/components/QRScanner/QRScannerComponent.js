@@ -2,7 +2,7 @@
  * @author OHsooyoung
  * @email osy9757@gmai.com
  * @create date 2024-02-13 02:24:31
- * @modify date 2024-02-13 02:24:32
+ * @modify date 2024-02-14 00:18:12
  * @desc [description]
  */
 import React from 'react';
@@ -22,15 +22,14 @@ const QRScannerComponent = () => {
   };
 
   return (
-    <div>
+    <div style={{ width: '100vw', height: '100vh' }}>
       <QrScanner
         delay={300}
         onError={handleError}
         onScan={handleScan}
-        style={{ width: '100%' }}
+        style={{ width: '100%', height: '100%' }}
         facingMode={'environment'}
       />
-      {/* <p>Scan Result: {scanResult}</p> */}
     </div>
   );
 };
