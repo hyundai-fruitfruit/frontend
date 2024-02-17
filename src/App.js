@@ -6,12 +6,12 @@ import LocationPage from './pages/Location/LocationPage';
 import QRScannerPage from './pages/QRScannerPage/QRScannerPage';
 
 const router = createBrowserRouter([
+  { path: '/login', element: <Login /> },
   {
     path: '/',
     element: <RootLayout />,
     children: [
       { index: true, element: <MainPage /> },
-      { path: 'login', element: <Login /> },
       { path: 'location', element: <LocationPage /> },
       // { path: 'qrscanner', element: <QRScannerPage /> },
     ],
