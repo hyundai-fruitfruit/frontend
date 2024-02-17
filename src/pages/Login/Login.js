@@ -1,28 +1,25 @@
-/**
- * @author OHsooyoung
- * @email osy9757@gmai.com
- * @create date 2024-02-11 04:18:04
- * @modify date 2024-02-13 09:20:11
- * @desc [description]
- */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function LoginScreen() {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = () => {
-    Navigate.push('/');
+    navigate('/');
   };
 
   return (
-    <div className="mb-4">
-      <div className="logo">
+    <div className="flex flex-col justify-between h-screen">
+      <div className="flex flex-col mt-48 bg-cover items-center justify-center p-4">
         <img src="../../../images/onboarding_icon.png" alt="Logo" />
       </div>
-      <button className="login-button" onClick={handleLogin}>
+      <button
+        className="rounded-md bg-black mt-32 mx-8 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-opacity-80"
+        onClick={handleLogin}
+      >
         KAKAO LOGIN
       </button>
+      <div className="flex-grow" />
     </div>
   );
 }
