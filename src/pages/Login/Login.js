@@ -1,6 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getFcmToken }  from "../../setupFCM";
+import { initializeApp } from 'firebase/app';
+import { getMessaging, getToken, onMessage } from 'firebase/messaging';
+import { firebaseConfig, vapidKey } from './config';
+
+
+initializeApp(firebaseConfig);
+const messaging = getMessaging();
+
+onMessage(messaging, (payload) => {
+  console.log('Message received. ', payload);
+});
 
 function registerServiceWorker() {
     console.log("Service Worker 등록 시도");
@@ -29,7 +39,7 @@ function handleAllowNotification() {
 }
 
 function getdeviceToken() {
-    getFcmToken
+    getToken(messaging, { vapidKey })
     .then((currentToken) => {
     if (currentToken) {
       console.log("FCM 토큰 정상 : " + currentToken);
