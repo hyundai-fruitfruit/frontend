@@ -2,13 +2,13 @@
  * @author 오수영
  * @email osy9757@gmail.com
  * @create date 2024-02-17 14:27:25
- * @modify date 2024-02-17 14:39:35
+ * @modify date 2024-02-18 22:26:10
  * @desc 말풍선 css
  */
 .speechBubble {
   z-index: 10;
 }
-.speechBubble::before {
+.speechBubble.arrowLeft::before {
   display: inline-block;
   content: '';
   position: absolute;
@@ -21,11 +21,37 @@
   border-top: 16px solid #ececef;
 }
 
-.speechBubble::after {
+.speechBubble.arrowLeft::after {
   display: inline-block;
   content: '';
   position: absolute;
   left: 16px;
+  bottom: -15px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #fff;
+}
+
+.speechBubble.arrowRight::before {
+  display: inline-block;
+  content: '';
+  position: absolute;
+  right: 15px;
+  bottom: -16px;
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-top: 16px solid #ececef;
+}
+
+.speechBubble.arrowRight::after {
+  display: inline-block;
+  content: '';
+  position: absolute;
+  right: 16px;
   bottom: -15px;
   width: 0;
   height: 0;
