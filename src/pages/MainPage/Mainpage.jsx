@@ -170,7 +170,7 @@ function MainPage() {
         <img src={mainHeendyImage} alt="캐릭터" className="absolute inset-0 h-[30vh] w-auto mx-auto my-auto mb-0" />
       </div>
       <h1 className="text-2xl font-bold mb-8">흰둥이😊</h1>
-      <div className="relative">
+      <div className="flex flex-nowrap justify-center items-center relative">
         <IconMenu icons={iconsData} />
       </div>
     </div>
