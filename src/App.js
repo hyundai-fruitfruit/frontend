@@ -1,22 +1,29 @@
+/**
+ * @author 오수영
+ * @email osy9757@gmail.com
+ * @create date 2024-02-18 10:18:42
+ * @modify date 2024-02-19 04:52:45
+ * @desc [description]
+ */
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import RootLayout from './pages/Layouts/RootLayout';
 import Login from './pages/Login/Login';
 import MainPage from './pages/MainPage/Mainpage';
 import LocationPage from './pages/Location/LocationPage';
 import QRScannerPage from './pages/QRScannerPage/QRScannerPage';
+import RandomEventSpot from './pages/RandomEventSpot/RandomEventSpot';
 
 const router = createBrowserRouter([
-  { path: '/login', element: <Login /> },
   {
     path: '/',
-    element: <RootLayout />,
     children: [
-      { index: true, element: <MainPage /> },
+      { index: true, element: <Login /> },
+      { path: 'main', element: <MainPage /> },
       { path: 'location', element: <LocationPage /> },
-      // { path: 'qrscanner', element: <QRScannerPage /> },
+      { path: 'login', element: <Login /> },
+      { path: 'qrscanner', element: <QRScannerPage /> },
+      { path: 'randomEventSpot', element: <RandomEventSpot /> },
     ],
   },
-  { path: '/qrscanner', element: <QRScannerPage /> },
 ]);
 
 const App = () => {

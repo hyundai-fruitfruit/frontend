@@ -1,3 +1,5 @@
+import loginImage from 'assets/images/onboarding_icon.png';
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { initializeApp } from 'firebase/app';
@@ -58,21 +60,26 @@ function LoginScreen() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    navigate('/');
+    navigate('/main');
   };
 
   return (
-    <div className="flex flex-col justify-between h-screen">
-      <div className="flex flex-col mt-48 bg-cover items-center justify-center p-4">
-        <img src="../../../images/onboarding_icon.png" alt="Logo" />
+    <div className="flex flex-col h-screen">
+      <div className="flex-1 flex justify-center items-center">
+        <img
+          className="max-w-xs w-full h-auto px-4"
+          src={loginImage}
+          alt="Logo"
+        />
       </div>
-      <button
-        className="rounded-md bg-black mt-32 mx-8 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-opacity-80"
-        onClick={handleLogin}
-      >
-        KAKAO LOGIN
-      </button>
-      <div className="flex-grow" />
+      <div className="p-4 mb-[10vh]">
+        <button
+          className="font-bold w-full bg-black text-white text-sm py-3 rounded-md shadow hover:bg-opacity-80"
+          onClick={handleLogin}
+        >
+          KAKAO LOGIN
+        </button>
+      </div>
     </div>
   );
 }
