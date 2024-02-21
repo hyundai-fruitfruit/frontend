@@ -72,7 +72,7 @@ function LoginScreen() {
       </div>
       <div className="p-4 mb-[10vh]">
         <button
-          className="font-bold w-full bg-black text-white text-sm py-3 rounded-md shadow hover:bg-opacity-80"
+          className="font-bold w-full bg-black text-white text-sm py-3 rounded-md hover:bg-opacity-80"
           onClick={handleLogin}
         >
           KAKAO LOGIN
