@@ -13,7 +13,7 @@ import InputRatingStar from 'components/RatingStar/InputRatingStar';
 import HashtagElement from 'components/StoreReview/HashtagElement';
 import ImageScroll from 'components/ImageSlide/ImageScroll';
 
-import cameraIcon from 'assets/icon/camera_icon.png';
+import cameraIcon from 'assets/icons/camera_icon.png';
 
 function ReviewEditor() {
   const location = useLocation();
