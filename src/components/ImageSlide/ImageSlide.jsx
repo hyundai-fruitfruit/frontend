@@ -7,7 +7,7 @@
  */
 import React, { useState } from 'react';
 
-import ArrowIcon from 'assets/icon/Icons left.png';
+import ArrowIcon from 'assets/icons/Icons left.png';
 
 const ImageSlide = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
