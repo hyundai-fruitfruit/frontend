@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-13 02:24:13
  * @modify date 2024-02-19 04:58:28
- * @desc [description]
+ * @desc 흰디 메인페이지
  */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

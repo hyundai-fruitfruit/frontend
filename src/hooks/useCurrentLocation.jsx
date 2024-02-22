@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-13 02:24:26
  * @modify date 2024-02-13 12:30:46
- * @desc [description]
+ * @desc gps 인증시 현재위치와 더현대 위치 비교 hook
  */
 import { useState, useEffect } from 'react';
 
@@ -76,10 +76,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   var dLon = deg2rad(lon2 - lon1);
   var a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(deg2rad(lat1)) *
-      Math.cos(deg2rad(lat2)) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   var d = R * c; // 거리 (미터)
   return d;

@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-18 02:48:28
  * @modify date 2024-02-19 01:40:24
- * @desc [description]
+ * @desc 메인 페이지 아이콘 메뉴 컴포넌트
  */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';

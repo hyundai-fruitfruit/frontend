@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-18 21:56:06
  * @modify date 2024-02-19 03:51:08
- * @desc [description]
+ * @desc 모달 컴포넌트
  */
 import React from 'react';
 

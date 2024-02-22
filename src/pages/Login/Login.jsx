@@ -1,3 +1,10 @@
+/**
+ * @author 오수영
+ * @email osy9757@gmail.com
+ * @create date 2024-02-09 09:35:59
+ * @modify date 2024-02-22 09:35:59
+ * @desc 로그인 페이지
+ */
 import loginImage from 'assets/images/onboarding_icon.png';
 
 import React from 'react';
@@ -82,7 +89,7 @@ function LoginScreen() {
       </div>
       <div className="p-4 mb-[10vh]">
         <button
-          className="font-bold w-full bg-black text-white text-sm py-3 rounded-md shadow hover:bg-opacity-80"
+          className="font-bold w-full bg-black text-white text-sm py-3 rounded-md hover:bg-opacity-80"
           onClick={handleLogin}
         >
           KAKAO LOGIN

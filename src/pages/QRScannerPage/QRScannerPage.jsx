@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-17 20:35:30
  * @modify date 2024-02-17 20:35:39
- * @desc [description]
+ * @desc QR코드 스캐너 페이지
  */
 
 import React from 'react';

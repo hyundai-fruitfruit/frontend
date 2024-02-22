@@ -1,9 +1,9 @@
 /**
- * @author OHsooyoung
- * @email osy9757@gmai.com
+ * @author 오수영
+ * @email osy9757@gmail.com
  * @create date 2024-02-13 02:24:19
  * @modify date 2024-02-13 02:24:20
- * @desc [description]
+ * @desc gps 결과 확인용 페이지
  */
 import React from 'react';
 import LocationDisplay from '../../components/Location/LocationDisplay';

@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-19 01:32:22
  * @modify date 2024-02-19 01:32:22
- * @desc [description]
+ * @desc Modal 상태 관리 hook
  */
 import { useState, useEffect } from 'react';
 
