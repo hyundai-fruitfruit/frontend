@@ -13,7 +13,7 @@ function ImageScroll({ images = [], size = 'w-32 h-32' }) {
   return (
     <div className="overflow-x-auto flex flex-row">
       {images.map((src, index) => (
-        <div key={index} className="flex-none my-2 mx-1">
+        <div key={index} className="flex-none">
           <img className={`rounded-xl ${size}`} src={src} alt={`Image ${index + 1}`} />
         </div>
       ))}

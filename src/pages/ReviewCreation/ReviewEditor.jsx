@@ -71,7 +71,7 @@ function ReviewEditor() {
           />
         </div>
       </div>
-      <div className="flex flex-row justify-start items-center mt-4 w-[90vw]">
+      <div className="flex flex-row justify-start items-center mt-4 w-[95vw]">
         <label
           htmlFor="file-upload"
           className="flex-none cursor-pointer border items-center justify-center rounded-xl p-4 ml-[5vw] w-[10vh] h-[10vh]"
@@ -79,7 +79,7 @@ function ReviewEditor() {
           <img src={cameraIcon} className="w-10 h-10 mr-2 w-[6vh] h-[6vh]" />
           <input id="file-upload" type="file" multiple onChange={handleImageAttachment} style={{ display: 'none' }} />
         </label>
-        <div className="h-[10vh]">
+        <div className="h-[10vh] ml-1">
           <ImageScroll images={attachedImages} size={'w-[10vh] h-[10vh] mx-1'} />
         </div>
       </div>
