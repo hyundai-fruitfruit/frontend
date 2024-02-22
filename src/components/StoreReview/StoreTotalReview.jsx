@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-20 20:16:55
  * @modify date 2024-02-20 20:16:55
- * @desc [description]
+ * @desc 매장 상세페이지 리뷰탭 전체 출력 형식 컴포넌트
  */
 
 import React from 'react';

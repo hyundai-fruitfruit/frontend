@@ -1,9 +1,9 @@
 /**
- * @author OHsooyoung
+ * @author 오수영
  * @email osy9757@gmail.com
  * @create date 2024-02-13 02:24:37
  * @modify date 2024-02-13 12:12:06
- * @desc [description]
+ * @desc gps 동작 확인용 컴포넌트
  */
 import React from 'react';
 import useCurrentLocation from '../../hooks/useCurrentLocation';

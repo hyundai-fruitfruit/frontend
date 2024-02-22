@@ -1,3 +1,10 @@
+/**
+ * @author 오수영
+ * @email osy9757@gmail.com
+ * @create date 2024-02-22 01:50:35
+ * @modify date 2024-02-22 01:50:35
+ * @desc 매장 상세페이지에서 카운트가 높은순으로 해시태그를 출력하는 컴포넌트
+ */
 import React from 'react';
 import HashtagElement from './HashtagElement';
 

@@ -1,3 +1,10 @@
+/**
+ * @author 오수영
+ * @email osy9757@gmail.com
+ * @create date 2024-02-12 09:23:00
+ * @modify date 2024-02-22 09:23:00
+ * @desc 리뷰 페이지 드롭다운 메뉴 컴포넌트
+ */
 import React, { useState } from 'react';
 
 const DropdownMenu = () => {

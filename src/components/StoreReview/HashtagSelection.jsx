@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-22 01:50:35
  * @modify date 2024-02-22 01:50:35
- * @desc [description]
+ * @desc 리뷰 작성 페이지에서 해시태그 선택하는 컴포넌트
  */
 import React, { useState } from 'react';
 import HashtagElement from './HashtagElement';

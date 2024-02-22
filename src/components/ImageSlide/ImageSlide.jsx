@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-19 16:54:58
  * @modify date 2024-02-19 16:54:58
- * @desc [description]
+ * @desc 이미지 슬라이드 캐러셀 버튼, 구분 있는 버전
  */
 import React, { useState } from 'react';
 

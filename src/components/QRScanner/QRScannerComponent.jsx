@@ -1,9 +1,9 @@
 /**
- * @author OHsooyoung
- * @email osy9757@gmai.com
+ * @author 오수영
+ * @email osy9757@gmail.com
  * @create date 2024-02-13 02:24:31
  * @modify date 2024-02-14 00:18:12
- * @desc [description]
+ * @desc QR코드 스캐너 컴포넌트
  */
 import React from 'react';
 import QrScanner from 'react-qr-scanner';

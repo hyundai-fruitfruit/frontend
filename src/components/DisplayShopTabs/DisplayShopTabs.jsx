@@ -1,3 +1,10 @@
+/**
+ * @author 오수영
+ * @email osy9757@gmail.com
+ * @create date 2024-02-12 09:22:30
+ * @modify date 2024-02-22 09:22:30
+ * @desc 매장 상세페이지 하단 메뉴, 리뷰, 방문인증 탭 컴포넌트
+ */
 import React from 'react';
 
 function DisplayShopTabs({ activeTab, setActiveTab }) {

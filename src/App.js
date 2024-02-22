@@ -2,8 +2,8 @@
  * @author 오수영
  * @email osy9757@gmail.com
  * @create date 2024-02-18 10:18:42
- * @modify date 2024-02-22 02:56:00
- * @desc [description]
+ * @modify date 2024-02-22 09:40:56
+ * @desc App.js
  */
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './pages/Login/Login';

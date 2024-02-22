@@ -1,3 +1,10 @@
+/**
+ * @author 오수영
+ * @email osy9757@gmail.com
+ * @create date 2024-02-21 09:31:12
+ * @modify date 2024-02-22 09:31:12
+ * @desc 매장 상세 페이지 리뷰탭에 하나의 리뷰를 보여주는 형식 컴포넌트
+ */
 import React from 'react';
 
 import ImageScroll from 'components/ImageSlide/ImageScroll';

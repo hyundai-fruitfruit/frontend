@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-19 16:55:21
  * @modify date 2024-02-19 16:55:21
- * @desc [description]
+ * @desc 매장 상세 정보 전체 페이지
  */
 import React, { useState } from 'react';
 

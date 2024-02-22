@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-20 11:17:40
  * @modify date 2024-02-20 11:17:40
- * @desc [description]
+ * @desc 매장 상세페이지 매장 정보 출력 컴포넌트
  */
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';

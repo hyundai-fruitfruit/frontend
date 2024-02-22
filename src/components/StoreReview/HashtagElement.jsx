@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-22 01:50:41
  * @modify date 2024-02-22 01:50:41
- * @desc [description]
+ * @desc 입력 받은 id, count로 하나의 해시태그를 출력하는 형식 컴포넌트
  */
 import React from 'react';
 

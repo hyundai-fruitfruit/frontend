@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-22 03:37:46
  * @modify date 2024-02-22 03:37:46
- * @desc [description]
+ * @desc 리뷰 글 작성및 이미지 첨부 페이지
  */
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';

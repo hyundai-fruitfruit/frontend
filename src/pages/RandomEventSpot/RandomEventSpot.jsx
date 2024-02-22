@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-19 10:02:05
  * @modify date 2024-02-19 11:18:55
- * @desc [description]
+ * @desc 랜덤스팟 이벤트 발생시 모달 페이지
  */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';

@@ -3,7 +3,8 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-21 14:07:26
  * @modify date 2024-02-21 14:07:26
- * @desc [description]
+ * @desc 별점 표시 컴포넌트 rating값으로 초기에 선택된 상태로 출력 가능
+ *       추후에 인자에 따라 수정 가능 불가능 구현 필요
  */
 import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';

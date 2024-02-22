@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-13 10:34:46
  * @modify date 2024-02-13 15:30:53
- * @desc [description]
+ * @desc bottom navigation bar 컴포넌트
  */
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';

@@ -3,7 +3,7 @@
  * @email osy9757@gmail.com
  * @create date 2024-02-22 02:50:08
  * @modify date 2024-02-22 02:50:08
- * @desc [description]
+ * @desc 리뷰 작성시 별점과 해시태그 선택 페이지
  */
 
 import React, { useState } from 'react';
