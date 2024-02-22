@@ -7,6 +7,14 @@ import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 import { firebaseConfig, vapidKey } from './config';
 
 
+/**
+ * @author 황수영
+ * @email sooyoung.h8@gmail.com
+ * @create date 2024-02-22 02:24:13
+ * @modify date 2024-02-22 04:58:28
+ * @desc 로그인 및 FCM 디바이스 토큰 설정
+ */
+
 initializeApp(firebaseConfig);
 const messaging = getMessaging();
 
