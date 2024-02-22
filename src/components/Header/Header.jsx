@@ -8,7 +8,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import backArrowIcon from 'assets/icon/Icons left.png';
+import backArrowIcon from 'assets/icons/Icons left.png';
 
 const Header = ({ text }) => {
   const navigate = useNavigate();

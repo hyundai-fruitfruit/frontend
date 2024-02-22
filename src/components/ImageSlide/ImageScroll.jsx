@@ -7,7 +7,7 @@
  */
 import React from 'react';
 
-function ImageScroll({ images = [], size = 'w-32 h-32' }) {
+function ImageScroll({ images = [], size = 'w-32 h-32 m-1' }) {
   if (!Array.isArray(images)) return null;
 
   return (

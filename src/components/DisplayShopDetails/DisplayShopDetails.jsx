@@ -8,9 +8,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
-import floorIcon from 'assets/icon/floor_icon.png';
-import numberIcon from 'assets/icon/store_number_icon.png';
-import ratingIcon from 'assets/icon/rating_icon.png';
+import floorIcon from 'assets/icons/floor_icon.png';
+import numberIcon from 'assets/icons/store_number_icon.png';
+import ratingIcon from 'assets/icons/rating_icon.png';
 
 function DisplayShopDetails({ details }) {
   const { name, floor, phone, rating, description } = details;
