@@ -29,7 +29,7 @@ function RandomEventSpot() {
       <div className="flex items-center h-[40vh] mx-4">
         <img src={smtImage} alt="Dining Area" className="w-full" />
       </div>
-      <div className="flex-grow h-[15vh] font-bold">
+      <div className="flex-grow font-bold mt-4">
         <p className="text-center text-xl">SMT 라운지</p>
       </div>
       <div className="flex h-[25vh] mx-4 place-items-end">

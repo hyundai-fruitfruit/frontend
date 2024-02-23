@@ -16,7 +16,7 @@ const useCurrentLocation = () => {
   let outOfAreaCounts = 0;
   let distance = 0;
 
-  const targetArea = { latitude: 37.560319, longitude: 127.0645393 };
+  const targetArea = { latitude: 37.5603282, longitude: 127.064536 };
   const allowedDistance = 50; //미터단위
   const checkInterval = 3000;
 

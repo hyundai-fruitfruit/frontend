@@ -8,10 +8,10 @@
 import React from 'react';
 import './ClaymorphicButton.css';
 
-function ClaymorphicButton({ text, imageSrc, onClick }) {
+function ClaymorphicButton({ text, imageSrc, onClick, addStyle }) {
   return (
     <button
-      className="clay-button aspect-square w-full flex flex-col justify-center items-center p-2 text-xs font-bold"
+      className={`clay-button aspect-square w-full flex flex-col justify-center items-center p-2 text-xs font-bold ${addStyle}`}
       onClick={onClick}
     >
       {imageSrc && <img src={imageSrc} alt={text} className="button-image w-1/10 max-w-full h-auto mb-1" />}
