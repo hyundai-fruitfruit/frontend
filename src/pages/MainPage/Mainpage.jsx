@@ -6,13 +6,17 @@
  * @desc 흰디 메인페이지
  */
 import React from 'react';
-// import { useNavigate } from 'react-router-dom';
 import SpeechBubble from '../../components/SpeechBubble/SpeechBubble';
 import BackgroundImage from 'components/BackgroundImage/BackgroundImage';
 import IconMenu from 'components/IconMenu/IconMenu';
 import ModalComponent from 'components/ModalComponent/ModalComponent';
 import useModal from 'hooks/useModal';
-import { SpeechBubbleContent, AdventureStartContent } from 'components/ModalBubbleContent/MainPageModalContent';
+import {
+  SpeechBubbleContent,
+  AdventureStartContent,
+  CertificaitonSuccess,
+  CertificaitonFail,
+} from 'components/ModalBubbleContent/MainPageModalContent';
 
 import ModalHeendy from 'assets/images/modal_heendy.png';
 import heendy_background from 'assets/images/heendy_background.png';
@@ -47,6 +51,10 @@ function MainPage() {
         onIconClick={(iconName) => {
           if (iconName === 'start') {
             openModal(<AdventureStartContent />);
+          } else if (iconName === 'item') {
+            openModal(<CertificaitonSuccess />);
+          } else if (iconName === 'display') {
+            openModal(<CertificaitonFail />);
           }
           // 다른 아이콘에 대한 처리
         }}
