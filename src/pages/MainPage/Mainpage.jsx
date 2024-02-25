@@ -17,6 +17,7 @@ import {
   CertificationSuccess,
   CertificationFail,
 } from 'components/ModalBubbleContent/MainPageModalContent';
+import ProgressBar from 'components/ModalBubbleContent/ProgressBar';
 
 import ModalHeendy from 'assets/images/modal_heendy.png';
 import heendy_background from 'assets/images/heendy_background.png';
@@ -55,6 +56,8 @@ function MainPage() {
             openModal(<CertificationSuccess />);
           } else if (iconName === 'display') {
             openModal(<CertificationFail />);
+          } else {
+            openModal(<ProgressBar fromValue={0} toValue={50} />);
           }
           // 다른 아이콘에 대한 처리
         }}

@@ -26,7 +26,7 @@ function ModalComponent({ isOpen, onClose, children }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50 transition-opacity"
+      className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out"
       onClick={handleBackdropClick}
     >
       <div className="p-5 rounded-lg transition-transform transform duration-300" onClick={(e) => e.stopPropagation()}>

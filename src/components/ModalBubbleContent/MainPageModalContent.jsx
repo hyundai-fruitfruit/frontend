@@ -12,7 +12,7 @@ import ClaymorphicButton from 'components/ClaymorphicButton/ClaymorphicButton';
 //Hook
 // import useCurrentLocation from 'hooks/useCurrentLocation';
 import useRandomSpotByEventType from 'hooks/useRandomSpotByEventType';
-import useFirework from 'hooks/useFirework';
+import useFirework from 'hooks/animation/useFirework';
 //Assets
 import restaurantIcon from 'assets/images/card_restaurant_icon.png';
 import cafeIcon from 'assets/images/card_cafe_icon.png';
