@@ -2,72 +2,39 @@
  * @author OHsooyoung
  * @email osy9757@gmail.com
  * @create date 2024-02-13 02:24:26
- * @modify date 2024-02-13 12:30:46
+ * @modify date 2024-02-25 05:58:38
  * @desc gps 인증시 현재위치와 더현대 위치 비교 hook
  */
 import { useState, useEffect } from 'react';
 
-const useCurrentLocation = () => {
-  const [location, setLocation] = useState({ latitude: null, longitude: null });
+const useCurrentLocation = (currentLocation) => {
   const [isOutOfArea, setIsOutOfArea] = useState(false);
   const [error, setError] = useState(null);
-  const [lastChecked, setLastChecked] = useState(null);
-
-  let outOfAreaCounts = 0;
-  let distance = 0;
 
   const targetArea = { latitude: 37.5603282, longitude: 127.064536 };
-  const allowedDistance = 50; //미터단위
-  const checkInterval = 3000;
+  const allowedDistance = 50; // 미터 단위
 
   useEffect(() => {
-    if (!navigator.geolocation) {
-      setError('Geolocation is not supported');
+    if (!currentLocation || !currentLocation.latitude || !currentLocation.longitude) {
+      setError('Current location is not provided or incomplete');
       return;
     }
 
-    const checkLocation = () => {
-      for (let i = 0; i < 3; i++) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            setLastChecked(new Date());
+    try {
+      const distance = calculateDistance(
+        currentLocation.latitude,
+        currentLocation.longitude,
+        targetArea.latitude,
+        targetArea.longitude,
+      );
 
-            setLocation({
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-            });
+      setIsOutOfArea(distance > allowedDistance);
+    } catch (err) {
+      setError(err.message);
+    }
+  }, [currentLocation]);
 
-            distance = calculateDistance(
-              position.coords.latitude,
-              position.coords.longitude,
-              targetArea.latitude,
-              targetArea.longitude,
-            );
-            if (distance > allowedDistance) {
-              outOfAreaCounts++;
-            } else {
-              outOfAreaCounts = 0;
-              setIsOutOfArea(false);
-            }
-
-            if (outOfAreaCounts >= 3) {
-              setIsOutOfArea(true);
-              outOfAreaCounts = 0;
-            }
-          },
-          (err) => {
-            setError(err.message);
-          },
-        );
-      }
-    };
-
-    const intervalId = setInterval(checkLocation, checkInterval);
-
-    return () => clearInterval(intervalId);
-  }, []);
-
-  return { location, isOutOfArea, error, lastChecked, targetArea };
+  return { isOutOfArea, error };
 };
 
 function calculateDistance(lat1, lon1, lat2, lon2) {

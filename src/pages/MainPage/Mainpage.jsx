@@ -14,8 +14,8 @@ import useModal from 'hooks/useModal';
 import {
   SpeechBubbleContent,
   AdventureStartContent,
-  CertificaitonSuccess,
-  CertificaitonFail,
+  CertificationSuccess,
+  CertificationFail,
 } from 'components/ModalBubbleContent/MainPageModalContent';
 
 import ModalHeendy from 'assets/images/modal_heendy.png';
@@ -50,11 +50,11 @@ function MainPage() {
         icons={iconsData}
         onIconClick={(iconName) => {
           if (iconName === 'start') {
-            openModal(<AdventureStartContent />);
+            openModal(<AdventureStartContent openModal={openModal} closeModal={closeModal} />);
           } else if (iconName === 'item') {
-            openModal(<CertificaitonSuccess />);
+            openModal(<CertificationSuccess />);
           } else if (iconName === 'display') {
-            openModal(<CertificaitonFail />);
+            openModal(<CertificationFail />);
           }
           // 다른 아이콘에 대한 처리
         }}
