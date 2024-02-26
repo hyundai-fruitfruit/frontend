@@ -22,7 +22,7 @@ function RandomEventSpotQR() {
           </p>
         </div>
       </div>
-      <div className="flex items-center h-[40vh] mx-4 mt-16">
+      <div className="flex items-center h-[40vh] mx-4 mt-12 border-2 border-black rounded-xl">
         <img src={myQR} alt="Dining Area" className="w-full" />
       </div>
     </div>

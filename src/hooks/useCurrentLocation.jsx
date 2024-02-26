@@ -11,7 +11,7 @@ const useCurrentLocation = (currentLocation) => {
   const [isOutOfArea, setIsOutOfArea] = useState(false);
   const [error, setError] = useState(null);
 
-  const targetArea = { latitude: 37.5603282, longitude: 127.064536 };
+  const targetArea = { latitude: 37.5603248, longitude: 127.0645185 };
   const allowedDistance = 50; // 미터 단위
 
   useEffect(() => {

@@ -4,6 +4,9 @@ module.exports = {
   content: ['./src/**/*.jsx'],
   theme: {
     extend: {
+      colors: {
+        customPink: '#FF7070',
+      },
       fontFamily: {
         nunito: ['Nunito', 'sans-serif'],
       },

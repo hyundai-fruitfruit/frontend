@@ -14,7 +14,11 @@
  */
 // import firebase from 'firebase/app';
 // import 'firebase/messaging';
-import loginImage from 'assets/images/onboarding_icon.png';
+import startHeendy from 'assets/images/startHeendy.png';
+import loadingHeendy from 'assets/gif/HeendyLogo.gif';
+import startBackGround from 'assets/images/startBackGround.png';
+import kakaoLogin from 'assets/icons/kakao_login.png';
+import googleLogin from 'assets/icons/google_login.png';
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -94,18 +98,32 @@ function LoginScreen() {
     navigate('/main');
   };
 
+  const backgroundStyle = {
+    backgroundImage: `url(${startBackGround})`,
+  };
+
   return (
-    <div className="flex flex-col h-screen">
-      <div className="flex-1 flex justify-center items-center">
-        <img className="max-w-xs w-full h-auto px-4" src={loginImage} alt="Logo" />
+    <div style={backgroundStyle} className="min-h-screen bg-cover bg-center">
+      <div className="flex flex-col h-[70vh]">
+        <div className="h-[5vh]"></div>
+        <div className="h-[30vh]">
+          <img src={loadingHeendy} className="h-[30vh] w-auto" />
+        </div>
+        <div className="h-[35vh]">
+          <img src={startHeendy} className="mt-auto" />
+        </div>
       </div>
-      <div className="p-4 mb-[10vh]">
-        <button
-          className="font-bold w-full bg-black text-white text-sm py-3 rounded-md hover:bg-opacity-80"
-          onClick={handleLogin}
-        >
-          KAKAO LOGIN
-        </button>
+      <div className="h-[30vh]">
+        <div className="">
+          <button className="ml-[5vw]" onClick={handleLogin}>
+            <img src={kakaoLogin} className="w-[90vw] h-[9vh]" />
+          </button>
+        </div>
+        <div className="mt-4">
+          <button className="ml-[5vw]" onClick={handleLogin}>
+            <img src={googleLogin} className="w-[90vw] h-[9vh]" />
+          </button>
+        </div>
       </div>
     </div>
   );

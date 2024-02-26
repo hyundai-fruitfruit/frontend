@@ -7,7 +7,7 @@ const ProgressBar = ({ fromValue, toValue, duration }) => {
   return (
     <div className="w-full bg-gray-200 rounded-full h-4">
       <div
-        className="bg-blue-600 h-4 rounded-full transition-all duration-300 ease-out"
+        className="bg-customPink h-4 rounded-full transition-all duration-300 ease-out"
         style={{ width: `${progress}%` }}
       />
     </div>

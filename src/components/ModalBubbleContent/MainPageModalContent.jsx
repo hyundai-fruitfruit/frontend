@@ -62,7 +62,7 @@ const LoadingModal = () => (
 );
 
 export const AdventureStartContent = ({ openModal, closeModal }) => {
-  const targetArea = { latitude: 37.5530456, longitude: 126.9509533 };
+  const targetArea = { latitude: 37.5603219, longitude: 127.0645185 };
   const allowedDistance = 50; // 미터 단위
 
   const handleAdventureStart = async () => {
@@ -137,8 +137,8 @@ export const SpeechBubbleContent = () => {
   const [selectedEventType, setSelectedEventType] = useState('');
   const { data, error, loading } = useRandomSpotByEventType(selectedEventType);
 
-  const handleButtonClick = (eventType) => {
-    setSelectedEventType(eventType);
+  const handleButtonClick = () => {
+    setSelectedEventType('');
   };
 
   return (
@@ -160,6 +160,7 @@ export const SpeechBubbleContent = () => {
     </div>
   );
 };
+
 function calculateDistance(lat1, lon1, lat2, lon2) {
   var R = 6371000; // 지구의 반지름 (미터)
   var dLat = deg2rad(lat2 - lat1);
