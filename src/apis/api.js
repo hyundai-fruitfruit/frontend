@@ -6,9 +6,6 @@
  * @desc api 기본 설정
  */
 import axios from 'axios';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const API_AUTH_TOKEN = process.env.REACT_APP_API_AUTH_TOKEN;
