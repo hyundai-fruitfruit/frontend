@@ -2,7 +2,7 @@
  * @author 오수영
  * @email osy9757@gmail.com
  * @create date 2024-02-17 11:37:49
- * @modify date 2024-02-22 01:28:59
+ * @modify date 2024-02-26 17:52:03
  * @desc api 기본 설정
  */
 import axios from 'axios';
@@ -18,6 +18,11 @@ const api = axios.create({
     Authorization: `Bearer ${API_AUTH_TOKEN}`, // 환경 변수에서 가져온 토큰 사용
   },
   withCredentials: true,
+});
+
+api.interceptors.request.use((request) => {
+  console.log(`Request URL: ${request.baseURL}${request.url}`);
+  return request;
 });
 
 export default api;

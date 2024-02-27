@@ -8,7 +8,7 @@
 import React from 'react';
 import './SpeechBubble.css';
 
-function SpeechBubble({ boldText, normalText, children, arrowPostion = 'left', width, height }) {
+function SpeechBubble({ boldText, normalText, children, arrowPostion = 'left', width, height, addStyle }) {
   const arrowClass = arrowPostion === 'left' ? 'arrowLeft' : 'arrowRight';
   const style = {
     ...(width && { width }),
@@ -25,7 +25,7 @@ function SpeechBubble({ boldText, normalText, children, arrowPostion = 'left', w
 
   return (
     <div
-      className={`bg-white w-72 shadow-md rounded-lg border border-gray-200 relative p-3 speechBubble ${arrowClass}`}
+      className={`bg-white w-72 shadow-md rounded-lg border border-gray-200 relative p-3 speechBubble ${arrowClass} ${addStyle}`}
       style={style}
     >
       <p className="text-lg font-bold text-gray-700">{boldText}</p>

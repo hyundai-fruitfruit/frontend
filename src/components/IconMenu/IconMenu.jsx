@@ -6,21 +6,14 @@
  * @desc 메인 페이지 아이콘 메뉴 컴포넌트
  */
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
-function IconMenu({ icons }) {
-  const navigate = useNavigate();
-
-  const handleIconClick = (path) => {
-    navigate(path);
-  };
-
+function IconMenu({ icons, onIconClick }) {
   return (
     <div className="flex flex-wrap items-center justify-center gap-4">
       {icons.map((icon) => (
         <div key={icon.name} className="flex flex-col items-center">
           <button
-            onClick={() => handleIconClick(icon.path)}
+            onClick={() => onIconClick(icon.name)}
             className="rounded-full p-4 bg-white shadow-md border border-gray-200"
           >
             <img src={icon.src} alt={icon.label} className="w-8 h-8" />
