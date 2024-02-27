@@ -6,6 +6,7 @@
  * @desc 흰디 메인페이지
  */
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SpeechBubble from '../../components/SpeechBubble/SpeechBubble';
 import BackgroundImage from 'components/BackgroundImage/BackgroundImage';
 import IconMenu from 'components/IconMenu/IconMenu';
@@ -14,7 +15,6 @@ import useModal from 'hooks/useModal';
 import {
   SpeechBubbleContent,
   AdventureStartContent,
-  CertificationSuccess,
   CertificationFail,
 } from 'components/ModalBubbleContent/MainPageModalContent';
 import ProgressBar from 'components/ModalBubbleContent/ProgressBar';
@@ -41,6 +41,7 @@ function MainPage() {
   ];
 
   const { isModalOpen, modalContent, openModal, closeModal } = useModal();
+  const navigate = useNavigate();
   const [exp] = useState(50);
 
   return (
@@ -93,11 +94,11 @@ function MainPage() {
             if (iconName === 'start') {
               openModal(<AdventureStartContent openModal={openModal} closeModal={closeModal} />);
             } else if (iconName === 'item') {
-              openModal(<CertificationSuccess />);
+              navigate('/Test');
             } else if (iconName === 'display') {
               openModal(<CertificationFail />);
-            } else {
-              openModal(<ProgressBar fromValue={0} toValue={50} />);
+            } else if (iconName === 'coupon') {
+              navigate('/couponTab');
             }
             // 다른 아이콘에 대한 처리
           }}

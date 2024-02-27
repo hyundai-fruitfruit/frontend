@@ -104,24 +104,24 @@ function LoginScreen() {
 
   return (
     <div style={backgroundStyle} className="min-h-screen bg-cover bg-center">
-      <div className="flex flex-col h-[70vh]">
+      <div className="h-[70vh]">
         <div className="h-[5vh]"></div>
-        <div className="h-[30vh]">
-          <img src={loadingHeendy} className="h-[30vh] w-auto" />
+        <div className="h-[25vh] overflow-hidden">
+          <img src={loadingHeendy} className="h-[25vh] w-auto object-cover" />
         </div>
         <div className="h-[35vh]">
-          <img src={startHeendy} className="mt-auto" />
+          <img src={startHeendy} className="" />
         </div>
       </div>
       <div className="h-[30vh]">
-        <div className="">
+        <div className="mb-4">
           <button className="ml-[5vw]" onClick={handleLogin}>
-            <img src={kakaoLogin} className="w-[90vw] h-[9vh]" />
+            <img src={kakaoLogin} className="w-[90vw] " />
           </button>
         </div>
-        <div className="mt-4">
+        <div>
           <button className="ml-[5vw]" onClick={handleLogin}>
-            <img src={googleLogin} className="w-[90vw] h-[9vh]" />
+            <img src={googleLogin} className="w-[90vw]" />
           </button>
         </div>
       </div>
