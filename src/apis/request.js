@@ -43,3 +43,24 @@ export const createReviewForStore = async (storeId, reviewReqDto) => {
     throw error;
   }
 };
+
+/**
+ * @author 엄상은
+ * @email sangeun.e.9@gmail.com
+ * @create date 2024-02-26 19:41:08
+ * @modify date 2024-02-26 19:41:08
+ * @desc 로그인 api 연결
+ */
+
+// 카카오 로그인
+export const login = async (accessToken) => {
+  try {
+    const response = await api.post('/api/v1/auth/login', {
+      "loginToken": accessToken,
+      "oauthType": "KAKAO"
+    });
+    return response.data.accessToken;
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
+}

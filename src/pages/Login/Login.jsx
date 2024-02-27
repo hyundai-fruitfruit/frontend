@@ -17,7 +17,7 @@
 import loginImage from 'assets/images/onboarding_icon.png';
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 // import { firebaseConfig } from './config';
 
 // // Firebase 앱 초기화
@@ -83,7 +83,7 @@ import { useNavigate } from 'react-router-dom';
 // }
 
 function LoginScreen() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // 사용자가 로그인 화면에 진입했을 때 알림 권한을 요청하고 FCM 토큰을 등록합니다.
   // React.useEffect(() => {
@@ -91,7 +91,8 @@ function LoginScreen() {
   // }, []);
 
   const handleLogin = () => {
-    navigate('/main');
+    const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&scope=account_email&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}`
+    window.location.href = KAKAO_AUTH_URI;
   };
 
   return (
