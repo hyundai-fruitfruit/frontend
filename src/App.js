@@ -7,6 +7,7 @@
  */
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './pages/Login/Login';
+import KakaoCallback from './pages/Login/KakaoCallback';
 import MainPage from './pages/MainPage/Mainpage';
 import LocationPage from './pages/Location/LocationPage';
 import QRScannerPage from './pages/QRScannerPage/QRScannerPage';
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
     path: '/',
     children: [
       { index: true, element: <Login /> },
+      { path: 'login', element: <KakaoCallback />},
       { path: 'main', element: <MainPage /> },
       { path: 'location', element: <LocationPage /> },
       { path: 'login', element: <Login /> },
