@@ -9,24 +9,49 @@
  * @author 엄상은
  * @email sangeun.e.9@gmail.com
  * @create date 2024-02-27 11:55:34
- * @modify date 2024-02-27 11:55:34
- * @desc QR코드 API 연결
+ * @modify date 2024-02-27 17:52:55
+ * @desc QR코드 API 연결 및 소켓 연결
  */
-import React from 'react';
+import React, { useEffect } from 'react';
+import SockJS from 'sockjs-client';
+import { Client } from '@stomp/stompjs';
 
 import loginImage from 'assets/images/onboarding_icon.png';
-import { useQr } from 'hooks/useQr'; // hooks 경로는 실제 경로에 맞게 수정해주세요.
+import { useQr } from 'hooks/useQr';
 
 function RandomEventSpotQR() {
-  const { qrData, isLoading, error } = useQr();
+  const { qrData, isQrLoading, error } = useQr();
 
-  if (isLoading) {
+  if (isQrLoading) {
     return <div>Loading...</div>;
   }
 
   if (error) {
     return <div>Error: {error.message}</div>;
   }
+  
+  useEffect(() => {
+    const socket = new SockJS(`${process.env.REACT_APP_API_BASE_URL}/websocket-demo`);
+    const stompClient = new Client({
+      webSocketFactory: () => socket,
+      onConnect: function (frame) {
+        console.log('Connected: ' + frame);
+
+        // 소켓 구독
+        stompClient.subscribe('/topic/greetings', (greeting) => {
+          const message = new TextDecoder().decode(new Uint8Array(greeting.binaryBody));
+          console.log('서버에서 받은 메세지: ', message);
+        });
+
+        // 소켓 발행
+        stompClient.publish({
+          destination: '/app/hello',
+          body: 'Hello WebSocket',
+        });
+      }
+    });
+    stompClient.activate();
+  }, []);
 
   return (
     <div className="flex flex-col h-screen">
