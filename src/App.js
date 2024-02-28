@@ -40,6 +40,7 @@ const router = createBrowserRouter([
       { path: 'randomEventSpotQR', element: <RandomEventSpotQR /> },
       { path: 'randomEventSpotQRSuccess', element: <RandomEventSpotQRSuccess /> },
       { path: 'heendyLayout', element: <HeendyLayout /> },
+      { path: 'myroom', element: <MyRoom /> },
       { path: 'couponTab', element: <CouponTab /> },
       { path: 'eventNotice', element: <EventNotice /> },
     ],
