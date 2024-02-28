@@ -12,12 +12,11 @@
  * @modify date 2024-02-27 17:52:55
  * @desc QR코드 API 연결 및 소켓 연결
  */
-import React, { useEffect } from 'react';
-import SockJS from 'sockjs-client';
-import { Client } from '@stomp/stompjs';
+import React from 'react';
 
 import loginImage from 'assets/images/onboarding_icon.png';
 import { useQr } from 'hooks/useQr';
+import { useSocket } from 'hooks/useSocket';
 
 function RandomEventSpotQR() {
   const { qrData, isQrLoading, error } = useQr();
@@ -30,28 +29,7 @@ function RandomEventSpotQR() {
     return <div>Error: {error.message}</div>;
   }
   
-  useEffect(() => {
-    const socket = new SockJS(`${process.env.REACT_APP_API_BASE_URL}/websocket-demo`);
-    const stompClient = new Client({
-      webSocketFactory: () => socket,
-      onConnect: function (frame) {
-        console.log('Connected: ' + frame);
-
-        // 소켓 구독
-        stompClient.subscribe('/topic/greetings', (greeting) => {
-          const message = new TextDecoder().decode(new Uint8Array(greeting.binaryBody));
-          console.log('서버에서 받은 메세지: ', message);
-        });
-
-        // 소켓 발행
-        stompClient.publish({
-          destination: '/app/hello',
-          body: 'Hello WebSocket',
-        });
-      }
-    });
-    stompClient.activate();
-  }, []);
+  useSocket();
 
   return (
     <div className="flex flex-col h-screen">
