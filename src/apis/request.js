@@ -64,3 +64,21 @@ export const login = async (accessToken) => {
     console.error(`Error: ${error}`);
   }
 }
+
+/**
+ * @author 엄상은
+ * @email sangeun.e.9@gmail.com
+ * @create date 2024-02-27 11:55:34
+ * @modify date 2024-02-27 11:55:34
+ * @desc QR코드 API 연결
+ */
+
+// QR코드 로드
+export const findQr = async () => {
+  try {
+    const response = await api.get('/api/v1/members/qr');
+    return response.data.data;
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
+}
