@@ -11,7 +11,7 @@ import OptionIcons from './OptionIcons';
 import { Category, selectCategory } from './Category';
 
 // 3d 관련
-import { Canvas} from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from '@react-three/drei';
 
 // 3d 모델
@@ -29,7 +29,6 @@ import mainCapHeendy from 'assets/icons/CapHeendy.png';
 import mainWeather from 'assets/icons/Glowing star.png';
 import mainCandy from 'assets/icons/Candy.png';
 import mainMailbox from 'assets/icons/mailBox.png';
-
 
 const categories = ['소품', '배경', '벽지', '효과'];
 
@@ -104,9 +103,9 @@ function MyRoom() {
         </div>
 
       {/* 캔버스 */}
-      <div class="w-3/4 h-[64vh] mx-auto relative mt-1vh mb-10vh flex flex-col items-center justify-between">
-        <div class="mt-5vh mb-5vh w-full h-full">
-          <Canvas className='mb-5vh bg-gray-200'>
+      <div className="w-3/4 h-[64vh] mx-auto relative mt-1vh mb-10vh flex flex-col items-center justify-between">
+        <div className="mt-5vh mb-5vh w-full h-full">
+          <Canvas className='mb-5vh bg-gray-100'>
             <OrbitControls />
             <ambientLight intensity={4} />
             <directionalLight position={[-2, 5, 2]} intensity={4} />
