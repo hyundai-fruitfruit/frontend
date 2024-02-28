@@ -74,15 +74,16 @@ function TestPage() {
             addStyle={'bg-gray-100 mx-8 text-'}
           />
         ) : (
-          <CouponCard
-            imgSrc={keyIcon}
-            detail={
-              <span>
-                오늘의 랜덤스팟이 <br /> 아직 열리지 않았어요!
-              </span>
-            }
-            addStyle={'bg-gray-100 mx-8 text-'}
-          />
+          <div className={`flex flex-row border rounded-2xl m-8 bg-gray-100 `}>
+            <div>
+              <img src={keyIcon} className="h-[6vh] m-8" />
+            </div>
+            <div className="flex items-center justify-center py-4 mr-8 mx-8">
+              <p className="mb-1 text-center">
+                오늘의 랜덤 스팟이 <br /> 아직 열리지 않았어요!
+              </p>
+            </div>
+          </div>
         )}
       </div>
       <div>
