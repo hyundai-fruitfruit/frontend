@@ -94,7 +94,7 @@ function MainPage() {
             if (iconName === 'start') {
               openModal(<AdventureStartContent openModal={openModal} closeModal={closeModal} />);
             } else if (iconName === 'item') {
-              navigate('/Test');
+              navigate('/eventNotice');
             } else if (iconName === 'display') {
               openModal(<CertificationFail />);
             } else if (iconName === 'coupon') {

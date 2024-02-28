@@ -2,7 +2,7 @@
  * @author 오수영
  * @email osy9757@gmail.com
  * @create date 2024-02-18 10:18:42
- * @modify date 2024-02-28 01:30:46
+ * @modify date 2024-02-28 09:07:06
  * @desc App.js
  */
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -19,6 +19,7 @@ import RandomEventSpotQR from 'pages/RandomEventSpot/RandomEventSpotQR';
 import RandomEventSpotQRSuccess from 'pages/RandomEventSpot/RandomEventSpotQRSuccess';
 import HeendyLayout from 'pages/Layouts/HeendyLayout/HeendyLayout';
 import CouponTab from 'pages/CouponTab/CouponTab';
+import EventNotice from 'pages/MainPage/EventNotice';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
       { path: 'randomEventSpotQRSuccess', element: <RandomEventSpotQRSuccess /> },
       { path: 'heendyLayout', element: <HeendyLayout /> },
       { path: 'couponTab', element: <CouponTab /> },
+      { path: 'eventNotice', element: <EventNotice /> },
     ],
   },
 ]);

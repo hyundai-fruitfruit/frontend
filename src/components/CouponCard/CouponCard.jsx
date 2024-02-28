@@ -1,3 +1,10 @@
+/**
+ * @author 오수영
+ * @email osy9757@gmail.com
+ * @create date 2024-02-28 08:39:29
+ * @modify date 2024-02-28 08:39:29
+ * @desc 쿠폰, 이벤트 목록 형식 컴포넌트
+ */
 import React from 'react';
 
 function CouponCard({ imgSrc, title, detail, useByDate, addStyle }) {
