@@ -15,8 +15,7 @@ import { useSelector } from 'react-redux';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 
-import SpeechBubble from '../../components/SpeechBubble/SpeechBubble';
-// import BackgroundImage from 'components/BackgroundImage/BackgroundImage';
+import SpeechBubble from 'components/SpeechBubble/SpeechBubble';
 import IconMenu from 'components/IconMenu/IconMenu';
 import ModalComponent from 'components/ModalComponent/ModalComponent';
 import useModal from 'hooks/useModal';
@@ -28,8 +27,6 @@ import {
 import ProgressBar from 'components/ModalBubbleContent/ProgressBar';
 //assets
 import ModalHeendy from 'assets/images/modal_heendy.png';
-// import heendy_background from 'assets/images/heendy_background.png';
-// import mainHeendyImage from 'assets/images/mainHeendyImage.png';
 import itemIcon from 'assets/images/item_icon.png';
 import startIcon from 'assets/images/start_icon.png';
 import displayIcon from 'assets/images/display_icon.png';
@@ -41,13 +38,13 @@ import mainCandy from 'assets/icons/Candy.png';
 import mainMailbox from 'assets/icons/mailBox.png';
 
 // 3d 모델
-import Tree1 from '../../assets/models/Tree1';
-import Tree2 from '../../assets/models/Tree2';
-import Popcorn from '../../assets/models/Popcorn';
-import Hamburger from '../../assets/models/Hamburger';
-import Pizza from '../../assets/models/Pizza';
-import Empty from '../../assets/models/Empty';
-import Deer from '../../assets/models/Deer';
+import Tree1 from 'assets/models/Tree1';
+import Tree2 from 'assets/models/Tree2';
+import Popcorn from 'assets/models/Popcorn';
+import Hamburger from 'assets/models/Hamburger';
+import Pizza from 'assets/models/Pizza';
+import Empty from 'assets/models/Empty';
+import Deer from 'assets/models/Deer';
 
 function MainPage() {
   const iconsData = [
@@ -112,10 +109,6 @@ function MainPage() {
       >
         <SpeechBubble boldText={'안녕, 나는 흰디야! 같이 모험할래?'} arrowPostion="right" />
       </div>
-      {/* <div className="mb-8 relative w-[85vw] h-[42vh] mx-auto">
-        <BackgroundImage imageUrl={heendy_background} />
-        <img src={mainHeendyImage} alt="캐릭터" className="absolute inset-0 h-[30vh] w-auto mx-auto my-auto mb-0" />
-      </div> */}
       <div className="mb-8 relative w-[85vw] h-[42vh] mx-auto">
         <div className="mt-5vh mb-5vh w-full h-full">
           <Canvas className="mb-5vh bg-gray-100">

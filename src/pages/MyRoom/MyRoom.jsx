@@ -23,13 +23,13 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 
 // 3d 모델
-import Tree1 from '../../assets/models/Tree1';
-import Tree2 from '../../assets/models/Tree2';
-import Popcorn from '../../assets/models/Popcorn';
-import Hamburger from '../../assets/models/Hamburger';
-import Pizza from '../../assets/models/Pizza';
-import Empty from '../../assets/models/Empty';
-import Deer from '../../assets/models/Deer';
+import Tree1 from 'assets/models/Tree1';
+import Tree2 from 'assets/models/Tree2';
+import Popcorn from 'assets/models/Popcorn';
+import Hamburger from 'assets/models/Hamburger';
+import Pizza from 'assets/models/Pizza';
+import Empty from 'assets/models/Empty';
+import Deer from 'assets/models/Deer';
 
 // 아이콘
 import mainTent from 'assets/icons/main_Tent.png';
@@ -95,7 +95,6 @@ function MyRoom() {
   };
 
   useEffect(() => {
-    // 스토어의 상태가 변경될 때마다 로컬 상태를 업데이트합니다.
     setSelectedFoodOption(reduxSelectedFoodOption);
     setSelectedBackOption(reduxSelectedBackOption);
   }, [reduxSelectedFoodOption, reduxSelectedBackOption]);
