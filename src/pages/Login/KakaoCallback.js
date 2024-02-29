@@ -28,7 +28,7 @@ function KakaoCallback() {
                 // spring에서 발급된 jwt localStorage 저장
                 localStorage.setItem("accessToken", jwt);
                 // 메인 페이지로 이동
-                navigate('/main');
+                navigate('/onboarding');
             } catch (error) {
                 console.error("로그인 처리 실패", error);
             }
