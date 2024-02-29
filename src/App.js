@@ -2,10 +2,13 @@
  * @author 오수영
  * @email osy9757@gmail.com
  * @create date 2024-02-18 10:18:42
- * @modify date 2024-02-28 09:07:06
+ * @modify date 2024-03-01 05:47:33
  * @desc App.js
  */
+import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { store } from 'store/Store';
+
 import Login from './pages/Login/Login';
 import Onboarding from 'pages/Onboarding/Onboarding';
 import MyRoom from './pages/MyRoom/MyRoom';
@@ -23,14 +26,17 @@ import RandomEventSpotQRSuccess from 'pages/RandomEventSpot/RandomEventSpotQRSuc
 import HeendyLayout from 'pages/Layouts/HeendyLayout/HeendyLayout';
 import CouponTab from 'pages/CouponTab/CouponTab';
 import EventNotice from 'pages/MainPage/EventNotice';
+import CaptainHeendy from 'pages/CaptainHeendy/CaptainHeendy';
+import FriendGame from 'pages/FriendGame/FriendGame';
+import TheHyundaiMap from 'pages/TheHyundaiMap/TheHyundaiMap';
 
 const router = createBrowserRouter([
   {
     path: '/',
     children: [
       { index: true, element: <Login /> },
-      { path: 'login', element: <KakaoCallback />},
-      { path: 'onboarding', element: <Onboarding />},
+      { path: 'login', element: <KakaoCallback /> },
+      { path: 'onboarding', element: <Onboarding /> },
       { path: 'main', element: <MainPage /> },
       { path: 'location', element: <LocationPage /> },
       { path: 'login', element: <Login /> },
@@ -46,11 +52,18 @@ const router = createBrowserRouter([
       { path: 'myroom', element: <MyRoom /> },
       { path: 'couponTab', element: <CouponTab /> },
       { path: 'eventNotice', element: <EventNotice /> },
+      { path: 'captainHeendy', element: <CaptainHeendy /> },
+      { path: 'friendGame', element: <FriendGame /> },
+      { path: 'theHyundaiMap', element: <TheHyundaiMap /> },
     ],
   },
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 };
 export default App;

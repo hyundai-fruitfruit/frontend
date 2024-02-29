@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /**
  * @author 황수영
  * @email sooyoung.h8@gmail.com
@@ -5,23 +6,30 @@
  * @modify date 2024-02-28 04:35:36
  * @desc 나의 방탭 - 3d 모델 변경하는 페이지
  */
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useEffect } from 'react';
 import './MyRoom.css';
 import OptionIcons from './OptionIcons';
 import { Category, selectCategory } from './Category';
 
+// redux
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setSelectedFoodOption as setReduxSelectedFoodOption,
+  setSelectedBackOption as setReduxSelectedBackOption,
+} from 'store/features/RoomSlice';
+
 // 3d 관련
-import { Canvas } from "@react-three/fiber";
+import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 
 // 3d 모델
-import Tree1 from "../../assets/models/Tree1";
-import Tree2 from "../../assets/models/Tree2";
-import Popcorn from "../../assets/models/Popcorn";
-import Hamburger from "../../assets/models/Hamburger";
-import Pizza from "../../assets/models/Pizza";
-import Empty from "../../assets/models/Empty";
-import Deer from "../../assets/models/Deer";
+import Tree1 from '../../assets/models/Tree1';
+import Tree2 from '../../assets/models/Tree2';
+import Popcorn from '../../assets/models/Popcorn';
+import Hamburger from '../../assets/models/Hamburger';
+import Pizza from '../../assets/models/Pizza';
+import Empty from '../../assets/models/Empty';
+import Deer from '../../assets/models/Deer';
 
 // 아이콘
 import mainTent from 'assets/icons/main_Tent.png';
@@ -36,7 +44,7 @@ const categories = ['소품', '배경', '벽지', '효과'];
 const foodOptionsWithBack = [
   { name: 'Hamburger', backgroundImageUrl: 'popcorn-background.jpg' },
   { name: 'Pizza', backgroundImageUrl: 'pizza-background.jpg' },
-  { name: 'Popcorn', backgroundImageUrl: 'empty-background.jpg' },  
+  { name: 'Popcorn', backgroundImageUrl: 'empty-background.jpg' },
   { name: 'Empty', backgroundImageUrl: 'flower-background.jpg' },
   { name: 'Tree1', backgroundImageUrl: 'pizza-background.jpg' },
   { name: 'Tree2', backgroundImageUrl: 'pizza-background.jpg' },
@@ -48,7 +56,7 @@ const backOptionsWithBack = [
   { name: 'Hamburger', backgroundImageUrl: 'popcorn-background.jpg' },
   { name: 'Tree1', backgroundImageUrl: 'pizza-background.jpg' },
   { name: 'Tree2', backgroundImageUrl: 'pizza-background.jpg' },
-  { name: 'Empty', backgroundImageUrl: 'empty-background.jpg' }
+  { name: 'Empty', backgroundImageUrl: 'empty-background.jpg' },
 ];
 
 function MyRoom() {
@@ -59,7 +67,7 @@ function MyRoom() {
     Popcorn: <Popcorn />,
     Empty: <Empty />,
   };
-  
+
   const backOptions = {
     Hamburger: <Hamburger />,
     Tree1: <Tree1 />,
@@ -67,12 +75,33 @@ function MyRoom() {
     Empty: <Empty />,
   };
 
-  const [selectedFoodOption, setSelectedFoodOption] = useState(null);
-  const [selectedBackOption, setSelectedBackOption] = useState(null);
+  const reduxSelectedFoodOption = useSelector((state) => state.room.selectedFoodOption);
+  const reduxSelectedBackOption = useSelector((state) => state.room.selectedBackOption);
+
+  const [selectedFoodOption, setSelectedFoodOption] = useState(reduxSelectedFoodOption);
+  const [selectedBackOption, setSelectedBackOption] = useState(reduxSelectedBackOption);
+
   const [selectedCategory, setSelectedCategory] = useState('소품');
+  const dispatch = useDispatch();
+
+  const handleSelectFoodOption = (option) => {
+    setSelectedFoodOption(option);
+    dispatch(setReduxSelectedFoodOption(option));
+  };
+
+  const handleSelectBackOption = (option) => {
+    setSelectedBackOption(option);
+    dispatch(setReduxSelectedBackOption(option));
+  };
+
+  useEffect(() => {
+    // 스토어의 상태가 변경될 때마다 로컬 상태를 업데이트합니다.
+    setSelectedFoodOption(reduxSelectedFoodOption);
+    setSelectedBackOption(reduxSelectedBackOption);
+  }, [reduxSelectedFoodOption, reduxSelectedBackOption]);
 
   return (
-    <div className='main_container min-h-screen flex flex-col'>
+    <div className="main_container min-h-screen flex flex-col">
       {/* 헤더 두 개 */}
       <div className="w-full h-[15vh]">
         <div className="flex flex-row justify-between items-center space-x-2 h-[6vh] border-b font-bold">
@@ -88,24 +117,24 @@ function MyRoom() {
 
         <div className="flex w-3/4 mx-auto justify-between mt-5 mb-3">
           <div className="flex border rounded-xl h-10 items-center m-0 p-0">
-              <img src={mainWeather} className="h-6 ml-2" />
-              <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center">오늘의 날씨</span>
-            </div>
-            <div className="flex border rounded-xl h-10 items-center m-0 p-0">
-              <img src={mainCandy} className="h-6 ml-2" />
-              <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center">14/15</span>
-            </div>
-            <div className="flex border rounded-xl h-10 items-center m-0 p-0">
-              <img src={mainMailbox} className="h-6 ml-2" />
-              <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center">5/10</span>
-            </div>
+            <img src={mainWeather} className="h-6 ml-2" />
+            <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center">오늘의 날씨</span>
+          </div>
+          <div className="flex border rounded-xl h-10 items-center m-0 p-0">
+            <img src={mainCandy} className="h-6 ml-2" />
+            <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center">14/15</span>
+          </div>
+          <div className="flex border rounded-xl h-10 items-center m-0 p-0">
+            <img src={mainMailbox} className="h-6 ml-2" />
+            <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center">5/10</span>
           </div>
         </div>
+      </div>
 
       {/* 캔버스 */}
       <div className="w-3/4 h-[64vh] mx-auto relative mt-1vh mb-10vh flex flex-col items-center justify-between">
         <div className="mt-5vh mb-5vh w-full h-full">
-          <Canvas className='mb-5vh bg-gray-100'>
+          <Canvas className="mb-5vh bg-gray-100">
             <OrbitControls />
             <ambientLight intensity={4} />
             <directionalLight position={[-2, 5, 2]} intensity={4} />
@@ -117,31 +146,22 @@ function MyRoom() {
           </Canvas>
         </div>
 
-      {/* 옵션 영역 */}
-      <div className="h-[14vh] mt-15vh w-screen bg-white flex flex-col items-center border border-gray-200">
-        <div className="mt-15vh bg-white flex flex-row items-center justify-center justify-evenly">
+        {/* 옵션 영역 */}
+        <div className="h-[14vh] mt-15vh w-screen bg-white flex flex-col items-center border border-gray-200">
+          <div className="mt-15vh bg-white flex flex-row items-center justify-center justify-evenly">
             {/* 카테고리 렌더링 */}
-            {categories.map(category => (
-              <Category 
-              key={category} 
-              name={category} 
-              onClick={() => selectCategory(category, setSelectedCategory)} />
+            {categories.map((category) => (
+              <Category key={category} name={category} onClick={() => selectCategory(category, setSelectedCategory)} />
             ))}
           </div>
 
-          <div className='icon-container'>
-            {selectedCategory === '소품' && 
-              <OptionIcons
-                options={foodOptionsWithBack}
-                setSelectedOption={setSelectedFoodOption}
-              />
-            }
-            {selectedCategory === '배경' && 
-              <OptionIcons
-                options={backOptionsWithBack}
-                setSelectedOption={setSelectedBackOption}
-              />
-            }
+          <div className="icon-container">
+            {selectedCategory === '소품' && (
+              <OptionIcons options={foodOptionsWithBack} setSelectedOption={handleSelectFoodOption} />
+            )}
+            {selectedCategory === '배경' && (
+              <OptionIcons options={backOptionsWithBack} setSelectedOption={handleSelectBackOption} />
+            )}
           </div>
         </div>
       </div>
