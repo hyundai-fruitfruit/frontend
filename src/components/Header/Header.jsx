@@ -18,10 +18,10 @@ const Header = ({ text }) => {
   };
   return (
     <div className="flex items-center justify-between py-4">
-      <button onClick={goBack} className="text-lg">
-        <img src={backArrowIcon} />
+      <button onClick={goBack} className="absolute text-lg ml-4">
+        <img src={backArrowIcon} className="" />
       </button>
-      <span className="text-xl font-bold">{text}</span>
+      <span className="text-xl font-bold flex-1 text-center">{text}</span>
       <span></span>
     </div>
   );

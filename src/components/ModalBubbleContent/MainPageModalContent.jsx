@@ -6,7 +6,8 @@
  * @desc 모달 랜더링 Content
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 //Component
 import ClaymorphicButton from 'components/ClaymorphicButton/ClaymorphicButton';
 //Hook
@@ -24,30 +25,27 @@ import hiHeendy from 'assets/gif/HEENDY_hi.gif';
 import cryHeendy from 'assets/gif/HEENDY_cry.gif';
 import loadingRolling from 'assets/gif/loadingRolling.gif';
 
-// export const SpeechBubbleContent = () => (
-//   <div className="">
-//     <div className="font-bold text-center mb-1"> 지금 가고 싶은 랜덤스팟은 어디야?</div>
-//     <div className="grid grid-cols-2 gap-4 p-4">
-//       <ClaymorphicButton imageSrc={restaurantIcon} text="맛있는 걸 먹고파" onClick={''} />
-//       <ClaymorphicButton imageSrc={cafeIcon} text="카페타임이 필요해" onClick={''} />
-//       <ClaymorphicButton imageSrc={shoppingIcon} text="구매욕 뿜뿜" onClick={''} />
-//       <ClaymorphicButton imageSrc={randomIcon} text="랜덤이 좋아" onClick={''} />
-//     </div>
-//   </div>
-// );
+export const RandomSpotContent = ({ data }) => {
+  const navigate = useNavigate();
 
-export const RandomSpotContent = () => (
-  <div className="flex flex-col">
-    <div className="text-center font-bold">오늘의 랜덤 스팟은 SMT 라운지 이야</div>
-    <div className="flex justify-center">
-      <img src={smtImage} />
+  const handleGoNow = () => {
+    navigate(`/storeDetail?id=${data.id}`);
+  };
+
+  return (
+    <div className="flex flex-col">
+      <div className="text-center font-bold mb-2">{`오늘의 랜덤 스팟은?`}</div>
+      <div className="text-center font-bold text-lg mb-2">{`${data.title}`}</div>
+      <div className="flex justify-center mb-6">
+        <img src={smtImage} />
+      </div>
+      <div className="flex flex-row h-[6vh]">
+        <ClaymorphicButton text="다음에 갈게" addStyle="m-1" />
+        <ClaymorphicButton text="지금 갈게" addStyle="m-1" onClick={handleGoNow} />
+      </div>
     </div>
-    <div className="flex flex-row h-[6vh]">
-      <ClaymorphicButton text="다음에 갈게" addStyle="m-1" />
-      <ClaymorphicButton text="지금 갈게" addStyle="m-1" />
-    </div>
-  </div>
-);
+  );
+};
 
 const getCurrentPosition = () => {
   return new Promise((resolve, reject) => {
@@ -133,12 +131,18 @@ export const CertificationFail = () => (
 
 // ----------
 
-export const SpeechBubbleContent = () => {
+export const SpeechBubbleContent = ({ openModal }) => {
   const [selectedEventType, setSelectedEventType] = useState('');
   const { data, error, loading } = useRandomSpotByEventType(selectedEventType);
 
-  const handleButtonClick = () => {
-    setSelectedEventType('');
+  useEffect(() => {
+    if (data && !loading && !error) {
+      openModal(<RandomSpotContent data={data} />);
+    }
+  }, [data, loading, error, openModal]);
+
+  const handleButtonClick = (eventType) => {
+    setSelectedEventType(eventType);
   };
 
   return (
@@ -148,15 +152,14 @@ export const SpeechBubbleContent = () => {
         <ClaymorphicButton
           imageSrc={restaurantIcon}
           text="맛있는 걸 먹고파"
-          onClick={() => handleButtonClick('restaurant')}
+          onClick={() => handleButtonClick('RESTAURANT')}
         />
-        <ClaymorphicButton imageSrc={cafeIcon} text="카페타임이 필요해" onClick={() => handleButtonClick('cafe')} />
-        <ClaymorphicButton imageSrc={shoppingIcon} text="구매욕 뿜뿜" onClick={() => handleButtonClick('shopping')} />
-        <ClaymorphicButton imageSrc={randomIcon} text="랜덤이 좋아" onClick={() => handleButtonClick('random')} />
+        <ClaymorphicButton imageSrc={cafeIcon} text="카페타임이 필요해" onClick={() => handleButtonClick('CAFE')} />
+        <ClaymorphicButton imageSrc={shoppingIcon} text="구매욕 뿜뿜" onClick={() => handleButtonClick('SHOPPING')} />
+        <ClaymorphicButton imageSrc={randomIcon} text="랜덤이 좋아" onClick={() => handleButtonClick('RANDOM')} />
       </div>
-      {loading && <div>Loading...</div>}
+      {loading && <div></div>}
       {error && <div>Error: {error.message}</div>}
-      {data && <div>{/* 데이터를 표시하는 로직을 여기에 작성합니다. */}</div>}
     </div>
   );
 };

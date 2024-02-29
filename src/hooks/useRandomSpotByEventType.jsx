@@ -15,6 +15,10 @@ const useRandomSpotByEventType = (eventType) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!eventType) {
+        setLoading(false);
+        return;
+      }
       try {
         const response = await getRandomSpotByEventType(eventType);
         setData(response);

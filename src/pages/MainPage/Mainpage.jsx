@@ -72,7 +72,10 @@ function MainPage() {
           </div>
         </div>
       </div>
-      <div className="absolute top-[25vh] z-10" onClick={() => openModal(<SpeechBubbleContent />)}>
+      <div
+        className="absolute top-[25vh] z-10"
+        onClick={() => openModal(<SpeechBubbleContent openModal={openModal} />)}
+      >
         <SpeechBubble boldText={'안녕, 나는 흰디야! 같이 모험할래?'} arrowPostion="right" />
       </div>
       <div className="mb-8 relative w-[85vw] h-[42vh] mx-auto">
@@ -100,7 +103,6 @@ function MainPage() {
             } else if (iconName === 'coupon') {
               navigate('/couponTab');
             }
-            // 다른 아이콘에 대한 처리
           }}
         />
       </div>

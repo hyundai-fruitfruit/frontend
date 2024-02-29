@@ -2,7 +2,7 @@
  * @author 오수영
  * @email osy9757@gmail.com
  * @create date 2024-02-17 11:37:49
- * @modify date 2024-02-26 17:52:03
+ * @modify date 2024-02-28 14:35:20
  * @desc api 기본 설정
  */
 import axios from 'axios';
