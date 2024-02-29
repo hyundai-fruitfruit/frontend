@@ -7,6 +7,7 @@
  */
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './pages/Login/Login';
+import Onboarding from 'pages/Onboarding/Onboarding';
 import MyRoom from './pages/MyRoom/MyRoom';
 import KakaoCallback from './pages/Login/KakaoCallback';
 import MainPage from './pages/MainPage/Mainpage';
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Login /> },
       { path: 'login', element: <KakaoCallback />},
+      { path: 'onboarding', element: <Onboarding />},
       { path: 'main', element: <MainPage /> },
       { path: 'location', element: <LocationPage /> },
       { path: 'login', element: <Login /> },

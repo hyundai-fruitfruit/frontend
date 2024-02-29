@@ -13,13 +13,17 @@
  * @desc QR코드 API 연결 및 소켓 연결
  */
 import React from 'react';
-
+import { useEffect } from 'react';
+import SockJS from 'sockjs-client';
+import { Client } from '@stomp/stompjs';
 import loginImage from 'assets/images/onboarding_icon.png';
 import { useQr } from 'hooks/useQr';
-import { useSocket } from 'hooks/useSocket';
+import { useNavigate } from 'react-router-dom';
+// import { useSocket } from 'hooks/useSocket';
 
 function RandomEventSpotQR() {
   const { qrData, isQrLoading, error } = useQr();
+  const navigate = useNavigate();
 
   if (isQrLoading) {
     return <div>Loading...</div>;
@@ -29,7 +33,25 @@ function RandomEventSpotQR() {
     return <div>Error: {error.message}</div>;
   }
   
-  useSocket();
+  // useSocket();
+  useEffect(() => {
+    const socket = new SockJS(`${process.env.REACT_APP_API_BASE_URL}/websocket`);
+    const stompClient = new Client({
+        webSocketFactory: () => socket,
+        onConnect: function (frame) {
+            console.log('Socket Connected: ' + frame);
+
+            // 소켓 구독
+            stompClient.subscribe('/topic/greetings', (greeting) => {
+                console.log('서버에서 받은 메세지: ', greeting);
+                const message = new TextDecoder().decode(new Uint8Array(greeting.binaryBody));
+                console.log('서버에서 받은 메세지: ', message);
+                navigate('/randomEventSpotQRsuccess');
+            });
+        }
+    });
+    stompClient.activate();
+  }, [navigate]);
 
   return (
     <div className="flex flex-col h-screen">
