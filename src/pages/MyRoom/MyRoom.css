@@ -1,0 +1,35 @@
+
+.category {
+  margin-top: 2vh;
+  padding-top: 1vh;
+  width: 60px;
+  height: 30px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+
+.icon-container {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 2vw;
+  margin: 5vw;
+  margin-top: 0;
+  margin-bottom: 0;
+  box-sizing: border-box; 
+
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.icon {
+  background-color: rgb(238, 238, 238);
+  margin: 2vw;
+  margin-bottom: 2vh;
+  width: 15vw;
+  height: 15vw;
+  border-radius: 15%;
+}
