@@ -36,9 +36,7 @@ function storeDetail() {
 
   return (
     <div className="flex flex-col overflow-auto w-full">
-      <div className="h-[7vh]  w-full flex items-center justify-center">
-        <Header text={'매장 정보'} />
-      </div>
+      <Header text={'매장 정보'} />
       <div className="flex flex-col items-center justify-start min-h-[50vh] w-full">
         <div className=" w-full h-[40vh]">
           <ImageSlide images={imagePaths} />

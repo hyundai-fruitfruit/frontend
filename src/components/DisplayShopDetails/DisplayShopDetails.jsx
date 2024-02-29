@@ -38,8 +38,8 @@ function DisplayShopDetails({ details }) {
         <div className="flex-none">
           <img src={ratingIcon} />
         </div>
-        <div className="flex-1 ml-2 mr-0 pr-0">
-          <span style={{ color: 'red' }}>{rating}</span>
+        <div className="flex-1 ml-2 mr-0 pr-0 ">
+          <span style={{ color: 'red' } }>{rating}</span>
         </div>
         {/* <div className="flex-1">4.2점</div> */}
       </div>
