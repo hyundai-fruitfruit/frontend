@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /**
  * @author 오수영
  * @email osy9757@gmail.com
@@ -5,10 +6,16 @@
  * @modify date 2024-02-24 04:35:36
  * @desc 흰디 메인페이지
  */
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
-import SpeechBubble from '../../components/SpeechBubble/SpeechBubble';
-import BackgroundImage from 'components/BackgroundImage/BackgroundImage';
+// redux
+import { useSelector } from 'react-redux';
+
+// 3d 관련
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+
+import SpeechBubble from 'components/SpeechBubble/SpeechBubble';
 import IconMenu from 'components/IconMenu/IconMenu';
 import ModalComponent from 'components/ModalComponent/ModalComponent';
 import useModal from 'hooks/useModal';
@@ -20,8 +27,6 @@ import {
 import ProgressBar from 'components/ModalBubbleContent/ProgressBar';
 //assets
 import ModalHeendy from 'assets/images/modal_heendy.png';
-import heendy_background from 'assets/images/heendy_background.png';
-import mainHeendyImage from 'assets/images/mainHeendyImage.png';
 import itemIcon from 'assets/images/item_icon.png';
 import startIcon from 'assets/images/start_icon.png';
 import displayIcon from 'assets/images/display_icon.png';
@@ -32,6 +37,15 @@ import mainWeather from 'assets/icons/Glowing star.png';
 import mainCandy from 'assets/icons/Candy.png';
 import mainMailbox from 'assets/icons/mailBox.png';
 
+// 3d 모델
+import Tree1 from 'assets/models/Tree1';
+import Tree2 from 'assets/models/Tree2';
+import Popcorn from 'assets/models/Popcorn';
+import Hamburger from 'assets/models/Hamburger';
+import Pizza from 'assets/models/Pizza';
+import Empty from 'assets/models/Empty';
+import Deer from 'assets/models/Deer';
+
 function MainPage() {
   const iconsData = [
     { name: 'item', src: itemIcon, label: '아이템', path: '/' },
@@ -40,7 +54,24 @@ function MainPage() {
     { name: 'coupon', src: couponIcon, label: '쿠폰', path: '/' },
   ];
 
+  const foodOptions = {
+    Hamburger: <Hamburger />,
+    Pizza: <Pizza />,
+    Popcorn: <Popcorn />,
+    Empty: <Empty />,
+  };
+
+  const backOptions = {
+    Hamburger: <Hamburger />,
+    Tree1: <Tree1 />,
+    Tree2: <Tree2 />,
+    Empty: <Empty />,
+  };
+
   const { isModalOpen, modalContent, openModal, closeModal } = useModal();
+  const selectedFoodOption = useSelector((state) => state.room.selectedFoodOption);
+  const selectedBackOption = useSelector((state) => state.room.selectedBackOption);
+
   const navigate = useNavigate();
   const [exp] = useState(50);
 
@@ -79,8 +110,18 @@ function MainPage() {
         <SpeechBubble boldText={'안녕, 나는 흰디야! 같이 모험할래?'} arrowPostion="right" />
       </div>
       <div className="mb-8 relative w-[85vw] h-[42vh] mx-auto">
-        <BackgroundImage imageUrl={heendy_background} />
-        <img src={mainHeendyImage} alt="캐릭터" className="absolute inset-0 h-[30vh] w-auto mx-auto my-auto mb-0" />
+        <div className="mt-5vh mb-5vh w-full h-full">
+          <Canvas className="mb-5vh bg-gray-100">
+            <OrbitControls />
+            <ambientLight intensity={4} />
+            <directionalLight position={[-2, 5, 2]} intensity={4} />
+            <Suspense fallback={null}>
+              {foodOptions[selectedFoodOption]}
+              {backOptions[selectedBackOption]}
+              <Deer />
+            </Suspense>
+          </Canvas>
+        </div>
       </div>
       <div className="border rounded-2xl w-[90vw] px-4 py-4 mb-[8vh]">
         <div className="grid grid-rows-1 grid-flow-col grid-cols-3 text-center mb-6 items-end">
@@ -97,7 +138,7 @@ function MainPage() {
             if (iconName === 'start') {
               openModal(<AdventureStartContent openModal={openModal} closeModal={closeModal} />);
             } else if (iconName === 'item') {
-              navigate('/eventNotice');
+              navigate('/myroom');
             } else if (iconName === 'display') {
               openModal(<CertificationFail />);
             } else if (iconName === 'coupon') {
