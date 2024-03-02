@@ -18,7 +18,10 @@ function StoreReview({ name, score, imageSrcs, review, date, likes }) {
           <div className="ml-2">
             <div className="text-sm font-semibold">{name}</div>
             <div className="flex items-center mt-1">
-              <span className="text-yellow-400 text-xs">★ ★ ★ ★ ★</span>
+              <span className="text-yellow-400 text-xs mr-1">
+                {'★'.repeat(score)}
+                {'☆'.repeat(5 - score)}
+              </span>
               <span className="ml-1 text-gray-600 text-xs">{score}</span>
             </div>
           </div>

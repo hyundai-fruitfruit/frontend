@@ -10,55 +10,59 @@ import React, { useState } from 'react';
 //component
 import Header from 'components/Header/Header';
 import CouponCard from 'components/CouponCard/CouponCard';
+//hook
+import useGetUserCouponList from 'hooks/useGetUserCouponList';
 //assets
 import myQR from 'assets/images/myQR.png';
 import bottleIcon from 'assets/icons/bottle_icon.png';
 
 function CouponTab() {
   const [activeTab, setActiveTab] = useState('QR');
+  const { events, loading, error } = useGetUserCouponList();
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   const handleTabClick = (activeTab) => {
     setActiveTab(activeTab);
   };
-
-  const coupons = [
-    {
-      imgSrc: bottleIcon,
-      title: '엔젤리너스 30% 할인 쿠폰',
-      detail: '커피 음료 구매시 30% 할인',
-      useByDate: '사용 기한 : 2024년 3월 14일까지',
-    },
-    {
-      imgSrc: bottleIcon,
-      title: '스타벅스 20% 할인 쿠폰',
-      detail: '모든 음료에 사용 가능',
-      useByDate: '사용 기한 : 2024년 3월 20일까지',
-    },
-    {
-      imgSrc: bottleIcon,
-      title: '엔젤리너스 30% 할인 쿠폰',
-      detail: '커피 음료 구매시 30% 할인',
-      useByDate: '사용 기한 : 2024년 3월 14일까지',
-    },
-    {
-      imgSrc: bottleIcon,
-      title: '스타벅스 20% 할인 쿠폰',
-      detail: '모든 음료에 사용 가능',
-      useByDate: '사용 기한 : 2024년 3월 20일까지',
-    },
-    {
-      imgSrc: bottleIcon,
-      title: '엔젤리너스 30% 할인 쿠폰',
-      detail: '커피 음료 구매시 30% 할인',
-      useByDate: '사용 기한 : 2024년 3월 14일까지',
-    },
-    {
-      imgSrc: bottleIcon,
-      title: '스타벅스 20% 할인 쿠폰',
-      detail: '모든 음료에 사용 가능',
-      useByDate: '사용 기한 : 2024년 3월 20일까지',
-    },
-  ];
+  //   {
+  //     imgSrc: bottleIcon,
+  //     title: '엔젤리너스 30% 할인 쿠폰',
+  //     detail: '커피 음료 구매시 30% 할인',
+  //     useByDate: '사용 기한 : 2024년 3월 14일까지',
+  //   },
+  //   {
+  //     imgSrc: bottleIcon,
+  //     title: '스타벅스 20% 할인 쿠폰',
+  //     detail: '모든 음료에 사용 가능',
+  //     useByDate: '사용 기한 : 2024년 3월 20일까지',
+  //   },
+  //   {
+  //     imgSrc: bottleIcon,
+  //     title: '엔젤리너스 30% 할인 쿠폰',
+  //     detail: '커피 음료 구매시 30% 할인',
+  //     useByDate: '사용 기한 : 2024년 3월 14일까지',
+  //   },
+  //   {
+  //     imgSrc: bottleIcon,
+  //     title: '스타벅스 20% 할인 쿠폰',
+  //     detail: '모든 음료에 사용 가능',
+  //     useByDate: '사용 기한 : 2024년 3월 20일까지',
+  //   },
+  //   {
+  //     imgSrc: bottleIcon,
+  //     title: '엔젤리너스 30% 할인 쿠폰',
+  //     detail: '커피 음료 구매시 30% 할인',
+  //     useByDate: '사용 기한 : 2024년 3월 14일까지',
+  //   },
+  //   {
+  //     imgSrc: bottleIcon,
+  //     title: '스타벅스 20% 할인 쿠폰',
+  //     detail: '모든 음료에 사용 가능',
+  //     useByDate: '사용 기한 : 2024년 3월 20일까지',
+  //   },
+  // ];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -87,13 +91,14 @@ function CouponTab() {
           </div>
         ) : (
           <div>
-            {coupons.map((coupon, index) => (
+            {events.data.map((events) => (
               <CouponCard
-                key={index}
-                imgSrc={coupon.imgSrc}
-                title={coupon.title}
-                detail={coupon.detail}
-                useByDate={coupon.useByDate}
+                key={events.id}
+                imgSrc={bottleIcon}
+                title={events.title}
+                detail={events.content || '더현대 서울 이벤트'}
+                useByDate={`기간 : ${events.startedAt} ~ ${events.finishedAt}`}
+                addStyle={'mx-8'}
               />
             ))}
           </div>

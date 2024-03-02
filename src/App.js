@@ -2,7 +2,7 @@
  * @author 오수영
  * @email osy9757@gmail.com
  * @create date 2024-02-18 10:18:42
- * @modify date 2024-03-01 05:47:33
+ * @modify date 2024-03-01 17:11:16
  * @desc App.js
  */
 import { Provider } from 'react-redux';
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       { path: 'login', element: <Login /> },
       { path: 'qrscanner', element: <QRScannerPage /> },
       { path: 'randomEventSpot', element: <RandomEventSpot /> },
-      { path: 'storeDetail', element: <StoreDetail /> },
+      { path: 'storeDetail/:id', element: <StoreDetail /> },
       { path: 'reviewCreation', element: <ReviewCreation /> },
       { path: 'reviewEditor', element: <ReviewEditor /> },
       { path: 'Test', element: <Test /> },

@@ -9,7 +9,7 @@
 import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
-const InputRatingStar = ({ rating, setRating }) => {
+const InputRatingStar = ({ rating, setRating, readOnly = false }) => {
   const [hover, setHover] = useState(null);
 
   return (
@@ -24,15 +24,15 @@ const InputRatingStar = ({ rating, setRating }) => {
                 type="radio"
                 name="rating"
                 value={ratingValue}
-                onClick={() => setRating(ratingValue)}
+                onClick={() => !readOnly && setRating(ratingValue)}
                 className="hidden"
               />
               <FaStar
                 size={24}
-                onMouseEnter={() => setHover(ratingValue)}
-                onMouseLeave={() => setHover(null)}
-                color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
-                className={`transition-colors m-3 size-8 duration-200 ease-in-out ${ratingValue <= (hover || rating) ? 'text-yellow-400' : 'text-gray-300'}`}
+                onMouseEnter={() => !readOnly && setHover(ratingValue)}
+                onMouseLeave={() => !readOnly && setHover(null)}
+                color={ratingValue <= (hover || Math.floor(rating)) ? '#ffc107' : '#e4e5e9'}
+                className={`transition-colors m-3 size-8 duration-200 ease-in-out ${ratingValue <= (hover || Math.floor(rating)) ? 'text-yellow-400' : 'text-gray-300'}`}
               />
             </label>
           );

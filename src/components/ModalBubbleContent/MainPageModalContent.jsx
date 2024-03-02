@@ -29,7 +29,8 @@ export const RandomSpotContent = ({ data }) => {
   const navigate = useNavigate();
 
   const handleGoNow = () => {
-    navigate(`/storeDetail?id=${data.id}`);
+    // navigate(`/storeDetail?id=${data.id}`);
+    navigate(`/storeDetail/2`);
   };
 
   return (
