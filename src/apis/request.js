@@ -107,7 +107,7 @@ export const updateDeviceToken = async (deviceToken) => {
   }
 };
 
-// FCM 푸시 알림 요청 (시연용)
+// FCM 푸시 알림 요청 - 유저 로그인 정보로 푸시 알림
 export const getPushAlarm = async () => {
   try {
     const response = await api.get('/api/v1/fcm-push',
@@ -117,6 +117,19 @@ export const getPushAlarm = async () => {
         'Authorization' : localStorage.getItem('accessToken')
       }
     });
+    return response.data;
+  } catch (error) {
+    console.error(`getPushAlarm 에러 발생 : ${error}`);
+  }
+};
+
+const DEVICE_TOKEN = process.env.REACT_APP_API_DEVICE_TOKEN;
+
+// FCM 푸시 알림 요청 - 각 브라우저별 디바이스 토큰 전송
+export const getPushAlarmByDeviceToken = async () => {
+  try {
+    const response = await api.get(`/api/v1/fcm-push/random-spot/${DEVICE_TOKEN}`);
+    return response.data;
   } catch (error) {
     console.error(`getPushAlarm 에러 발생 : ${error}`);
   }
