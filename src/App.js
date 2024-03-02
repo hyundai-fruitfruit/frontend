@@ -2,7 +2,7 @@
  * @author 오수영
  * @email osy9757@gmail.com
  * @create date 2024-02-18 10:18:42
- * @modify date 2024-02-28 09:07:06
+ * @modify date 2024-03-02 15:25:27
  * @desc App.js
  */
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -23,6 +23,7 @@ import RandomEventSpotQRSuccess from 'pages/RandomEventSpot/RandomEventSpotQRSuc
 import HeendyLayout from 'pages/Layouts/HeendyLayout/HeendyLayout';
 import CouponTab from 'pages/CouponTab/CouponTab';
 import EventNotice from 'pages/MainPage/EventNotice';
+import Mbti from 'pages/Mbti/Mbti.jsx'
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,7 @@ const router = createBrowserRouter([
       { path: 'myroom', element: <MyRoom /> },
       { path: 'couponTab', element: <CouponTab /> },
       { path: 'eventNotice', element: <EventNotice /> },
+      { path: 'mbti', element: <Mbti /> }
     ],
   },
 ]);
