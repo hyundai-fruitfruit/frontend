@@ -25,10 +25,11 @@ function TestPage() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
-
   const handleIsEvent = () => {
     setIsEvent((prevIsEvent) => !prevIsEvent);
   };
+
+  console.log(events);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -59,7 +60,7 @@ function TestPage() {
         {events.data.events.map((events) => (
           <CouponCard
             key={events.id}
-            imgSrc={bottleIcon}
+            imgSrc={events.iconUrl}
             title={events.title}
             detail={events.content || '더현대 서울 이벤트'}
             useByDate={`기간 : ${events.startedAt} ~ ${events.finishedAt}`}

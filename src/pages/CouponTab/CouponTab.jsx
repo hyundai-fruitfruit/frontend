@@ -14,7 +14,7 @@ import CouponCard from 'components/CouponCard/CouponCard';
 import useGetUserCouponList from 'hooks/useGetUserCouponList';
 //assets
 import myQR from 'assets/images/myQR.png';
-import bottleIcon from 'assets/icons/bottle_icon.png';
+// import bottleIcon from 'assets/icons/bottle_icon.png';
 
 function CouponTab() {
   const [activeTab, setActiveTab] = useState('QR');
@@ -94,7 +94,7 @@ function CouponTab() {
             {events.data.map((events) => (
               <CouponCard
                 key={events.id}
-                imgSrc={bottleIcon}
+                imgSrc={events.iconUrl}
                 title={events.title}
                 detail={events.content || '더현대 서울 이벤트'}
                 useByDate={`기간 : ${events.startedAt} ~ ${events.finishedAt}`}
