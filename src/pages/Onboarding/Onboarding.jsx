@@ -1,6 +1,7 @@
 // import SpeechBubble from 'components/SpeechBubble/SpeechBubble';
 // import ModalHeendy from 'assets/images/modal_heendy.png';
 import React, { useState } from 'react';
+import '../../util/fcm/firebase-messaging-sw';
 
 const Onboarding = () => {
   const [imageIndex, setImageIndex] = useState(0);

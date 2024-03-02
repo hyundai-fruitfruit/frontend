@@ -82,3 +82,42 @@ export const findQr = async () => {
     console.error(`Error: ${error}`);
   }
 }
+
+/**
+ * @author 황수영
+ * @email sooyoung.h8@gmail.com
+ * @create date 2024-03-01
+ * @modify date 2024-03-01
+ * @desc FCM 토큰 요청 및 디바이스 토큰 전송
+ */
+// FCM 토큰 요청
+export const updateDeviceToken = async (deviceToken) => {
+  try {
+    const response = await api.post('/api/v1/members/token', {
+      platform: "Firebase",
+      token: deviceToken
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization' : localStorage.getItem('accessToken')
+      }
+    });
+  } catch (error) {
+    console.error(`updateDeviceToken 에러 발생 : ${error}`);
+  }
+};
+
+// FCM 푸시 알림 요청 (시연용)
+export const getPushAlarm = async () => {
+  try {
+    const response = await api.get('/api/v1/fcm-push',
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization' : localStorage.getItem('accessToken')
+      }
+    });
+  } catch (error) {
+    console.error(`getPushAlarm 에러 발생 : ${error}`);
+  }
+};

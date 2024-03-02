@@ -38,6 +38,9 @@ import mainWeather from 'assets/icons/Glowing star.png';
 import mainCandy from 'assets/icons/Candy.png';
 import mainMailbox from 'assets/icons/mailBox.png';
 
+// FCM 푸시 알림 시연용
+import { getPushAlarm } from '../../apis/request';
+
 const categories = ['소품', '배경', '벽지', '효과'];
 
 // api 매핑
@@ -99,6 +102,17 @@ function MyRoom() {
     setSelectedBackOption(reduxSelectedBackOption);
   }, [reduxSelectedFoodOption, reduxSelectedBackOption]);
 
+  const handlePushAlarm = async () => {
+    try {
+      // 여기서 API 호출
+      const response = await getPushAlarm();
+      console.log(response);
+    } catch (error) {
+      console.error("API 호출 중 오류 발생:", error);
+    }
+  };
+
+
   return (
     <div className="main_container min-h-screen flex flex-col">
       {/* 헤더 두 개 */}
@@ -123,7 +137,7 @@ function MyRoom() {
             <img src={mainCandy} className="h-6 ml-2" />
             <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center">14/15</span>
           </div>
-          <div className="flex border rounded-xl h-10 items-center m-0 p-0">
+          <div className="flex border rounded-xl h-10 items-center m-0 p-0" onClick={handlePushAlarm}>
             <img src={mainMailbox} className="h-6 ml-2" />
             <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center">5/10</span>
           </div>
