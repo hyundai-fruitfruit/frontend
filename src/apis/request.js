@@ -102,6 +102,7 @@ export const updateDeviceToken = async (deviceToken) => {
         'Authorization' : localStorage.getItem('accessToken')
       }
     });
+    return response.data;
   } catch (error) {
     console.error(`updateDeviceToken 에러 발생 : ${error}`);
   }

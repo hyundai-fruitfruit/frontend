@@ -1,11 +1,12 @@
+/* eslint-disable react/no-unknown-property */
 /**
  * @author 황수영
  * @email sooyoung.h8@gmail.com
- * @create date 2024-02-28
- * @modify date 2024-02-28
+ * @create date 2024-02-28 04:35:36
+ * @modify date 2024-02-28 04:35:36
  * @desc 3d 모델
  */
-import React, {useRef} from 'react'
+import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 

@@ -1,8 +1,9 @@
+/* eslint-disable react/no-unknown-property */
 /**
  * @author 황수영
  * @email sooyoung.h8@gmail.com
- * @create date 2024-02-28
- * @modify date 2024-02-28
+ * @create date 2024-02-28 04:35:36
+ * @modify date 2024-02-28 04:35:36
  * @desc 3d 모델 - 주인공
  */
 import React, {useRef} from 'react'
@@ -14,6 +15,7 @@ export default function Model(props) {
   const { nodes, materials } = useGLTF('/models/Deer.glb')
   // const { nodes, materials, animations } = useGLTF('/models/Deer.glb')
   // const { actions } = useAnimations(animations, group)
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
