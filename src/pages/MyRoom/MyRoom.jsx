@@ -39,7 +39,7 @@ import mainCandy from 'assets/icons/Candy.png';
 import mainMailbox from 'assets/icons/mailBox.png';
 
 // FCM 푸시 알림 시연용
-import { getPushAlarm, getPushAlarmByDeviceToken } from '../../apis/request';
+import { getPushAlarm, getPushAlarmByDeviceToken, getPushAlarmByLocalStorage } from '../../apis/request';
 
 const categories = ['소품', '배경', '벽지', '효과'];
 
@@ -102,6 +102,17 @@ function MyRoom() {
     setSelectedBackOption(reduxSelectedBackOption);
   }, [reduxSelectedFoodOption, reduxSelectedBackOption]);
 
+  const handlePushAlarmByLocalStorage = async () => {
+    try {
+      // 여기서 API 호출
+      const response = await getPushAlarmByLocalStorage();
+      console.log(response);
+    } catch (error) {
+      console.error("handlePushAlarmByLocalStorage 호출 중 오류 발생:", error);
+    }
+  };
+
+
   const handlePushAlarm = async () => {
     try {
       // 여기서 API 호출
@@ -109,6 +120,16 @@ function MyRoom() {
       console.log(response);
     } catch (error) {
       console.error("API 호출 중 오류 발생:", error);
+    }
+  };
+
+  const handlePushAlarmByDeviceToken = async () => {
+    try {
+      // 여기서 API 호출
+      const response = await getPushAlarmByDeviceToken();
+      console.log(response);
+    } catch (error) {
+      console.error("getPushAlarmByDeviceToken 호출 중 오류 발생:", error);
     }
   };
 
@@ -131,9 +152,9 @@ function MyRoom() {
         <div className="flex w-3/4 mx-auto justify-between mt-5 mb-3">
           <div className="flex border rounded-xl h-10 items-center m-0 p-0">
             <img src={mainWeather} className="h-6 ml-2" />
-            <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center">오늘의 날씨</span>
+            <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center" onClick={handlePushAlarmByLocalStorage}>오늘의 날씨</span>
           </div>
-          <div className="flex border rounded-xl h-10 items-center m-0 p-0" onClick={getPushAlarmByDeviceToken} >
+          <div className="flex border rounded-xl h-10 items-center m-0 p-0" onClick={handlePushAlarmByDeviceToken} >
             <img src={mainCandy} className="h-6 ml-2" />
             <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center">14/15</span>
           </div> 

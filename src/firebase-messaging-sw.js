@@ -8,12 +8,18 @@
 import { initializeApp } from "firebase/app";
 import { firebaseConfig, VALID_KEY } from "./config";
 import { getMessaging, getToken } from "firebase/messaging";
-import { updateDeviceToken } from "../../apis/request"
+import { updateDeviceToken } from "./apis/request"
 
 const app = initializeApp(firebaseConfig);
+// const messaging = async () => (await isSupported()) && getMessaging(app);
 const messaging = getMessaging(app);
 
-async function requestPermission() {
+// if (typeof window !== "undefined" && typeof window.navigator !== "undefined") {
+//   messaging = getMessaging(app);
+// }
+
+
+export async function requestPermission() {
   console.log("FCM 알림 권한 요청 시작");
 
   const permission = await Notification.requestPermission();
@@ -29,6 +35,7 @@ async function requestPermission() {
 
   if (token) {
     console.log("FCM device token: ", token);
+    localStorage.setItem('fcmDeviceToken', token);
 
     try {
       console.log("FCM device token 업데이트");
@@ -43,4 +50,4 @@ async function requestPermission() {
   }
 }
 
-requestPermission();
+// requestPermission();
