@@ -8,19 +8,25 @@
 import React from 'react';
 import './SpeechBubble.css';
 
-function SpeechBubble({ boldText, normalText, children, arrowPostion = 'left', width, height, addStyle }) {
+function SpeechBubble({ boldText, normalText, children, arrowPostion = 'left', width, height, padding,addStyle,backgroundColor}) {
   const arrowClass = arrowPostion === 'left' ? 'arrowLeft' : 'arrowRight';
   const style = {
     ...(width && { width }),
     ...(height && { height }),
-  };
+    ...(padding && { padding }),
+    ...(backgroundColor && { backgroundColor }),
 
+  };
+  
   if (width) {
     style.width = width;
   }
 
   if (height) {
     style.height = height;
+  }
+  if(padding){
+    style.padding = padding;
   }
 
   return (
@@ -29,7 +35,7 @@ function SpeechBubble({ boldText, normalText, children, arrowPostion = 'left', w
       style={style}
     >
       <p className="text-lg font-bold text-gray-700">{boldText}</p>
-      <p className="font-poppins text-sm text-gray-400">{normalText}</p>
+      <p className="text-sm text-gray-400 font-poppins">{normalText}</p>
       {children}
     </div>
   );
