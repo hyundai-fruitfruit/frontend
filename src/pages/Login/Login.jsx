@@ -6,10 +6,10 @@
  * @desc 로그인 페이지
  */
 import startHeendy from 'assets/images/startHeendy.png';
-import loadingHeendy from 'assets/gif/HeendyLogo.gif';
+// import loadingHeendy from 'assets/gif/HeendyLogo.gif';
 import startBackGround from 'assets/images/startBackGround.png';
-import kakaoLogin from 'assets/icons/kakao_login.png';
-import googleLogin from 'assets/icons/google_login.png';
+import kakaoLogin from 'assets/icons/login_kakao.png';
+import googleLogin from 'assets/icons/login_google.png';
 
 import React from 'react';
 
@@ -26,24 +26,27 @@ function LoginScreen() {
 
   return (
     <div style={backgroundStyle} className="min-h-screen bg-cover bg-center">
-      <div className="h-[70vh]">
+      <div className="h-[72vh]">
         <div className="h-[5vh]"></div>
-        <div className="h-[25vh] overflow-hidden">
-          <img src={loadingHeendy} className="h-[25vh] w-auto object-cover" />
+        <div className="h-[32vh]">
+          Adventure of Heendy
         </div>
-        <div className="h-[35vh]">
-          <img src={startHeendy} className="" />
+        {/* <div className="h-[25vh] overflow-hidden">
+          <img src={loadingHeendy} className="h-[25vh] w-auto object-cover" />
+        </div> */}
+        <div className="h-[30vh]">
+          <img src={startHeendy} className="ml-1 w-[95vw] h-[36vh]" />
         </div>
       </div>
-      <div className="h-[30vh]">
+      <div className="h-[20vh]">
         <div className="mb-4">
-          <button className="ml-[5vw]" onClick={handleLogin}>
-            <img src={kakaoLogin} className="w-[90vw] " />
+          <button className="ml-[10vw]" onClick={handleLogin}>
+            <img src={kakaoLogin} className="w-[80vw] " />
           </button>
         </div>
         <div>
-          <button className="ml-[5vw]" onClick={handleLogin}>
-            <img src={googleLogin} className="w-[90vw]" />
+          <button className="ml-[10vw]" onClick={handleLogin}>
+            <img src={googleLogin} className="w-[80vw]" />
           </button>
         </div>
       </div>
