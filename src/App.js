@@ -28,6 +28,7 @@ import CouponTab from 'pages/CouponTab/CouponTab';
 import EventNotice from 'pages/MainPage/EventNotice';
 import CaptainHeendy from 'pages/CaptainHeendy/CaptainHeendy';
 import FriendGame from 'pages/FriendGame/FriendGame';
+import Dice from 'pages/FriendGame/Dice'
 import TheHyundaiMap from 'pages/TheHyundaiMap/TheHyundaiMap';
 
 const router = createBrowserRouter([
@@ -54,6 +55,7 @@ const router = createBrowserRouter([
       { path: 'eventNotice', element: <EventNotice /> },
       { path: 'captainHeendy', element: <CaptainHeendy /> },
       { path: 'friendGame', element: <FriendGame /> },
+      { path: 'dice', element: <Dice /> },
       { path: 'theHyundaiMap', element: <TheHyundaiMap /> },
     ],
   },
