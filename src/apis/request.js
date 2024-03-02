@@ -93,7 +93,7 @@ export const findQr = async () => {
 // FCM 토큰 요청
 export const updateDeviceToken = async (deviceToken) => {
   try {
-    const response = await api.post('/api/v1/members/token', {
+    await api.post('/api/v1/members/token', {
       platform: "Firebase",
       token: deviceToken
     }, {
@@ -102,13 +102,60 @@ export const updateDeviceToken = async (deviceToken) => {
         'Authorization' : localStorage.getItem('accessToken')
       }
     });
-    return response.data;
+
   } catch (error) {
     console.error(`updateDeviceToken 에러 발생 : ${error}`);
   }
 };
 
-// FCM 푸시 알림 요청 - 유저 로그인 정보로 푸시 알림
+// FCM 푸시 알림 요청1 - 로컬 스토리지에서
+const fcmDeviceToken = localStorage.getItem('fcmDeviceToken');
+
+export const getPushAlarmByLocalStorage = async () => {
+  try {
+    console.log("fcmDeviceToken : " + fcmDeviceToken);
+    const response = await api.post('/api/v1/fcm-push/random-spot/device-token'
+    , {
+      deviceToken: fcmDeviceToken,
+      delayedSeconds: 0
+    }, 
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization' : localStorage.getItem('accessToken')
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error(`getPushAlarmByLocalStorage 에러 발생 : ${error}`);
+  }
+};
+
+
+const DEVICE_TOKEN = process.env.REACT_APP_API_DEVICE_TOKEN;
+
+// FCM 푸시 알림 요청2 - 각 브라우저별 디바이스 토큰 전송
+export const getPushAlarmByDeviceToken = async () => {
+  try {
+    console.log("DEVICE_TOKEN : " + fcmDeviceToken);
+    const response = await api.post('/api/v1/fcm-push/random-spot/device-token'
+    , {
+      deviceToken: DEVICE_TOKEN,
+      delayedSeconds: 0
+    }, 
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization' : localStorage.getItem('accessToken')
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error(`getPushAlarmByLocalStorage 에러 발생 : ${error}`);
+  }
+};
+
+// FCM 푸시 알림 요청3 - 유저 로그인 정보로 푸시 알림
 export const getPushAlarm = async () => {
   try {
     const response = await api.get('/api/v1/fcm-push',
@@ -118,18 +165,6 @@ export const getPushAlarm = async () => {
         'Authorization' : localStorage.getItem('accessToken')
       }
     });
-    return response.data;
-  } catch (error) {
-    console.error(`getPushAlarm 에러 발생 : ${error}`);
-  }
-};
-
-const DEVICE_TOKEN = process.env.REACT_APP_API_DEVICE_TOKEN;
-
-// FCM 푸시 알림 요청 - 각 브라우저별 디바이스 토큰 전송
-export const getPushAlarmByDeviceToken = async () => {
-  try {
-    const response = await api.get(`/api/v1/fcm-push/random-spot/${DEVICE_TOKEN}`);
     return response.data;
   } catch (error) {
     console.error(`getPushAlarm 에러 발생 : ${error}`);

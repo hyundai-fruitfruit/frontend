@@ -1,7 +1,7 @@
 // import SpeechBubble from 'components/SpeechBubble/SpeechBubble';
 // import ModalHeendy from 'assets/images/modal_heendy.png';
 import React, { useState } from 'react';
-import '../../util/fcm/firebase-messaging-sw';
+import {requestPermission} from '../../firebase-messaging-sw';
 
 const Onboarding = () => {
   const [imageIndex, setImageIndex] = useState(0);
@@ -14,9 +14,15 @@ const Onboarding = () => {
     'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/onboarding_screenshot/5.jpg',
   ];
 
+
   const handleClick = () => {
     setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
   }
+
+  const handleFcmPermission = () => {
+    requestPermission();
+  }
+
   // return (
   //   <div>
   //     <SpeechBubble arrowPostion="right">안녕!</SpeechBubble>
@@ -28,7 +34,7 @@ const Onboarding = () => {
 
   return (
     <div onClick={handleClick} style={{width: '100%', height: '100%'}}>
-      <img src={images[imageIndex]} alt="" style={{width: '100%', height: '100%'}}/>
+      <img onClick={handleFcmPermission} src={images[imageIndex]} alt="" style={{width: '100%', height: '100%'}}/>
     </div>
   );
 }
