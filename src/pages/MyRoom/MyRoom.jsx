@@ -10,6 +10,7 @@ import React, { Suspense, useState, useEffect } from 'react';
 import './MyRoom.css';
 import OptionIcons from './OptionIcons';
 import { Category, selectCategory } from './Category';
+import MainHeader from 'components/Header/MainHeader';
 
 // redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,8 +33,6 @@ import Empty from 'assets/models/Empty';
 import Deer from 'assets/models/Deer';
 
 // 아이콘
-import mainTent from 'assets/icons/main_Tent.png';
-import mainCapHeendy from 'assets/icons/CapHeendy.png';
 import mainWeather from 'assets/icons/Glowing star.png';
 import mainCandy from 'assets/icons/Candy.png';
 import mainMailbox from 'assets/icons/mailBox.png';
@@ -101,18 +100,9 @@ function MyRoom() {
 
   return (
     <div className="main_container min-h-screen flex flex-col">
-      {/* 헤더 두 개 */}
       <div className="w-full h-[15vh]">
-        <div className="flex flex-row justify-between items-center space-x-2 h-[6vh] border-b font-bold">
-          <div className="flex items-center justify-start ml-6">
-            <img src={mainTent} className="h-6" />
-            <span className="text-l ml-3 mt-2 items-center">흰디의 모험</span>
-          </div>
-          <div className="flex border-1 rounded-xl items-center p-1">
-            <span className="mr-2">대장 흰디</span>
-            <img src={mainCapHeendy} className="mr-3 h-[3vh] z-[-1]" />
-          </div>
-        </div>
+        {/* 헤더 두 개 */}
+        <MainHeader />
 
         <div className="flex w-3/4 mx-auto justify-between mt-5 mb-3">
           <div className="flex border rounded-xl h-10 items-center m-0 p-0">

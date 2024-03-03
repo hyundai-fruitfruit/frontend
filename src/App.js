@@ -29,6 +29,7 @@ import EventNotice from 'pages/MainPage/EventNotice';
 import Mbti from 'pages/Mbti/Mbti.jsx'
 import CaptainHeendy from 'pages/CaptainHeendy/CaptainHeendy';
 import FriendGame from 'pages/FriendGame/FriendGame';
+import Dice from 'pages/FriendGame/Dice'
 import TheHyundaiMap from 'pages/TheHyundaiMap/TheHyundaiMap';
 
 
@@ -57,7 +58,8 @@ const router = createBrowserRouter([
       { path: 'mbti', element: <Mbti /> },
       { path: 'captainHeendy', element: <CaptainHeendy /> },
       { path: 'friendGame', element: <FriendGame /> },
-      { path: 'theHyundaiMap', element: <TheHyundaiMap /> }
+      { path: 'dice', element: <Dice /> },
+      { path: 'theHyundaiMap', element: <TheHyundaiMap /> },
     ],
   },
 ]);
