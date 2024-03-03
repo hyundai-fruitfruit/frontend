@@ -34,20 +34,6 @@ self.addEventListener("push", function (e) {
   self.registration.showNotification(notificationTitle, notificationOptions);
 });
 
-// 알림 클릭 시 페이지 이동
-// self.addEventListener("notificationclick", function (event) {
-//   console.log("Notification clicked");
-//   const clickedNotification = event.notification;
-//   clickedNotification.close();
-  
-//   const myRoomPath = '/myroom';
-//   console.log("알림 클릭 시, 페이지 이동 : " + myRoomPath);
-
-//   event.waitUntil(
-//     self.clients.openWindow(myRoomPath)
-//   );
-// });
-
 self.addEventListener("notificationclick", function (event) {
   console.log("Notification clicked");
   const clickedNotification = event.notification;
@@ -56,16 +42,7 @@ self.addEventListener("notificationclick", function (event) {
   const myRoomPath = '/myroom';
   console.log("알림 클릭 시, 페이지 이동 : " + myRoomPath);
 
-  // 클라이언트 측에서 해당 경로로 이동
   event.waitUntil(
     self.clients.openWindow(myRoomPath)
   );
 });
-
-
-// [notificationclick 이벤트로 문제 해결]
-// self.addEventListener("notificationclick", function (event) {
-//   const url = 'https://d2hcblcxgd6rqe.cloudfront.net/myroom';
-//   event.notification.close();
-//   event.waitUntil(self.clients.openWindow(url));
-// });
