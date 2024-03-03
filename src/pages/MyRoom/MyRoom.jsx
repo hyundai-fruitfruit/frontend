@@ -10,6 +10,7 @@ import React, { Suspense, useState, useEffect } from 'react';
 import './MyRoom.css';
 import OptionIcons from './OptionIcons';
 import { Category, selectCategory } from './Category';
+import '../../firebase-messaging-sw';
 
 // redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -126,13 +127,15 @@ function MyRoom() {
   const handlePushAlarmByDeviceToken = async () => {
     try {
       // 여기서 API 호출
-      const response = await getPushAlarmByDeviceToken();
+      const token = localStorage.getItem('fcmDeviceToken');
+      console.error("getPushAlarmByDeviceToken 호출 중 device token :" + token);
+
+      const response = await getPushAlarmByDeviceToken(token);
       console.log(response);
     } catch (error) {
       console.error("getPushAlarmByDeviceToken 호출 중 오류 발생:", error);
     }
   };
-
 
   return (
     <div className="main_container min-h-screen flex flex-col">

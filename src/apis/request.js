@@ -109,11 +109,10 @@ export const updateDeviceToken = async (deviceToken) => {
 };
 
 // FCM 푸시 알림 요청1 - 로컬 스토리지에서
-const fcmDeviceToken = localStorage.getItem('fcmDeviceToken');
-
 export const getPushAlarmByLocalStorage = async () => {
   try {
-    console.log("fcmDeviceToken : " + fcmDeviceToken);
+    const fcmDeviceToken = localStorage.getItem('fcmDeviceToken');
+    console.log("getPushAlarmByLocalStorage() fcmDeviceToken : " + fcmDeviceToken);
     const response = await api.post('/api/v1/fcm-push/random-spot/device-token'
     , {
       deviceToken: fcmDeviceToken,
@@ -131,16 +130,15 @@ export const getPushAlarmByLocalStorage = async () => {
   }
 };
 
-
-const DEVICE_TOKEN = process.env.REACT_APP_API_DEVICE_TOKEN;
-
+//const DEVICE_TOKEN = process.env.REACT_APP_API_DEVICE_TOKEN;
 // FCM 푸시 알림 요청2 - 각 브라우저별 디바이스 토큰 전송
-export const getPushAlarmByDeviceToken = async () => {
+export const getPushAlarmByDeviceToken = async (token) => {
   try {
+    const fcmDeviceToken = localStorage.getItem('fcmDeviceToken');
     console.log("DEVICE_TOKEN : " + fcmDeviceToken);
     const response = await api.post('/api/v1/fcm-push/random-spot/device-token'
     , {
-      deviceToken: DEVICE_TOKEN,
+      deviceToken: token,
       delayedSeconds: 0
     }, 
     {

@@ -10,6 +10,8 @@ import startHeendy from 'assets/images/startHeendy.png';
 import startBackGround from 'assets/images/startBackGround.png';
 import kakaoLogin from 'assets/icons/login_kakao.png';
 import googleLogin from 'assets/icons/login_google.png';
+import { getPushAlarmByLocalStorage } from '../../apis/request';
+import { requestPermission } from '../../firebase-messaging-sw';
 
 import React from 'react';
 
@@ -22,6 +24,28 @@ function LoginScreen() {
 
   const backgroundStyle = {
     backgroundImage: `url(${startBackGround})`,
+  };
+
+  const handleRequestPermission = async () => {
+    try {
+      // 여기서 API 호출
+      console.log("handleRequestPermission 전");
+      requestPermission();
+      console.log("handleRequestPermission 후");
+    } catch (error) {
+      console.error("handleRequestPermission 호출 중 오류 발생:", error);
+    }
+  };
+
+  const handlePushAlarmByLocalStorage = async () => {
+    try {
+      // 여기서 API 호출
+      console.log("getPushAlarmByLocalStorage 전");
+      getPushAlarmByLocalStorage();
+      console.log("getPushAlarmByLocalStorage 후");
+    } catch (error) {
+      console.error("getPushAlarmByLocalStorage 호출 중 오류 발생:", error);
+    }
   };
 
   return (
@@ -38,15 +62,20 @@ function LoginScreen() {
           <img src={startHeendy} className="ml-1 w-[95vw] h-[36vh]" />
         </div>
       </div>
-      <div className="h-[20vh]">
+      <div className="h-[30vh]">
         <div className="mb-4">
           <button className="ml-[10vw]" onClick={handleLogin}>
             <img src={kakaoLogin} className="w-[80vw] " />
           </button>
         </div>
         <div>
-          <button className="ml-[10vw]" onClick={handleLogin}>
+          <button className="ml-[10vw]" onClick={handleRequestPermission}>
             <img src={googleLogin} className="w-[80vw]" />
+          </button>
+        </div>
+        <div>
+          <button className="ml-[10vw]" onClick={handlePushAlarmByLocalStorage}>
+            <img src={kakaoLogin} className="w-[80vw]" />
           </button>
         </div>
       </div>

@@ -11,24 +11,20 @@ import { getMessaging, getToken } from "firebase/messaging";
 import { updateDeviceToken } from "./apis/request"
 
 const app = initializeApp(firebaseConfig);
-// const messaging = async () => (await isSupported()) && getMessaging(app);
 const messaging = getMessaging(app);
-
-// if (typeof window !== "undefined" && typeof window.navigator !== "undefined") {
-//   messaging = getMessaging(app);
-// }
-
 
 export async function requestPermission() {
   console.log("FCM 알림 권한 요청 시작");
 
   const permission = await Notification.requestPermission();
+  console.log("Notification.requestPermission ");
   if (permission === "denied") {
     console.log("FCM 알림 권한 얻기 실패");
     return;
+  } else {
+    console.log("FCM 알림 권한 허용");
   }
-  console.log("FCM 알림 권한 허용");
-
+  
   const token = await getToken(messaging, {
     vapidKey: VALID_KEY,
   });
@@ -36,18 +32,34 @@ export async function requestPermission() {
   if (token) {
     console.log("FCM device token: ", token);
     localStorage.setItem('fcmDeviceToken', token);
+    console.log("localStorage.getItem FCM device token: " + localStorage.getItem('fcmDeviceToken'));
 
     try {
-      console.log("FCM device token 업데이트");
+      console.log("FCM device token 업데이트 api 요청");
       updateDeviceToken(token);
     } catch (error) {
-      console.error("FCM device token 업데이트 실패" + error);
+      console.error("FCM device token 업데이트 api 실패" + error);
     }
-    
   }
   else {
     console.log("FCM device token을 얻지 못함");
   }
 }
 
-// requestPermission();
+self.addEventListener("push", function (e) {
+  console.log("fcm 푸시 알림: ", e.data.json());
+  if (!e.data.json()) return;
+
+  const resultData = e.data.json().notification;
+  const notificationTitle = resultData.title;
+  const notificationOptions = {
+    body: resultData.body,
+    icon: resultData.image,
+    tag: resultData.tag,
+  };
+  console.log("fcm 푸시 알림: ", { resultData, notificationTitle, notificationOptions });
+
+  self.registration.showNotification(notificationTitle, notificationOptions);
+});
+
+requestPermission();

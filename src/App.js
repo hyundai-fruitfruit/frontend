@@ -27,9 +27,9 @@ import HeendyLayout from 'pages/Layouts/HeendyLayout/HeendyLayout';
 import CouponTab from 'pages/CouponTab/CouponTab';
 import EventNotice from 'pages/MainPage/EventNotice';
 import Mbti from 'pages/Mbti/Mbti.jsx'
-import CaptainHeendy from 'pages/CaptainHeendy/CaptainHeendy';
+// import CaptainHeendy from 'pages/CaptainHeendy/CaptainHeendy';
 import FriendGame from 'pages/FriendGame/FriendGame';
-import TheHyundaiMap from 'pages/TheHyundaiMap/TheHyundaiMap';
+// import TheHyundaiMap from 'pages/TheHyundaiMap/TheHyundaiMap';
 
 
 const router = createBrowserRouter([
@@ -55,9 +55,9 @@ const router = createBrowserRouter([
       { path: 'couponTab', element: <CouponTab /> },
       { path: 'eventNotice', element: <EventNotice /> },
       { path: 'mbti', element: <Mbti /> },
-      { path: 'captainHeendy', element: <CaptainHeendy /> },
+      // { path: 'captainHeendy', element: <CaptainHeendy /> },
       { path: 'friendGame', element: <FriendGame /> },
-      { path: 'theHyundaiMap', element: <TheHyundaiMap /> }
+      // { path: 'theHyundaiMap', element: <TheHyundaiMap /> }
     ],
   },
 ]);
