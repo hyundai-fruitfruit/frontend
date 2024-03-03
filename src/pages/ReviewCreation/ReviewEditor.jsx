@@ -2,29 +2,46 @@
  * @author 오수영
  * @email osy9757@gmail.com
  * @create date 2024-02-22 03:37:46
- * @modify date 2024-02-22 03:37:46
+ * @modify date 2024-03-02 15:33:50
  * @desc 리뷰 글 작성및 이미지 첨부 페이지
  */
+
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-
+//component
 import Header from 'components/Header/Header';
 import InputRatingStar from 'components/RatingStar/InputRatingStar';
 import HashtagElement from 'components/StoreReview/HashtagElement';
 import ImageScroll from 'components/ImageSlide/ImageScroll';
-
+//hook
+import useCreateReview from 'hooks/useCreateReview';
+//assets
 import cameraIcon from 'assets/icons/camera_icon.png';
 
 function ReviewEditor() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { rating: initialRating, selectedTags } = location.state || {};
+  const { rating: initialRating, selectedTags, details } = location.state || {};
   const [userRating, setUserRating] = useState(initialRating || 0);
   const [reviewContent, setReviewContent] = useState('');
   const [attachedImages, setAttachedImages] = useState([]);
 
-  const handleReviewButton = () => {
-    navigate('/main');
+  const { submitReview } = useCreateReview();
+
+  const handleReviewSubmission = async () => {
+    const reviewRequDto = {
+      score: userRating,
+      content: reviewContent,
+      hashtagIds: selectedTags.map((tag) => tag.id),
+    };
+    try {
+      await submitReview(details.id, reviewRequDto);
+      console.log(details.id, reviewRequDto);
+      await '리뷰가 성공적으로 등록되었습니다.';
+      navigate('/storeDetail/2');
+    } catch (error) {
+      alert('리뷰 등록에 실패하였습니다.');
+    }
   };
 
   const handleImageAttachment = (e) => {
@@ -86,7 +103,7 @@ function ReviewEditor() {
       <div className="w-full">
         <button
           className="font-bold w-[90vw] bg-black text-white text-xl text-sm py-4 rounded-2xl fixed bottom-[5vh] left-[5vw]"
-          onClick={handleReviewButton}
+          onClick={handleReviewSubmission}
         >
           리뷰 등록하기
         </button>

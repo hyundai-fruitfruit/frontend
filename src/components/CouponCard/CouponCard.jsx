@@ -16,7 +16,7 @@ function CouponCard({ imgSrc, title, detail, useByDate, addStyle }) {
       <div className="flex flex-col justify-start py-4 mr-8">
         <p className="font-bold text-lg mb-4">{title}</p>
         <p className="text-sm mb-1">{detail}</p>
-        <p className="text-sm">{useByDate}</p>
+        <p className="text-xs text-gray-500">{useByDate}</p>
       </div>
     </div>
   );

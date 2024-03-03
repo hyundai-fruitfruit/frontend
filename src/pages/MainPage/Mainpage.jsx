@@ -83,7 +83,7 @@ function MainPage() {
             <img src={mainTent} className="h-[5vh]" />
             <span className="text-xl ml-2">흰디의 모험</span>
           </div>
-          <div className="flex border-2 rounded-xl items-center p-1">
+          <div className="flex border-2 rounded-xl items-center p-1" onClick={() => navigate('/eventNotice')}>
             <span className="ml-2">대장흰디에게 물어봐</span>
             <img src={mainCapHeendy} className="h-[3vh] z-[-1]" />
           </div>

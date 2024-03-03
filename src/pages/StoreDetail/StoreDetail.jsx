@@ -6,6 +6,7 @@
  * @desc 매장 상세 정보 전체 페이지
  */
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import Header from 'components/Header/Header';
 import ImageSlide from 'components/ImageSlide/ImageSlide';
@@ -13,6 +14,8 @@ import DisplayShopDetails from 'components/DisplayShopDetails/DisplayShopDetails
 import DisplayShopTabs from 'components/DisplayShopTabs/DisplayShopTabs';
 import StoreMenuList from 'components/StoreMenu/StoreMenuList';
 import StoreTotalReview from 'components/StoreReview/StoreTotalReview';
+
+import useStoreDetails from 'hooks/useStoreDetails';
 
 const imagePaths = ['/images/smt_lounge1.jpeg', '/images/smt_lounge2.jpeg', '/images/smt_lounge3.jpeg'];
 
@@ -27,12 +30,24 @@ const shopDetails = {
 
 function storeDetail() {
   const [activeTab, setActiveTab] = useState('mainMenu');
+  const { id } = useParams();
+
+  const { details, error, loading } = useStoreDetails(id);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) {
+    console.log(id);
+    console.log(details);
+    return <div>Error: {error.message}</div>;
+  }
 
   const tabComponents = {
     mainMenu: <StoreMenuList />,
-    review: <StoreTotalReview image={imagePaths[0]} shopName={shopDetails.name} />,
+    review: <StoreTotalReview image={imagePaths[0]} shopName={shopDetails.name} details={details} />,
     visitVerification: <div>visitVerification</div>,
   };
+  console.log(id);
+  console.log(details);
 
   return (
     <div className="flex flex-col overflow-auto w-full">
@@ -42,7 +57,7 @@ function storeDetail() {
           <ImageSlide images={imagePaths} />
         </div>
         <div className="border-b-8 pb-4">
-          <DisplayShopDetails details={shopDetails} />
+          <DisplayShopDetails details={details} />
         </div>
       </div>
       <div className="flex flex-col items-center justify-start min-h-[50vh]  w-full">
