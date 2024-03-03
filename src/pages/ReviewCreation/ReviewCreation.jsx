@@ -16,15 +16,16 @@ import HashtagSelection from 'components/StoreReview/HashtagSelection';
 function ReviewCreation() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { image, shopName } = location.state || {};
+  const { image, shopName, details } = location.state || {};
 
   const [rating, setRating] = useState(0);
   const [selectedTags, setSelectedTags] = useState([]);
 
   const handleReviewPage = () => {
-    navigate('/ReviewEditor', { state: { image, shopName, rating, selectedTags } });
+    navigate('/ReviewEditor', { state: { image, shopName, rating, selectedTags, details } });
   };
 
+  console.log('details', details);
   return (
     <div className="flex flex-col overflow-auto w-full">
       <Header />
@@ -38,7 +39,7 @@ function ReviewCreation() {
       <hr className="m-8" />
       <div className="flex flex-col items-center">
         <p className="text-lg font-semibold mb-1">마음에 드셨나요?</p>
-        <p>이 가게를 별점으로 평가해주세요</p>
+        <p className="text-gray-500">이 가게를 별점으로 평가해주세요</p>
       </div>
       <InputRatingStar rating={rating} setRating={setRating} />
       <hr className="m-8" />

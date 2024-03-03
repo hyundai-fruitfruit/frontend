@@ -2,7 +2,7 @@
  * @author 오수영
  * @email osy9757@gmail.com
  * @create date 2024-02-17 11:41:12
- * @modify date 2024-02-29 05:12:37
+ * @modify date 2024-03-02 09:59:12
  * @desc api 정의
  */
 
@@ -28,6 +28,30 @@ export const fetchStoreDetails = async (storeId) => {
     return response.data;
   } catch (error) {
     console.error('Error fetching store details:', error);
+    throw error;
+  }
+};
+
+// 이벤트 목록 출력
+export const getEventList = async () => {
+  try {
+    const response = await api.get('/api/v1/admin/events');
+
+    return response.data;
+  } catch (error) {
+    console.error('Error get Event List:', error);
+    throw error;
+  }
+};
+
+// 유저 쿠폰 목록 출력
+export const getUserCoupontList = async () => {
+  try {
+    const response = await api.get('/api/v1/coupons');
+
+    return response.data;
+  } catch (error) {
+    console.error('Error get Event List:', error);
     throw error;
   }
 };
@@ -81,4 +105,4 @@ export const findQr = async () => {
   } catch (error) {
     console.error(`Error: ${error}`);
   }
-}
+};

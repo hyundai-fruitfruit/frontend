@@ -8,25 +8,24 @@
 import React from 'react';
 import HashtagElement from './HashtagElement';
 
-function StoreHashTag() {
+function StoreHashTag({ details }) {
+  var maxCount = 500;
+
+  const hashtagsWithCount = details.popularHashtags.map((hashtag) => {
+    const count = Math.floor(Math.random() * maxCount) + 1;
+    maxCount = count - 1;
+    return { ...hashtag, count };
+  });
+
   return (
     <div className="border-b-8">
       <p className="m-4 font-bold ">이런점이 좋았어요</p>
-      <div className="my-2">
-        <HashtagElement id={206} count={245} />
-      </div>
-      <div className="my-2">
-        <HashtagElement id={207} count={105} />
-      </div>
-      <div className="my-2">
-        <HashtagElement id={105} count={5} />
-      </div>
-      <div className="my-2">
-        <HashtagElement id={209} count={3} />
-      </div>
-      <div className="mt-2 mb-8">
-        <HashtagElement id={101} count={1} />
-      </div>
+      {hashtagsWithCount.map((hashtag) => (
+        <div key={hashtag.id} className="my-2">
+          <HashtagElement id={hashtag.id} name={hashtag.name} count={hashtag.count} />
+        </div>
+      ))}
+      <p className="mb-4"></p>
     </div>
   );
 }

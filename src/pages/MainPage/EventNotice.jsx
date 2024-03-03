@@ -11,55 +11,25 @@ import React, { useState } from 'react';
 import CouponCard from 'components/CouponCard/CouponCard';
 import Header from 'components/Header/Header';
 
+//hook
+import useGetEventList from 'hooks/useGetEventList';
+
 //asset
 import bottleIcon from 'assets/icons/bottle_icon.png';
 import keyIcon from 'assets/icons/old_key_icon.png';
 
 function TestPage() {
   const [isEvent, setIsEvent] = useState(false);
+  const { events, loading, error } = useGetEventList();
 
-  const coupons = [
-    {
-      imgSrc: bottleIcon,
-      title: '엔젤리너스 30% 할인 쿠폰',
-      detail: '커피 음료 구매시 30% 할인',
-      useByDate: '사용 기한 : 2024년 3월 14일까지',
-    },
-    {
-      imgSrc: bottleIcon,
-      title: '스타벅스 20% 할인 쿠폰',
-      detail: '모든 음료에 사용 가능',
-      useByDate: '사용 기한 : 2024년 3월 20일까지',
-    },
-    {
-      imgSrc: bottleIcon,
-      title: '엔젤리너스 30% 할인 쿠폰',
-      detail: '커피 음료 구매시 30% 할인',
-      useByDate: '사용 기한 : 2024년 3월 14일까지',
-    },
-    {
-      imgSrc: bottleIcon,
-      title: '스타벅스 20% 할인 쿠폰',
-      detail: '모든 음료에 사용 가능',
-      useByDate: '사용 기한 : 2024년 3월 20일까지',
-    },
-    {
-      imgSrc: bottleIcon,
-      title: '엔젤리너스 30% 할인 쿠폰',
-      detail: '커피 음료 구매시 30% 할인',
-      useByDate: '사용 기한 : 2024년 3월 14일까지',
-    },
-    {
-      imgSrc: bottleIcon,
-      title: '스타벅스 20% 할인 쿠폰',
-      detail: '모든 음료에 사용 가능',
-      useByDate: '사용 기한 : 2024년 3월 20일까지',
-    },
-  ];
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   const handleIsEvent = () => {
     setIsEvent((prevIsEvent) => !prevIsEvent);
   };
+
+  console.log(events);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -87,13 +57,13 @@ function TestPage() {
         )}
       </div>
       <div>
-        {coupons.map((coupon, index) => (
+        {events.data.events.map((events) => (
           <CouponCard
-            key={index}
-            imgSrc={coupon.imgSrc}
-            title={coupon.title}
-            detail={coupon.detail}
-            useByDate={coupon.useByDate}
+            key={events.id}
+            imgSrc={events.iconUrl}
+            title={events.title}
+            detail={events.content || '더현대 서울 이벤트'}
+            useByDate={`기간 : ${events.startedAt} ~ ${events.finishedAt}`}
             addStyle={'mx-8'}
           />
         ))}

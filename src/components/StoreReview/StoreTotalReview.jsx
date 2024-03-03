@@ -12,19 +12,19 @@ import { useNavigate } from 'react-router-dom';
 import StoreHashTag from './StoreHashTag';
 import StoreReviewPage from './StoreReviewPage';
 
-function StoreTotalReview({ image, shopName }) {
+function StoreTotalReview({ image, shopName, details }) {
   const navigate = useNavigate();
 
   const handleReviewPage = () => {
-    navigate('/reviewCreation', { state: { image, shopName } });
+    navigate('/reviewCreation', { state: { image, shopName, details } });
   };
   return (
     <div className="w-full h-full">
       <div className="w-full h-full">
-        <StoreHashTag />
+        <StoreHashTag details={details} />
       </div>
       <div>
-        <StoreReviewPage />
+        <StoreReviewPage details={details} />
       </div>
       <div className="w-full">
         <button
