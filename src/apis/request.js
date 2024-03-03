@@ -105,4 +105,90 @@ export const findQr = async () => {
   } catch (error) {
     console.error(`Error: ${error}`);
   }
+}
+
+/**
+ * @author 황수영
+ * @email sooyoung.h8@gmail.com
+ * @create date 2024-03-01
+ * @modify date 2024-03-01
+ * @desc FCM 토큰 요청 및 디바이스 토큰 전송
+ */
+// FCM 토큰 요청
+export const updateDeviceToken = async (deviceToken) => {
+  try {
+    await api.post('/api/v1/members/token', {
+      platform: "Firebase",
+      token: deviceToken
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization' : localStorage.getItem('accessToken')
+      }
+    });
+
+  } catch (error) {
+    console.error(`updateDeviceToken 에러 발생 : ${error}`);
+  }
+};
+
+// FCM 푸시 알림 요청1 - 로컬 스토리지에서
+export const getPushAlarmByLocalStorage = async () => {
+  try {
+    const fcmDeviceToken = localStorage.getItem('fcmDeviceToken');
+    console.log("getPushAlarmByLocalStorage() fcmDeviceToken : " + fcmDeviceToken);
+    const response = await api.post('/api/v1/fcm-push/random-spot/device-token'
+    , {
+      deviceToken: fcmDeviceToken,
+      delayedSeconds: 0
+    }, 
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization' : localStorage.getItem('accessToken')
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error(`getPushAlarmByLocalStorage 에러 발생 : ${error}`);
+  }
+};
+
+//const DEVICE_TOKEN = process.env.REACT_APP_API_DEVICE_TOKEN;
+// FCM 푸시 알림 요청2 - 각 브라우저별 디바이스 토큰 전송
+export const getPushAlarmByDeviceToken = async (token) => {
+  try {
+    const fcmDeviceToken = localStorage.getItem('fcmDeviceToken');
+    console.log("DEVICE_TOKEN : " + fcmDeviceToken);
+    const response = await api.post('/api/v1/fcm-push/random-spot/device-token'
+    , {
+      deviceToken: token,
+      delayedSeconds: 0
+    }, 
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization' : localStorage.getItem('accessToken')
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error(`getPushAlarmByLocalStorage 에러 발생 : ${error}`);
+  }
+};
+
+// FCM 푸시 알림 요청3 - 유저 로그인 정보로 푸시 알림
+export const getPushAlarm = async () => {
+  try {
+    const response = await api.get('/api/v1/fcm-push',
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization' : localStorage.getItem('accessToken')
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error(`getPushAlarm 에러 발생 : ${error}`);
+  }
 };

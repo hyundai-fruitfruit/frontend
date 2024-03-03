@@ -7,6 +7,7 @@
  */
 
 import React, { useState } from 'react';
+import { requestPermission } from '../../firebase-messaging-sw';
 import { useNavigate } from 'react-router-dom';
 
 const Onboarding = () => {
@@ -23,6 +24,7 @@ const Onboarding = () => {
     'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/start/7.png',
   ];
 
+
   const handleClick = () => {
     if (imageIndex < images.length - 1) {
       setImageIndex((prevIndex) => (prevIndex + 1));
@@ -31,9 +33,23 @@ const Onboarding = () => {
     }
   }
 
+  const handleFcmPermission = () => {
+    requestPermission();
+  }
+
+  // return (
+  //   <div>
+  //     <SpeechBubble arrowPostion="right">안녕!</SpeechBubble>
+  //     <div className="flex justify-end w-full mt-4">
+  //       <img src={ModalHeendy} alt="Heendy" className="h-[12vh]" />
+  //     </div>
+  //   </div>
+  // );
+
+
   return (
     <div onClick={handleClick} style={{width: '100%', height: '100%'}}>
-      <img src={images[imageIndex]} alt="" style={{width: '100%', height: '100%'}}/>
+      <img onClick={handleFcmPermission} src={images[imageIndex]} alt="" style={{width: '100%', height: '100%'}}/>
     </div>
   );
 }

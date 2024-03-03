@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /**
  * @author 황수영
  * @email sooyoung.h8@gmail.com
