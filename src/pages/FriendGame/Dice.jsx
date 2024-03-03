@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import MainHeader from 'components/Header/MainHeader';
 import BlackButton from 'components/Button/BlackButton';
 import DiceBoard from 'components/Dice/DiceBoard';
+import GetExp from 'pages/FriendGame/GetExp';
 
 function Dice() {
   const [page, setPage] = useState(1);
@@ -18,21 +19,22 @@ function Dice() {
 
   const nextPage = () => {
     if (page === 1) {
+      setImageUrl(null);
       setButtonText("주사위 굴리기");
       setPage(2);
     } else if (page === 2) {
       setImageUrl("https://fruitfruit.s3.ap-northeast-2.amazonaws.com/dice/dicegame-3.png");
       setButtonText("경험치 받기");
       setPage(3);
-    } else {
-      setImageUrl("https://fruitfruit.s3.ap-northeast-2.amazonaws.com/dice/dicegame-1.png");
-      setButtonText("주사위 굴리러 가기");
-      setPage(1);
+    } else if (page === 3) {
+      setImageUrl(null);
+      setButtonText("메인으로");
+      setPage(4);
     }
   };
 
   const styles = {
-    backgroundImage: `url(${imageUrl})`,
+    ...(imageUrl && { backgroundImage: `url(${imageUrl})` }),
     backgroundSize: 'cover',
     height: '100vh',
   };
@@ -41,6 +43,7 @@ function Dice() {
     <div style={styles}>
       <MainHeader />
       {page === 2 ? <DiceBoard /> : null}
+      {page === 4 ? <GetExp type="water" start={10} end={20} /> : null}
       <BlackButton onClick={nextPage}>{buttonText}</BlackButton>
     </div>
   );
