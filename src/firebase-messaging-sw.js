@@ -45,21 +45,3 @@ export async function requestPermission() {
     console.log("FCM device token을 얻지 못함");
   }
 }
-
-self.addEventListener("push", function (e) {
-  console.log("fcm 푸시 알림: ", e.data.json());
-  if (!e.data.json()) return;
-
-  const resultData = e.data.json().notification;
-  const notificationTitle = resultData.title;
-  const notificationOptions = {
-    body: resultData.body,
-    icon: resultData.image,
-    tag: resultData.tag,
-  };
-  console.log("fcm 푸시 알림: ", { resultData, notificationTitle, notificationOptions });
-
-  self.registration.showNotification(notificationTitle, notificationOptions);
-});
-
-requestPermission();
