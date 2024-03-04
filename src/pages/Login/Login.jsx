@@ -56,7 +56,7 @@ function LoginScreen() {
       <div className="h-[72vh]">
         <div className="h-[5vh]"></div>
         <div className="h-[32vh]">
-          Adventure of Heendy
+          {/* Adventure of Heendy */}
         </div>
         {/* <div className="h-[25vh] overflow-hidden">
           <img src={loadingHeendy} className="h-[25vh] w-auto object-cover" />

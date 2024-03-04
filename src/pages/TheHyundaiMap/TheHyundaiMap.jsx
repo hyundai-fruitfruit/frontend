@@ -25,10 +25,13 @@ function Map() {
     right: '10vw', // Adjust as needed for right positioning
   };
 
+  const handleCaptainHeendyAsk = () => {
+    window.location.href = '/captainHeendy';
+  };
 
   return (
     <div style={backStyle}>
-      <div style={captainHeendyStyle}></div>
+      <div style={captainHeendyStyle} onClick={handleCaptainHeendyAsk}></div>
     </div>
   );
 }

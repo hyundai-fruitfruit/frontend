@@ -7,38 +7,66 @@
  * @desc 흰디 챗봇 - 매장 추천
  */
 
-// 아이콘
-import mainTent from 'assets/icons/main_Tent.png';
-import mainCapHeendy from 'assets/icons/CapHeendy.png';
+import React from 'react';
+import CaptainHeendyAsk from 'assets/images/captain_heendy.png';
+import BtnHeendyChatbot from 'assets/images/btn_heendy1.png';
+import BtnEventNotice from 'assets/images/btn_heendy2.png';
+import MainHeader from 'components/Header/MainHeader';
 
-// const backOptionsWithBack = [
-//     { name: 'Hamburger', backgroundImageUrl: 'popcorn-background.jpg' },
-//     { name: 'Tree1', backgroundImageUrl: 'pizza-background.jpg' },
-//     { name: 'Tree2', backgroundImageUrl: 'pizza-background.jpg' },
-//     { name: 'Empty', backgroundImageUrl: 'empty-background.jpg' },
-//   ];
-  
 function CaptainHeendy() {
-  
+    const containerStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        height: '100%',
+        paddingTop: '20px',
+    };
+
+    const backStyle = {
+        backgroundImage: `url(${CaptainHeendyAsk})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        width: '100%',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    };
+
+    const buttonContainerStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginBottom: '12vh', 
+    };
+
+    const buttonStyle = {
+        width: '78vw',
+        height: 'auto',
+        marginBottom: '2vh',
+    };
+
+    // TODO: 챗봇 페이지와 연결하기
+    const handleHeendyChatbot = () => {
+      window.location.href = '/';
+    };
+
+    const handleEventNotice = () => {
+      window.location.href = '/eventNotice';
+    };
+
     return (
-      <div className="main_container min-h-screen flex flex-col">
-        {/* 헤더 두 개 */}
-        <div className="w-full h-[15vh]">
-          <div className="flex flex-row justify-between items-center space-x-2 h-[6vh] border-b font-bold">
-            <div className="flex items-center justify-start ml-6">
-              <img src={mainTent} className="h-6" />
-              <span className="text-l ml-3 mt-2 items-center">흰디의 모험</span>
+        <div style={containerStyle}>
+            <MainHeader />
+            <div style={backStyle}>
+                <div style={buttonContainerStyle}>
+                    <img src={BtnHeendyChatbot} style={buttonStyle} alt="Heendy Chatbot" onClick={handleHeendyChatbot}/>
+                    <img src={BtnEventNotice} style={buttonStyle} alt="EventNotice" onClick={handleEventNotice}/>
+                </div>
             </div>
-            <div className="flex border-1 rounded-xl items-center p-1">
-              <span className="mr-2">대장 흰디</span>
-              <img src={mainCapHeendy} className="mr-3 h-[3vh] z-[-1]" />
-            </div>
-          </div>
-  
-      </div>
-      </div>
+        </div>
     );
-  }
-  
-  export default CaptainHeendy;
-  
+}
+
+export default CaptainHeendy;
