@@ -29,6 +29,13 @@ const handleRequestPermission = async () => {
     }
   };
 
+  const routeFriendGame = async () => {
+    try {
+      window.location.href = '/friendGame';
+    } catch (error) {
+      console.error("getPushAlarmByLocalStorage 호출 중 오류 발생:", error);
+    }
+  }; 
 const SubHeader = () => {
     return (
         <div className="flex w-3/4 mx-auto justify-between mt-10 mb-1">
@@ -42,7 +49,7 @@ const SubHeader = () => {
           </div> 
           <div className="flex border rounded-xl h-10 items-center m-0 p-0">
             <img src={mainMailbox} className="h-6 ml-2" />
-            <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center">5/10</span>
+            <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center" onClick={routeFriendGame}>5/10</span>
           </div>
         </div>
     );
