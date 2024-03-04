@@ -2,7 +2,7 @@
  * @author 오수영
  * @email osy9757@gmail.com
  * @create date 2024-02-18 10:18:42
- * @modify date 2024-03-04 14:59:05
+ * @modify date 2024-03-01 17:11:16
  * @desc App.js
  */
 import { Provider } from 'react-redux';
@@ -31,6 +31,10 @@ import CaptainHeendy from 'pages/CaptainHeendy/CaptainHeendy';
 import FriendGame from 'pages/FriendGame/FriendGame';
 import Dice from 'pages/FriendGame/Dice';
 import TheHyundaiMap from 'pages/TheHyundaiMap/TheHyundaiMap';
+import RandomsSpotPush from 'pages/RandomEventSpot/RandomsSpotPush';
+import RandomSpotResult from 'pages/RandomEventSpot/RandomSpotResult';
+import EventDetail from 'pages/RandomEventSpot/EventDetail';
+
 import ChatBot from 'pages/ChatBot/ChatBot';
 
 const router = createBrowserRouter([
@@ -61,6 +65,9 @@ const router = createBrowserRouter([
       { path: 'dice', element: <Dice /> },
       { path: 'theHyundaiMap', element: <TheHyundaiMap /> },
       { path: 'chatBot', element: <ChatBot /> },
+      { path: 'randomsSpotPush', element: <RandomsSpotPush /> },
+      { path: 'randomSpotResult', element: <RandomSpotResult /> },
+      { path: 'eventDetail', element: <EventDetail /> },
     ],
   },
 ]);

@@ -10,7 +10,6 @@ import React, { useState, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 // redux
 import { useSelector } from 'react-redux';
-
 // 3d 관련
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -20,9 +19,9 @@ import IconMenu from 'components/IconMenu/IconMenu';
 import ModalComponent from 'components/ModalComponent/ModalComponent';
 import useModal from 'hooks/useModal';
 import {
-  SpeechBubbleContent,
+  // SpeechBubbleContent,
   AdventureStartContent,
-  CertificationFail,
+  // CertificationFail,
 } from 'components/ModalBubbleContent/MainPageModalContent';
 import ProgressBar from 'components/ModalBubbleContent/ProgressBar';
 //assets
@@ -31,11 +30,9 @@ import itemIcon from 'assets/images/item_icon.png';
 import startIcon from 'assets/images/start_icon.png';
 import displayIcon from 'assets/images/display_icon.png';
 import couponIcon from 'assets/images/coupon_icon.png';
-import mainTent from 'assets/icons/main_Tent.png';
-import mainCapHeendy from 'assets/icons/CapHeendy.png';
-import mainWeather from 'assets/icons/Glowing star.png';
-import mainCandy from 'assets/icons/Candy.png';
-import mainMailbox from 'assets/icons/mailBox.png';
+
+import MainHeader from 'components/Header/MainHeader';
+import SubHeader from 'components/Header/SubHeader';
 
 // 3d 모델
 import Tree1 from 'assets/models/Tree1';
@@ -75,41 +72,22 @@ function MainPage() {
   const navigate = useNavigate();
   const [exp] = useState(50);
 
+
+  
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <div className="w-full h-[18vh]">
-        <div className="flex flex-row justify-between items-center space-x-2 h-[8vh] border-b font-bold">
-          <div className="flex items-end justify-start ml-4">
-            <img src={mainTent} className="h-[5vh]" />
-            <span className="text-xl ml-2">흰디의 모험</span>
-          </div>
-          <div className="flex border-2 rounded-xl items-center p-1" onClick={() => navigate('/eventNotice')}>
-            <span className="ml-2">대장흰디에게 물어봐</span>
-            <img src={mainCapHeendy} className="h-[3vh] z-[-1]" />
-          </div>
-        </div>
-        <div className="flex flex-wraph-[10vh] ">
-          <div className="flex border rounded-xl h-[5vh] items-center m-4 ">
-            <img src={mainWeather} className="h-[3vh] ml-4" />
-            <span className="h-[3vh] mr-4">오늘의 날씨</span>
-          </div>
-          <div className="flex border rounded-xl h-[5vh] items-center m-4">
-            <img src={mainCandy} className="h-[3vh] ml-4" />
-            <span className="h-[3vh] mr-4">14/15</span>
-          </div>
-          <div className="flex border rounded-xl h-[5vh] items-center m-4">
-            <img src={mainMailbox} className="h-[3vh] ml-4" />
-            <span className="h-[3vh] mr-4">5/10</span>
-          </div>
-        </div>
-      </div>
-      <div
+      {/* 헤더 두 개 */}
+      <MainHeader />
+      <SubHeader />
+
+      {/* <div
         className="absolute top-[25vh] z-10"
         onClick={() => openModal(<SpeechBubbleContent openModal={openModal} />)}
       >
         <SpeechBubble boldText={'안녕, 나는 흰디야! 같이 모험할래?'} arrowPostion="right" />
-      </div>
-      <div className="mb-8 relative w-[85vw] h-[42vh] mx-auto">
+      </div> */}
+
+      <div className="w-3/4 mb-8 relative h-[42vh] mx-auto">
         <div className="mt-5vh mb-5vh w-full h-full">
           <Canvas className="mb-5vh bg-gray-100">
             <OrbitControls />
@@ -123,13 +101,14 @@ function MainPage() {
           </Canvas>
         </div>
       </div>
-      <div className="border rounded-2xl w-[90vw] px-4 py-4 mb-[8vh]">
+      
+      <div className="w-5/6 border rounded-2xl px-4 py-4 mb-[8vh]">
         <div className="grid grid-rows-1 grid-flow-col grid-cols-3 text-center mb-6 items-end">
-          <span className="text-left font-bold ">초심자 흰디</span>
-          <span className="font-bold text-xl">흰둥이</span>
-          <span className="text-right font-bold">{exp}%</span>
+          <span className="text-left font">초심자</span>
+          <span className="text-xl font">흰둥이</span>
+          <span className="text-right font">{exp}%</span>
         </div>
-        <div className="mb-8">
+        <div className="mb-5">
           <ProgressBar fromValue={0} toValue={exp} />
         </div>
         <IconMenu
@@ -140,7 +119,8 @@ function MainPage() {
             } else if (iconName === 'item') {
               navigate('/myroom');
             } else if (iconName === 'display') {
-              openModal(<CertificationFail />);
+              // openModal(<CertificationFail />);
+              navigate('/theHyundaiMap');
             } else if (iconName === 'coupon') {
               navigate('/couponTab');
             }
