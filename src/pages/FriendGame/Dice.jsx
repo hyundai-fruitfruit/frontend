@@ -7,6 +7,7 @@
  */
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MainHeader from 'components/Header/MainHeader';
 import BlackButton from 'components/Button/BlackButton';
 import DiceBoard from 'components/Dice/DiceBoard';
@@ -17,6 +18,7 @@ function Dice() {
   const [buttonText, setButtonText] = useState("주사위 굴리러 가기");
   const [imageUrl, setImageUrl] = useState("https://fruitfruit.s3.ap-northeast-2.amazonaws.com/dice/dicegame-1.png");
 
+  const navigate = useNavigate();
   const nextPage = () => {
     if (page === 1) {
       setImageUrl(null);
@@ -30,6 +32,8 @@ function Dice() {
       setImageUrl(null);
       setButtonText("메인으로");
       setPage(4);
+    } else {
+      navigate('/friendGame')
     }
   };
 
