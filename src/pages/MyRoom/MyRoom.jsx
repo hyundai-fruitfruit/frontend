@@ -12,6 +12,7 @@ import OptionIcons from './OptionIcons';
 import { Category, selectCategory } from './Category';
 import '../../firebase-messaging-sw';
 import MainHeader from 'components/Header/MainHeader';
+import SubHeader from 'components/Header/SubHeader';
 
 
 // redux
@@ -34,13 +35,9 @@ import Pizza from 'assets/models/Pizza';
 import Empty from 'assets/models/Empty';
 import Deer from 'assets/models/Deer';
 
-// 아이콘
-import mainWeather from 'assets/icons/Glowing star.png';
-import mainCandy from 'assets/icons/Candy.png';
-import mainMailbox from 'assets/icons/mailBox.png';
 
 // FCM 푸시 알림 시연용
-import { getPushAlarm, getPushAlarmByDeviceToken, getPushAlarmByLocalStorage } from '../../apis/request';
+// import { getPushAlarm, getPushAlarmByDeviceToken, getPushAlarmByLocalStorage } from '../../apis/request';
 
 const categories = ['소품', '배경', '벽지', '효과'];
 
@@ -103,60 +100,46 @@ function MyRoom() {
     setSelectedBackOption(reduxSelectedBackOption);
   }, [reduxSelectedFoodOption, reduxSelectedBackOption]);
 
-  const handlePushAlarmByLocalStorage = async () => {
-    try {
-      // 여기서 API 호출
-      const response = await getPushAlarmByLocalStorage();
-      console.log(response);
-    } catch (error) {
-      console.error("handlePushAlarmByLocalStorage 호출 중 오류 발생:", error);
-    }
-  };
+  // const handlePushAlarmByLocalStorage = async () => {
+  //   try {
+  //     // 여기서 API 호출
+  //     const response = await getPushAlarmByLocalStorage();
+  //     console.log(response);
+  //   } catch (error) {
+  //     console.error("handlePushAlarmByLocalStorage 호출 중 오류 발생:", error);
+  //   }
+  // };
 
 
-  const handlePushAlarm = async () => {
-    try {
-      // 여기서 API 호출
-      const response = await getPushAlarm();
-      console.log(response);
-    } catch (error) {
-      console.error("API 호출 중 오류 발생:", error);
-    }
-  };
+  // const handlePushAlarm = async () => {
+  //   try {
+  //     // 여기서 API 호출
+  //     const response = await getPushAlarm();
+  //     console.log(response);
+  //   } catch (error) {
+  //     console.error("API 호출 중 오류 발생:", error);
+  //   }
+  // };
 
-  const handlePushAlarmByDeviceToken = async () => {
-    try {
-      // 여기서 API 호출
-      const token = localStorage.getItem('fcmDeviceToken');
-      console.error("getPushAlarmByDeviceToken 호출 중 device token :" + token);
+  // const handlePushAlarmByDeviceToken = async () => {
+  //   try {
+  //     // 여기서 API 호출
+  //     const token = localStorage.getItem('fcmDeviceToken');
+  //     console.error("getPushAlarmByDeviceToken 호출 중 device token :" + token);
 
-      const response = await getPushAlarmByDeviceToken(token);
-      console.log(response);
-    } catch (error) {
-      console.error("getPushAlarmByDeviceToken 호출 중 오류 발생:", error);
-    }
-  };
+  //     const response = await getPushAlarmByDeviceToken(token);
+  //     console.log(response);
+  //   } catch (error) {
+  //     console.error("getPushAlarmByDeviceToken 호출 중 오류 발생:", error);
+  //   }
+  // };
 
   return (
     <div className="main_container min-h-screen flex flex-col">
       <div className="w-full h-[15vh]">
         {/* 헤더 두 개 */}
         <MainHeader />
-
-        <div className="flex w-3/4 mx-auto justify-between mt-5 mb-3">
-          <div className="flex border rounded-xl h-10 items-center m-0 p-0">
-            <img src={mainWeather} className="h-6 ml-2" />
-            <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center" onClick={handlePushAlarmByLocalStorage}>오늘의 날씨</span>
-          </div>
-          <div className="flex border rounded-xl h-10 items-center m-0 p-0" onClick={handlePushAlarmByDeviceToken} >
-            <img src={mainCandy} className="h-6 ml-2" />
-            <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center">14/15</span>
-          </div> 
-          <div className="flex border rounded-xl h-10 items-center m-0 p-0" onClick={handlePushAlarm}>
-            <img src={mainMailbox} className="h-6 ml-2" />
-            <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center">5/10</span>
-          </div>
-        </div>
+        <SubHeader />
       </div>
 
       {/* 캔버스 */}

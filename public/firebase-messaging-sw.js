@@ -39,10 +39,19 @@ self.addEventListener("notificationclick", function (event) {
   const clickedNotification = event.notification;
   clickedNotification.close();
   
-  const myRoomPath = '/myroom';
-  console.log("알림 클릭 시, 페이지 이동 : " + myRoomPath);
+  const pushPath = '/randomsSpotPush';
+  console.log("알림 클릭 시, 페이지 이동 : " + pushPath);
 
+  // 클라이언트 측에서 해당 경로로 이동
   event.waitUntil(
-    self.clients.openWindow(myRoomPath)
+    self.clients.openWindow(pushPath)
   );
 });
+
+
+// [notificationclick 이벤트로 문제 해결]
+// self.addEventListener("notificationclick", function (event) {
+//   const url = 'https://d2hcblcxgd6rqe.cloudfront.net/myroom';
+//   event.notification.close();
+//   event.waitUntil(self.clients.openWindow(url));
+// });
