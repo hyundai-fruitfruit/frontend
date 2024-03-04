@@ -1,6 +1,6 @@
 {
-  "short_name": "fruit fruit",
-  "name": "fruit",
+  "short_name": "흰디의 모험",
+  "name": "흰디의 모험",
   "icons": [
     {
       "src": "/icons/apple-icon-57x57.png",
@@ -43,16 +43,6 @@
       "type": "image/png"
     },
     {
-      "src": "/icons/apple-icon-180x180.png",
-      "sizes": "180x180",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/android-icon-36x36.png",
-      "sizes": "36x36",
-      "type": "image/png"
-    },
-    {
       "src": "/icons/android-icon-48x48.png",
       "sizes": "48x48",
       "type": "image/png"
@@ -78,6 +68,11 @@
       "type": "image/png"
     },
     {
+      "src": "/icons/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
       "src": "/icons/favicon-32x32.png",
       "sizes": "32x32",
       "type": "image/png"
@@ -88,26 +83,9 @@
       "type": "image/png"
     },
     {
-      "src": "/icons/favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/png"
-    },
-    {
       "src": "/icons/ms-icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png"
-    },
-    {
-      "src": "/icons/screenshot-wide.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "platform": "wide"
-    },
-    {
-      "src": "/icons/screenshot-mobile.png",
-      "sizes": "640x1136",
-      "type": "image/png",
-      "platform": "mobile"
     }
   ],
   "start_url": "/",

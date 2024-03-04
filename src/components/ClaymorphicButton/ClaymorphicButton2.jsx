@@ -6,7 +6,6 @@
  * @desc 클레이모피즘 디자인 버튼 컴포넌트
  */
 import React from 'react';
-import './ClaymorphicButton2.css';
 
 function ClaymorphicButton2({ text, imageSrc, onClick }) {
   return (

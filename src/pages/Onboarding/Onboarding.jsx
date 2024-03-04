@@ -7,6 +7,8 @@
  */
 
 import React, { useState } from 'react';
+import MainHeader from 'components/Header/MainHeader';
+import BlackButton from 'components/Button/BlackButton';
 import { requestPermission } from '../../firebase-messaging-sw';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,17 +17,19 @@ const Onboarding = () => {
   const [imageIndex, setImageIndex] = useState(0);
 
   const images = [
-    'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/start/1.png',
-    'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/start/2.png',
-    'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/start/3.png',
-    'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/start/4.png',
-    'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/start/5.png',
-    'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/start/6.png',
-    'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/start/7.png',
+    'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/start/start-1.png',
+    'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/start/start-2.png',
+    'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/start/start-3.png',
+    'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/start/start-4.png',
+    'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/start/start-5.png',
+    'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/start/start-6.png',
+    'https://fruitfruit.s3.ap-northeast-2.amazonaws.com/start/start-7.png',
   ];
 
-
   const handleClick = () => {
+    if (imageIndex == 0) {
+      requestPermission();
+    }
     if (imageIndex < images.length - 1) {
       setImageIndex((prevIndex) => (prevIndex + 1));
     } else {
@@ -33,23 +37,16 @@ const Onboarding = () => {
     }
   }
 
-  const handleFcmPermission = () => {
-    requestPermission();
-  }
-
-  // return (
-  //   <div>
-  //     <SpeechBubble arrowPostion="right">안녕!</SpeechBubble>
-  //     <div className="flex justify-end w-full mt-4">
-  //       <img src={ModalHeendy} alt="Heendy" className="h-[12vh]" />
-  //     </div>
-  //   </div>
-  // );
-
+  const styles = {
+    ...(images[imageIndex] && { backgroundImage: `url(${images[imageIndex]})` }),
+    backgroundSize: 'cover',
+    height: '100vh',
+  };
 
   return (
-    <div onClick={handleClick} style={{width: '100%', height: '100%'}}>
-      <img onClick={handleFcmPermission} src={images[imageIndex]} alt="" style={{width: '100%', height: '100%'}}/>
+    <div style={styles}>
+      <MainHeader />
+      <BlackButton onClick={handleClick}>다음으로</BlackButton>
     </div>
   );
 }
