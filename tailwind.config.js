@@ -6,6 +6,8 @@ module.exports = {
     extend: {
       colors: {
         customPink: '#FF7070',
+        customgreen: '#57AD80',
+        customgrey: '#F8F8F8',
       },
       boxShadow: {
         'clay-card':
