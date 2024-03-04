@@ -5,7 +5,7 @@
  * @modify date 2024-03-03 01:41:25
  * @desc 3D 주사위 띄우기
  */
-
+/* eslint-disable react/no-unknown-property */
 import { Canvas, useLoader, useThree } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OrbitControls } from '@react-three/drei';

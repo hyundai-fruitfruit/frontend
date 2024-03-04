@@ -7,9 +7,6 @@ module.exports = {
       colors: {
         customPink: '#FF7070',
       },
-      fontFamily: {
-        nunito: ['Nunito', 'sans-serif'],
-      },
       boxShadow: {
         'clay-card':
           '1.25em 1.25em 2.5em hsl(0deg 0% 20%), inset -0.3125em -0.3125em 0.625em hsl(0deg 0% 10% / 70%), inset 0 0.5em 1em hsl(0deg 0% 5%)',
