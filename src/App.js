@@ -26,15 +26,16 @@ import RandomEventSpotQRSuccess from 'pages/RandomEventSpot/RandomEventSpotQRSuc
 import HeendyLayout from 'pages/Layouts/HeendyLayout/HeendyLayout';
 import CouponTab from 'pages/CouponTab/CouponTab';
 import EventNotice from 'pages/MainPage/EventNotice';
-import Mbti from 'pages/Mbti/Mbti.jsx'
+import Mbti from 'pages/Mbti/Mbti.jsx';
 import CaptainHeendy from 'pages/CaptainHeendy/CaptainHeendy';
 import FriendGame from 'pages/FriendGame/FriendGame';
-import Dice from 'pages/FriendGame/Dice'
+import Dice from 'pages/FriendGame/Dice';
 import TheHyundaiMap from 'pages/TheHyundaiMap/TheHyundaiMap';
 import RandomsSpotPush from 'pages/RandomEventSpot/RandomsSpotPush';
 import RandomSpotResult from 'pages/RandomEventSpot/RandomSpotResult';
 import EventDetail from 'pages/RandomEventSpot/EventDetail';
 
+import ChatBot from 'pages/ChatBot/ChatBot';
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,7 @@ const router = createBrowserRouter([
       { path: 'friendGame', element: <FriendGame /> },
       { path: 'dice', element: <Dice /> },
       { path: 'theHyundaiMap', element: <TheHyundaiMap /> },
+      { path: 'chatBot', element: <ChatBot /> },
       { path: 'randomsSpotPush', element: <RandomsSpotPush /> },
       { path: 'randomSpotResult', element: <RandomSpotResult /> },
       { path: 'eventDetail', element: <EventDetail /> },
