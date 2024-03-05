@@ -1,39 +1,57 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+/**
+ * @author 오수영
+ * @email osy9757@gmail.com
+ * @create date 2024-03-01 06:33:24
+ * @modify date 2024-03-01 06:33:24
+ * @desc 친구 페이지 화면 구성
+ */
+/**
+ * @author 엄상은
+ * @email sangeun.e.9@gmail.com
+ * @create date 2024-03-05 10:12:12
+ * @modify date 2024-03-05 10:12:12
+ * @desc 친구 페이지 API 연결, CSS 수정
+ */
 
-//componenet
-import Header from 'components/Header/Header';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { findFriendList } from 'apis/request';
+
+// component
+import MainHeader from 'components/Header/MainHeader';
 import IconMenu from 'components/IconMenu/IconMenu';
 import BackgroundImage from 'components/BackgroundImage/BackgroundImage';
 import ClaymorphicButton from 'components/ClaymorphicButton/ClaymorphicButton';
 import SpeechBubble from 'components/SpeechBubble/SpeechBubble';
 
-//asset
+// asset
 import itemIcon from 'assets/images/item_icon.png';
 import heendy_background from 'assets/images/heendy_background.png';
 import mainHeendyImage from 'assets/images/mainHeendyImage.png';
 
-import BearIcon from 'assets/icons/BearIcon.png';
-import BirdIcon from 'assets/icons/BirdIcon.png';
-import CamelIcon from 'assets/icons/CamelIcon.png';
-import CatIcon from 'assets/icons/CatIcon.png';
-import ChickenIcon from 'assets/icons/ChickenIcon.png';
-
 function FriendGame() {
   const navigate = useNavigate();
-  const iconsData = [
-    { name: '수영', src: BearIcon, label: '수영', path: '/' },
-    { name: '성혁', src: BirdIcon, label: '성혁', path: '/' },
-    { name: '흰순이', src: CamelIcon, label: '흰순이', path: '/' },
-    { name: '흰돌', src: CatIcon, label: '흰돌', path: '/' },
-    { name: '상은', src: ChickenIcon, label: '상은', path: '/' },
-  ];
+  const [iconsData, setIconsData] = useState(null);
+
+  useEffect(() => {
+    const fetchFriendList = async () => {
+      const data = await findFriendList();
+      const transformedData = data.members.map(item => ({
+        id: item.id,
+        name: item.nickname,
+        src: item.imgUrl,
+        label: item.nickname,
+      }));
+      setIconsData(transformedData);
+    };
+    fetchFriendList();
+  }, []);
 
   return (
-    <div className="min-h-screen">
-      <Header text={'친구 만나기'} />
-      <div>
-        <IconMenu icons={iconsData} />
+    <div className="h-full">
+      <MainHeader />
+      <div className="mt-20 ">
+      {iconsData && <IconMenu icons={iconsData} />} 
       </div>
       <div>
         <SpeechBubble />
