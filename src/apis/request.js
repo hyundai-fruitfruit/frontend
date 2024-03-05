@@ -108,6 +108,24 @@ export const findQr = async () => {
 }
 
 /**
+ * @author 엄상은
+ * @email sangeun.e.9@gmail.com
+ * @create date 2024-03-05 09:52:37
+ * @modify date 2024-03-05 09:52:37
+ * @desc 친구 리스트 API 연결
+ */
+
+// 친구 리스트 API
+export const findFriendList = async () => {
+  try {
+    const response = await api.get('/api/v1/friends');
+    return response.data.data;
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
+}
+
+/**
  * @author 황수영
  * @email sooyoung.h8@gmail.com
  * @create date 2024-03-01
