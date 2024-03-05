@@ -34,7 +34,7 @@ function RandomSpotPush() {
       flexDirection: 'column',
       justifyContent: 'flex-start',
       alignItems: 'center',
-      height: '100%', // Ensure container takes up full height
+      height: '100%',
     };
   
     const buttonContainerStyle = {
