@@ -1,8 +1,8 @@
 /**
- * @author OHsooyoung
+ * @author 오수영
  * @email osy9757@gmail.com
  * @create date 2024-02-13 02:24:26
- * @modify date 2024-02-25 05:58:38
+ * @modify date 2024-03-04 17:30:43
  * @desc gps 인증시 현재위치와 더현대 위치 비교 hook
  */
 import { useState, useEffect } from 'react';

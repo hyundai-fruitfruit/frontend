@@ -2,7 +2,7 @@
  * @author 오수영
  * @email osy9757@gmail.com
  * @create date 2024-02-17 11:41:12
- * @modify date 2024-03-02 09:59:12
+ * @modify date 2024-03-04 19:12:52
  * @desc api 정의
  */
 
@@ -56,6 +56,41 @@ export const getUserCoupontList = async () => {
   }
 };
 
+//챗봇 api
+export const getHeendyGuide = async () => {
+  try {
+    const response = await api.get('/api/v1/heendy-guide');
+
+    return response.data;
+  } catch (error) {
+    console.error('Error get Heendy Guide :', error);
+    throw error;
+  }
+};
+
+export const getHeendyGuideType = async (guideType) => {
+  try {
+    console.log(`/api/v1/heendy-guide/${guideType}`);
+    const response = await api.get(`/api/v1/heendy-guide/${guideType}`);
+
+    return response.data;
+  } catch (error) {
+    console.error('Error get Heendy Guide Type :', error);
+    throw error;
+  }
+};
+
+export const getHeendyGuideHashTag = async (hashtag) => {
+  try {
+    const response = await api.get(`/api/v1/heendy-guide?hashtag=${hashtag}`);
+
+    return response.data;
+  } catch (error) {
+    console.error('Error get Heendy Guide HashTag :', error);
+    throw error;
+  }
+};
+
 // 매장 리뷰 작성
 export const createReviewForStore = async (storeId, reviewReqDto) => {
   try {
@@ -105,7 +140,7 @@ export const findQr = async () => {
   } catch (error) {
     console.error(`Error: ${error}`);
   }
-}
+};
 
 /**
  * @author 황수영
@@ -117,16 +152,19 @@ export const findQr = async () => {
 // FCM 토큰 요청
 export const updateDeviceToken = async (deviceToken) => {
   try {
-    await api.post('/api/v1/members/token', {
-      platform: "Firebase",
-      token: deviceToken
-    }, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization' : localStorage.getItem('accessToken')
-      }
-    });
-
+    await api.post(
+      '/api/v1/members/token',
+      {
+        platform: 'Firebase',
+        token: deviceToken,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: localStorage.getItem('accessToken'),
+        },
+      },
+    );
   } catch (error) {
     console.error(`updateDeviceToken 에러 발생 : ${error}`);
   }
@@ -136,18 +174,20 @@ export const updateDeviceToken = async (deviceToken) => {
 export const getPushAlarmByLocalStorage = async () => {
   try {
     const fcmDeviceToken = localStorage.getItem('fcmDeviceToken');
-    console.log("getPushAlarmByLocalStorage() fcmDeviceToken : " + fcmDeviceToken);
-    const response = await api.post('/api/v1/fcm-push/random-spot/device-token'
-    , {
-      deviceToken: fcmDeviceToken,
-      delayedSeconds: 0
-    }, 
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization' : localStorage.getItem('accessToken')
-      }
-    });
+    console.log('getPushAlarmByLocalStorage() fcmDeviceToken : ' + fcmDeviceToken);
+    const response = await api.post(
+      '/api/v1/fcm-push/random-spot/device-token',
+      {
+        deviceToken: fcmDeviceToken,
+        delayedSeconds: 0,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: localStorage.getItem('accessToken'),
+        },
+      },
+    );
     return response.data;
   } catch (error) {
     console.error(`getPushAlarmByLocalStorage 에러 발생 : ${error}`);
@@ -159,18 +199,20 @@ export const getPushAlarmByLocalStorage = async () => {
 export const getPushAlarmByDeviceToken = async (token) => {
   try {
     const fcmDeviceToken = localStorage.getItem('fcmDeviceToken');
-    console.log("DEVICE_TOKEN : " + fcmDeviceToken);
-    const response = await api.post('/api/v1/fcm-push/random-spot/device-token'
-    , {
-      deviceToken: token,
-      delayedSeconds: 0
-    }, 
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization' : localStorage.getItem('accessToken')
-      }
-    });
+    console.log('DEVICE_TOKEN : ' + fcmDeviceToken);
+    const response = await api.post(
+      '/api/v1/fcm-push/random-spot/device-token',
+      {
+        deviceToken: token,
+        delayedSeconds: 0,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: localStorage.getItem('accessToken'),
+        },
+      },
+    );
     return response.data;
   } catch (error) {
     console.error(`getPushAlarmByLocalStorage 에러 발생 : ${error}`);
@@ -180,12 +222,11 @@ export const getPushAlarmByDeviceToken = async (token) => {
 // FCM 푸시 알림 요청3 - 유저 로그인 정보로 푸시 알림
 export const getPushAlarm = async () => {
   try {
-    const response = await api.get('/api/v1/fcm-push',
-    {
+    const response = await api.get('/api/v1/fcm-push', {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization' : localStorage.getItem('accessToken')
-      }
+        Authorization: localStorage.getItem('accessToken'),
+      },
     });
     return response.data;
   } catch (error) {
