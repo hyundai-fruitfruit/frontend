@@ -15,6 +15,9 @@ module.exports = {
         'clay-btn':
           '0.5em 0.5em 1em 0 hsl(0deg 0% 15% / 50%), inset -0.5em -0.5em 1em 0 hsl(0deg 0% 20%), inset 0.25em 0.25em 0.5em 0 hsl(0deg 0% 10% / 45%)',
       },
+      borderRadius:{
+        'extra': '2.2rem',
+      }
     },
   },
   plugins: [],

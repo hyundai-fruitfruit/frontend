@@ -14,7 +14,7 @@ function DisplayShopTabs({ activeTab, setActiveTab }) {
 
   return (
     <div className="flex flex-col w-full h-full overflow-hidden overscroll-none">
-      <div className="flex border-b pt-3 px-4 w-full">
+      <div className="flex w-full px-4 pt-3 border-b">
         <div
           className={`flex-1 text-center p-2 cursor-pointer text-base ${activeTab === 'mainMenu' ? 'border-b-4 border-black font-bold' : ''}`}
           onClick={() => handleTabClick('mainMenu')}
@@ -28,7 +28,7 @@ function DisplayShopTabs({ activeTab, setActiveTab }) {
           리뷰
         </div>
         <div
-          className={`flex-1 text-center p-2 cursor-pointer text-base ${activeTab === 'visitVerification' ? 'border-b-4 border-black font-bold' : ''}`}
+          className={`flex-1 text-center p-3 cursor-pointer text-base ${activeTab === 'visitVerification' ? 'border-b-4 border-black font-bold' : ''}`}
           onClick={() => handleTabClick('visitVerification')}
         >
           방문 인증

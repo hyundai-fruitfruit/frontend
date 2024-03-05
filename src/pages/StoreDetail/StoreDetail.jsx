@@ -50,15 +50,11 @@ function storeDetail() {
   console.log(details);
 
   return (
-    <div className="flex flex-col overflow-auto w-full">
+    <div className="flex flex-col w-full overflow-auto">
       <Header text={'매장 정보'} />
-      <div className="flex flex-col items-center justify-start min-h-[50vh] w-full">
-        <div className=" w-full h-[40vh]">
+      <div className="flex flex-col px-7">
           <ImageSlide images={imagePaths} />
-        </div>
-        <div className="border-b-8 pb-4">
           <DisplayShopDetails details={details} />
-        </div>
       </div>
       <div className="flex flex-col items-center justify-start min-h-[50vh]  w-full">
         <div className=" w-full h-[7vh]">

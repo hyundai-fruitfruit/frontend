@@ -28,11 +28,10 @@ const InputRatingStar = ({ rating, setRating, readOnly = false }) => {
                 className="hidden"
               />
               <FaStar
-                size={24}
                 onMouseEnter={() => !readOnly && setHover(ratingValue)}
                 onMouseLeave={() => !readOnly && setHover(null)}
-                color={ratingValue <= (hover || Math.floor(rating)) ? '#ffc107' : '#e4e5e9'}
-                className={`transition-colors m-3 size-8 duration-200 ease-in-out ${ratingValue <= (hover || Math.floor(rating)) ? 'text-yellow-400' : 'text-gray-300'}`}
+                color={ratingValue <= (hover || Math.floor(rating)) ? '#E6706C' : '#e4e5e9'}
+                className={`transition-colors m-1 size-6 duration-200 ease-in-out ${ratingValue <= (hover || Math.floor(rating)) ? 'text-customPink' : 'text-gray-300'}`}
               />
             </label>
           );
