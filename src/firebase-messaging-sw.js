@@ -13,6 +13,24 @@ import { updateDeviceToken } from "./apis/request"
 const app = initializeApp(firebaseConfig);
 const messaging = getMessaging(app);
 
+// 푸시 알림 받는 설정
+self.addEventListener("push", function (e) {
+  console.log("push: ", e.data.json());
+  if (!e.data.json()) return;
+
+  const resultData = e.data.json().notification;
+  const notificationTitle = resultData.title;
+  const notificationOptions = {
+    body: resultData.body,
+    icon: resultData.image,
+    tag: resultData.tag,
+    ...resultData,
+  };
+  console.log("push: ", { resultData, notificationTitle, notificationOptions });
+
+  self.registration.showNotification(notificationTitle, notificationOptions);
+});
+
 export async function requestPermission() {
   console.log("FCM 알림 권한 요청 시작");
 

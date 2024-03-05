@@ -10,8 +10,8 @@ import startHeendy from 'assets/images/startHeendy.png';
 import startBackGround from 'assets/images/startBackGround.png';
 import kakaoLogin from 'assets/icons/login_kakao.png';
 import googleLogin from 'assets/icons/login_google.png';
-import { getPushAlarmByLocalStorage } from '../../apis/request';
-import { requestPermission } from '../../firebase-messaging-sw';
+// import { getPushAlarmByLocalStorage } from '../../apis/request';
+// import { requestPermission } from '../../firebase-messaging-sw';
 
 import React from 'react';
 
@@ -26,34 +26,37 @@ function LoginScreen() {
     backgroundImage: `url(${startBackGround})`,
   };
 
-  const handleRequestPermission = async () => {
-    try {
-      // 여기서 API 호출
-      console.log("handleRequestPermission 전");
-      requestPermission();
-      console.log("handleRequestPermission 후");
-    } catch (error) {
-      console.error("handleRequestPermission 호출 중 오류 발생:", error);
-    }
+  const routeToMain = async () => {
+    window.location.href = '/main';
+
+    // try {
+    //   // 여기서 API 호출
+    //   console.log("handleRequestPermission 전");
+    //   requestPermission();
+    //   console.log("handleRequestPermission 후");
+    // } catch (error) {
+    //   console.error("handleRequestPermission 호출 중 오류 발생:", error);
+    // }
   };
 
-  const handlePushAlarmByLocalStorage = async () => {
-    try {
-      // 여기서 API 호출
-      console.log("getPushAlarmByLocalStorage 전");
-      getPushAlarmByLocalStorage();
-      console.log("getPushAlarmByLocalStorage 후");
-    } catch (error) {
-      console.error("getPushAlarmByLocalStorage 호출 중 오류 발생:", error);
-    }
-  };
+  // const handlePushAlarmByLocalStorage = async () => {
+
+  //   try {
+  //     // 여기서 API 호출
+  //     console.log("getPushAlarmByLocalStorage 전");
+  //     getPushAlarmByLocalStorage();
+  //     console.log("getPushAlarmByLocalStorage 후");
+  //   } catch (error) {
+  //     console.error("getPushAlarmByLocalStorage 호출 중 오류 발생:", error);
+  //   }
+  // };
 
   return (
     <div style={backgroundStyle} className="min-h-screen bg-cover bg-center">
       <div className="h-[72vh]">
         <div className="h-[5vh]"></div>
         <div className="h-[32vh]">
-          Adventure of Heendy
+          {/* Adventure of Heendy */}
         </div>
         {/* <div className="h-[25vh] overflow-hidden">
           <img src={loadingHeendy} className="h-[25vh] w-auto object-cover" />
@@ -69,13 +72,8 @@ function LoginScreen() {
           </button>
         </div>
         <div>
-          <button className="ml-[10vw]" onClick={handleRequestPermission}>
+          <button className="ml-[10vw]" onClick={routeToMain}>
             <img src={googleLogin} className="w-[80vw]" />
-          </button>
-        </div>
-        <div>
-          <button className="ml-[10vw]" onClick={handlePushAlarmByLocalStorage}>
-            <img src={kakaoLogin} className="w-[80vw]" />
           </button>
         </div>
       </div>
