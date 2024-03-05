@@ -18,34 +18,22 @@ function DisplayShopDetails({ details }) {
   const { name, floor, phone, avgScore, description } = details;
 
   return (
-    <div className="font-sans text-left w-full h-full px-4">
-      <p className="font-bold text-3xl mb-4">{name}</p>
-      <div className="flex mb-2">
-        <div className="">
-          <img src={floorIcon} className="h-[2vh] " />
-        </div>
-        <div className="flex-1 ml-4 text-xl">
-          <p className="inline-block align-top text-[2ch]">{floor}층</p>
-        </div>
+    <div className="w-full px-4 py-4 font-sans text-left">
+      <p className="mb-6 text-4xl font-bold">{name}</p> {/* 폰트 크기와 마진 조정 */}
+      <div className="flex items-center mb-4"> {/* 아이템들을 중앙에 정렬하고 마진 조정 */}
+        <img src={floorIcon} className="h-6 mr-4" alt="Floor icon" /> {/* 아이콘 크기 및 마진 조정 */}
+        <p className="text-lg font-bold">{floor}층</p> {/* 텍스트 크기 조정 */}
       </div>
-      <div className="flex mb-4">
-        <div className="flex-none h-[2vh]">
-          <img src={numberIcon} className="h-[2vh]" />
-        </div>
-        <div className="flex-1 ml-4 text-xl">
-          <p>{phone}</p>
-        </div>
+      <div className="flex items-center mb-4">
+        <img src={numberIcon} className="h-6 mr-4" alt="Phone icon" /> {/* 아이콘 크기 및 마진 조정 */}
+        <p className="text-lg font-bold">{phone}</p>
       </div>
-      <div className="flex mb-2">
-        <div className="flex-none">
-          <img src={ratingIcon} className="h-[2vh]" />
-        </div>
-        <div className="flex-1 ml-2 mr-0 pr-0 ">
-          <InputRatingStar rating={avgScore} readOnly={true} />
-        </div>
-        {/* <div className="flex-1">4.2점</div> */}
+      <div className="flex items-center mb-6">
+        <img src={ratingIcon} className="h-6 mr-4" alt="Rating icon" /> 
+        <InputRatingStar rating={avgScore} readOnly={true} /> 
+        <p className='ml-3 font-bold'>{avgScore}점</p>
       </div>
-      <p className="text-xs w-full h-full">{description}</p>
+      <p className="text-lg">{description}</p> 
     </div>
   );
 }
