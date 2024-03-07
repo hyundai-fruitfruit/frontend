@@ -10,7 +10,6 @@ import confetti from 'canvas-confetti';
 
 const useFirework = () => {
   useEffect(() => {
-    // 컴포넌트가 마운트될 때만 폭죽 효과를 실행
     firework();
   }, []);
 
@@ -45,6 +44,7 @@ const useFirework = () => {
       );
     }, 250);
   }
+  return { firework };
 };
 
 export default useFirework;

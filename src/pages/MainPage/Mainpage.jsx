@@ -6,14 +6,16 @@
  * @modify date 2024-02-24 04:35:36
  * @desc 흰디 메인페이지
  */
-import React, { useState, Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 // redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 // 3d 관련
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-
+//redux
+import { addExperience } from 'store/features/LevelSlice';
+//component
 import SpeechBubble from 'components/SpeechBubble/SpeechBubble';
 import IconMenu from 'components/IconMenu/IconMenu';
 import ModalComponent from 'components/ModalComponent/ModalComponent';
@@ -70,10 +72,18 @@ function MainPage() {
   const selectedBackOption = useSelector((state) => state.room.selectedBackOption);
 
   const navigate = useNavigate();
-  const [exp] = useState(50);
+  const dispatch = useDispatch();
 
+  const experience = useSelector((state) => state.exp.experience);
 
-  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      dispatch(addExperience(0));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [dispatch]);
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       {/* 헤더 두 개 */}
@@ -101,15 +111,15 @@ function MainPage() {
           </Canvas>
         </div>
       </div>
-      
+
       <div className="w-5/6 border rounded-2xl px-4 py-4 mb-[8vh]">
         <div className="grid grid-rows-1 grid-flow-col grid-cols-3 text-center mb-6 items-end">
           <span className="text-left font">초심자</span>
           <span className="text-xl font">흰둥이</span>
-          <span className="text-right font">{exp}%</span>
+          <span className="text-right font">{experience}%</span>
         </div>
         <div className="mb-5">
-          <ProgressBar fromValue={0} toValue={exp} />
+          <ProgressBar fromValue={0} toValue={experience} />
         </div>
         <IconMenu
           icons={iconsData}
