@@ -6,6 +6,8 @@
  * @desc [description]
  */
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addExperience } from 'store/features/LevelSlice';
 
 //component
 import CouponCard from 'components/CouponCard/CouponCard';
@@ -25,8 +27,11 @@ function TestPage() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
+  const dispatch = useDispatch();
+
   const handleIsEvent = () => {
     setIsEvent((prevIsEvent) => !prevIsEvent);
+    dispatch(addExperience(100));
   };
 
   console.log(events);

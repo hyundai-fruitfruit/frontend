@@ -25,13 +25,17 @@ const MainHeader = () => {
     navigate('/main');
   };
 
+  const routeToCaptinHeendy = () => {
+    navigate('/captainHeendy');
+  };
+
   return (
     <div className="fixed top-0 flex flex-row justify-between items-center space-x-2 w-full h-[6vh] border-b font-bold">
       <div className="flex items-center justify-start ml-6" onClick={routeToMain}>
         <img src={mainTent} className="h-6" />
         <span className="text-l ml-3 mt-2 items-center">흰디의 모험</span>
       </div>
-      <div className="flex border-1 rounded-xl items-center p-1">
+      <div className="flex border-1 rounded-xl items-center p-1" onClick={routeToCaptinHeendy}>
         <span className="mr-2">대장 흰디</span>
         <img src={mainCapHeendy} className="mr-3 h-[3vh] z-[-1]" />
       </div>
