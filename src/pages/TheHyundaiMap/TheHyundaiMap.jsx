@@ -1,9 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import MapDetail from '../../assets/images/map.png';
 import CaptainHeendy from '../../assets/images/onboarding_icon.png';
 
-
 function Map() {
+  const navigate = useNavigate();
 
   const backStyle = {
     backgroundImage: `url(${MapDetail})`,
@@ -26,7 +27,7 @@ function Map() {
   };
 
   const handleCaptainHeendyAsk = () => {
-    window.location.href = '/captainHeendy';
+    navigate('/captainHeendy');
   };
 
   return (

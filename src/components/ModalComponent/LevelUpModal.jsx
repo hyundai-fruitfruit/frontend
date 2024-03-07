@@ -5,7 +5,7 @@
  * @modify date 2024-03-07 09:46:18
  * @desc 레벨업 시 모달
  */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetLevelUp } from 'store/features/LevelSlice';
 
@@ -14,14 +14,23 @@ import useFirework from 'hooks/animation/useFirework';
 const LevelUpModal = () => {
   const { level, levelUp } = useSelector((state) => state.exp);
   const dispatch = useDispatch();
-  const { firework } = useFirework();
+  const firework = useFirework();
 
-  if (levelUp) {
-    firework();
-  }
+  useEffect(() => {
+    if (levelUp) {
+      console.log(levelUp);
+      firework();
+    }
+  }, [levelUp]);
 
   const handleClose = () => {
     dispatch(resetLevelUp());
+  };
+
+  const handleOutsideClick = (event) => {
+    if (event.target.id === 'modal-backdrop') {
+      handleClose();
+    }
   };
 
   if (!levelUp) {
@@ -34,7 +43,6 @@ const LevelUpModal = () => {
         return <p>축하합니다! 레벨 1에 도달하여 쿠폰 A를 받았습니다!</p>;
       case 2:
         return <p>축하합니다! 레벨 2에 도달하여 아이템 B를 받았습니다!</p>;
-      // 각 레벨에 따른 추가 케이스를 여기에 구현합니다.
       case 3:
       case 4:
       case 5:
@@ -46,7 +54,11 @@ const LevelUpModal = () => {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+    <div
+      id="modal-backdrop"
+      className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center"
+      onClick={handleOutsideClick}
+    >
       <div className="modal-content bg-white p-5 rounded-lg">
         <h2 className="text-lg font-bold">축하합니다!</h2>
         {renderRewardContent(level)}
