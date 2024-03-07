@@ -110,11 +110,14 @@ export const AdventureStartContent = ({ openModal, closeModal }) => {
 
 export const CertificationSuccess = () => {
   const firework = useFirework();
+  useEffect(() => {
+    firework();
+  });
   return (
     <div className="flex flex-col">
       <div className="text-center font-bold mb-2 text-2xl">인증이 완료되었습니다.</div>
       <div className="flex justify-center">
-        <img src={hiHeendy} onClick={firework} />
+        <img src={hiHeendy} />
       </div>
     </div>
   );

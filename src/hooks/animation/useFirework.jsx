@@ -5,16 +5,10 @@
  * @modify date 2024-02-25 07:15:41
  * @desc 폭죽 효과 애니메이션
  */
-import { useEffect } from 'react';
 import confetti from 'canvas-confetti';
 
 const useFirework = () => {
-  useEffect(() => {
-    // 컴포넌트가 마운트될 때만 폭죽 효과를 실행
-    firework();
-  }, []);
-
-  function firework() {
+  const firework = () => {
     const duration = 15 * 100;
     const animationEnd = Date.now() + duration;
     const defaults = { startVelocity: 25, spread: 360, ticks: 50, zIndex: 100 };
@@ -44,7 +38,9 @@ const useFirework = () => {
         }),
       );
     }, 250);
-  }
+  };
+
+  return firework;
 };
 
 export default useFirework;

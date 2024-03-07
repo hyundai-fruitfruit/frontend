@@ -2,7 +2,7 @@
  * @author 오수영
  * @email osy9757@gmail.com
  * @create date 2024-02-18 10:18:42
- * @modify date 2024-03-05 10:33:10
+ * @modify date 2024-03-07 09:50:19
  * @desc App.js
  */
 import { Provider } from 'react-redux';
@@ -36,6 +36,7 @@ import RandomSpotResult from 'pages/RandomEventSpot/RandomSpotResult';
 import EventDetail from 'pages/RandomEventSpot/EventDetail';
 
 import ChatBot from 'pages/ChatBot/ChatBot';
+import LevelUpModal from 'components/ModalComponent/LevelUpModal';
 
 const router = createBrowserRouter([
   {
@@ -76,6 +77,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <RouterProvider router={router} />
+      <LevelUpModal />
     </Provider>
   );
 };
