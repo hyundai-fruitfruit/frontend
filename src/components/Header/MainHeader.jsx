@@ -30,7 +30,7 @@ const MainHeader = () => {
   };
 
   return (
-    <div className="fixed top-0 flex flex-row justify-between items-center space-x-2 w-full h-[6vh] border-b font-bold">
+    <div className="fixed top-0 flex flex-row justify-between items-center space-x-2 w-full h-[6vh] border-b font-bold bg-white">
       <div className="flex items-center justify-start ml-6" onClick={routeToMain}>
         <img src={mainTent} className="h-6" />
         <span className="text-l ml-3 mt-2 items-center">흰디의 모험</span>

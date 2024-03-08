@@ -1,8 +1,8 @@
 import React from 'react';
 // 아이콘
-import mainWeather from 'assets/icons/Glowing star.png';
-import mainCandy from 'assets/icons/Candy.png';
-import mainMailbox from 'assets/icons/mailBox.png';
+import iconWeather from 'assets/icons/icon-weather.png';
+import iconMood from 'assets/icons/icon-mood.png';
+import iconLoveLetter from 'assets/icons/icon-love-letter.png';
 
 // FCM 관련 메소드
 import { getPushAlarmByLocalStorage } from '../../apis/request';
@@ -54,21 +54,21 @@ const routeFriendGame = async () => {
 };
 const SubHeader = () => {
   return (
-    <div className="flex w-3/4 mx-auto justify-between mt-10 mb-1">
-      <div className="flex border rounded-xl h-10 items-center m-0 p-0">
-        <img src={mainWeather} className="h-6 ml-2" />
-        <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center" onClick={handlePushAlarmByLocalStorage}>
+    <div className="flex w-3/4 mx-auto justify-between mt-20 mb-6">
+      <div className="flex border rounded-xl h-10 items-center">
+        <img src={iconWeather} className="h-6 ml-3" />
+        <span className="flex h-[3vh] ml-2 mr-3 p-0 text-sm items-center" onClick={handlePushAlarmByLocalStorage}>
           오늘의 날씨
         </span>
       </div>
-      <div className="flex border rounded-xl h-10 items-center m-0 p-0" onClick={handleRequestPermission}>
-        <img src={mainCandy} className="h-6 ml-2" />
-        <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center">14/15</span>
+      <div className="flex border rounded-xl h-10 items-center" onClick={handleRequestPermission}>
+        <img src={iconMood} className="h-6 ml-3" />
+        <span className="flex h-[3vh] ml-2 mr-3 p-0 text-sm items-center">기분</span>
       </div>
-      <div className="flex border rounded-xl h-10 items-center m-0 p-0">
-        <img src={mainMailbox} className="h-6 ml-2" />
-        <span className="flex h-[3vh] m-1 mr-3 p-0 text-sm items-center" onClick={routeFriendGame}>
-          5/10
+      <div className="flex border rounded-xl h-10 items-center">
+        <img src={iconLoveLetter} className="h-6 ml-3" />
+        <span className="flex h-[3vh] ml-2 mr-3 p-0 text-sm items-center" onClick={routeFriendGame}>
+          친구
         </span>
       </div>
     </div>

@@ -135,12 +135,10 @@ function MyRoom() {
   // };
 
   return (
-    <div className="main_container min-h-screen flex flex-col">
-      <div className="w-full h-[15vh]">
-        {/* 헤더 두 개 */}
-        <MainHeader />
-        <SubHeader />
-      </div>
+    <div className="flex flex-col">
+      {/* 헤더 두 개 */}
+      <MainHeader />
+      <SubHeader />
 
       {/* 캔버스 */}
       <div className="w-3/4 h-[64vh] mx-auto relative mt-1vh mb-10vh flex flex-col items-center justify-between">
