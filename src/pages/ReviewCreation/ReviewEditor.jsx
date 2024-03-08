@@ -17,6 +17,7 @@ import ImageScroll from 'components/ImageSlide/ImageScroll';
 import useCreateReview from 'hooks/useCreateReview';
 //assets
 import cameraIcon from 'assets/icons/camera_icon.png';
+import BlackButton from 'components/Button/BlackButton';
 
 function ReviewEditor() {
   const location = useLocation();
@@ -100,14 +101,16 @@ function ReviewEditor() {
           <ImageScroll images={attachedImages} size={'w-[10vh] h-[10vh] mx-1'} />
         </div>
       </div>
-      <div className="w-full">
+      <BlackButton onClick={handleReviewSubmission}>리뷰 작성하기</BlackButton>
+
+      {/* <div className="w-full">
         <button
           className="font-bold w-[90vw] bg-black text-white text-xl text-sm py-4 rounded-2xl fixed bottom-[5vh] left-[5vw]"
           onClick={handleReviewSubmission}
         >
           리뷰 등록하기
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

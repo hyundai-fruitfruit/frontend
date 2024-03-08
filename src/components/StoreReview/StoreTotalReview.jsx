@@ -6,11 +6,11 @@
  * @desc 매장 상세페이지 리뷰탭 전체 출력 형식 컴포넌트
  */
 
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import StoreHashTag from './StoreHashTag';
 import StoreReviewPage from './StoreReviewPage';
+import BlackButton from 'components/Button/BlackButton';
 
 function StoreTotalReview({ image, shopName, details }) {
   const navigate = useNavigate();
@@ -26,14 +26,15 @@ function StoreTotalReview({ image, shopName, details }) {
       <div>
         <StoreReviewPage details={details} />
       </div>
-      <div className="w-full">
+      <BlackButton onClick={handleReviewPage}>리뷰 작성하기</BlackButton>
+      {/* <div className="w-full">
         <button
           className="font-bold w-[94vw] bg-black text-white text-sm py-4 rounded-md fixed bottom-[0vh] left-[3vw]"
           onClick={handleReviewPage}
         >
           리뷰 작성하기
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
