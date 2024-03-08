@@ -19,6 +19,8 @@ import useStoreDetails from 'hooks/useStoreDetails';
 
 const imagePaths = ['/images/smt_lounge1.jpeg', '/images/smt_lounge2.jpeg', '/images/smt_lounge3.jpeg'];
 
+//const menu = "https://fruitfruit.s3.ap-northeast-2.amazonaws.com/etc/menu.png";
+
 const shopDetails = {
   name: 'SMT 라운지',
   floor: '6층',
@@ -56,6 +58,7 @@ function storeDetail() {
           <ImageSlide images={imagePaths} />
           <DisplayShopDetails details={details} />
       </div>
+      
       <div className="flex flex-col items-center justify-start min-h-[50vh]  w-full">
         <div className=" w-full h-[7vh]">
           <DisplayShopTabs activeTab={activeTab} setActiveTab={setActiveTab} />
