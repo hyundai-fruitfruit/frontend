@@ -7,7 +7,7 @@ module.exports = {
       colors: {
         customPink: '#FF7070',
         customgreen: '#57AD80',
-        customgrey: '#F8F8F8',
+        customgrey: '#F1F2F4',
       },
       boxShadow: {
         'clay-card':

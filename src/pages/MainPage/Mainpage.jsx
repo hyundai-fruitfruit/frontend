@@ -122,7 +122,7 @@ function MainPage() {
       <div className="w-5/6 border rounded-2xl px-5 py-5">
         <div className="grid grid-rows-1 grid-flow-col grid-cols-3 text-center mb-6 items-end">
           <span className="text-left font font-semibold">Level 1</span>
-          <span className="text-xl font font-semibold">흰둥이</span>
+          <span className="font font-semibold">흰둥이</span>
           <span className="text-right font font-semibold">{experience}%</span>
         </div>
         <div className="mb-5">
