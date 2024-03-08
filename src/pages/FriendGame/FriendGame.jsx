@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /**
  * @author 오수영
  * @email osy9757@gmail.com
@@ -13,19 +14,18 @@
  * @desc 친구 페이지 API 연결, CSS 수정
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { findFriendList } from 'apis/request';
 
 // component
 import MainHeader from 'components/Header/MainHeader';
 import IconMenu from 'components/IconMenu/IconMenu';
-import BackgroundImage from 'components/BackgroundImage/BackgroundImage';
-import SpeechBubble from 'components/SpeechBubble/SpeechBubble';
 
-// asset
-import heendy_background from 'assets/images/heendy_background.png';
-import mainHeendyImage from 'assets/images/mainHeendyImage.png';
+// 3d 관련
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import Bird from 'assets/models/Bird';
 
 function FriendGame() {
   const navigate = useNavigate();
@@ -51,13 +51,21 @@ function FriendGame() {
       <div className="mt-20 h-15">
         {iconsData && <IconMenu icons={iconsData} />} 
       </div>
-      <div>
-        <SpeechBubble boldText={"친구를 선택하고 게임을 시작해봐!"} />
-      </div>
-      <div className="mb-8 relative w-[85vw] h-[42vh] mx-auto">
-        <BackgroundImage imageUrl={heendy_background} />
-        <img src={mainHeendyImage} alt="캐릭터" className="absolute inset-0 h-[30vh] w-auto mx-auto my-auto mb-0" />
-      </div>
+
+      <div className="w-3/4 h-[64vh] mx-auto relative mt-1vh mb-10vh flex flex-col items-center justify-between">
+        <div className="mt-5vh mb-5vh w-full h-full">
+          <Canvas className="mb-5vh bg-gray-100">
+            <OrbitControls />
+            <ambientLight intensity={4} />
+            <directionalLight position={[-2, 5, 2]} intensity={4} />
+            <Suspense fallback={null}>
+              <Bird />
+            </Suspense>
+          </Canvas>
+        </div>
+        </div>
+
+
       <div className='border border-gray-200 rounded-xl mx-6 flex flex-col justify-around items-center h-52'>
         <p>흰순이와 게임할래?</p>
         <div className='flex justify-between items-center w-full px-7'>
