@@ -6,12 +6,16 @@
  * @desc 랜덤 스팟 결과
  */
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import RandomspotResult from '../../assets/images/randomspot_result.png';
 import BtnYes from '../../assets/images/btn_random_go.png';
 import BtnNo from '../../assets/images/btn_random_next.png';
 import MainHeader from 'components/Header/MainHeader';
 
 function RandomSpotResult() {
+    const navigate = useNavigate();
+
     const containerStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -50,22 +54,14 @@ function RandomSpotResult() {
         height: 'auto',
         marginRight: '6vw', // Add margin between buttons
     };
-
-    const handleGoBtn = () => {
-      window.location.href = '/eventDetail';
-    };
-
-    const handleNextBtn = () => {
-        window.location.href = '/main';
-    };
   
     return (
       <div style={containerStyle}>
         <MainHeader />
         <div style={backStyle}>
             <div style={buttonContainerStyle}>
-                <img src={BtnNo} style={noBtnStyle} alt="No" onClick={handleNextBtn}/>
-                <img src={BtnYes} style={yesBtnStyle} alt="Yes" onClick={handleGoBtn}/>
+                <img src={BtnNo} style={noBtnStyle} alt="No" onClick={() => navigate('/eventDetail')}/>
+                <img src={BtnYes} style={yesBtnStyle} alt="Yes" onClick={() => navigate('/main')}/>
             </div>
         </div>
       </div>
