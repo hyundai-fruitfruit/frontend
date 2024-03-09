@@ -7,15 +7,15 @@
  */
 
 import React from 'react';
-import RandomspotSelect from '../../assets/images/randomspot_back.png';
+import { useNavigate } from 'react-router-dom';
 
+import RandomspotSelect from '../../assets/images/randomspot_back.png';
 import BtnFood from '../../assets/images/btn_food.png';
 import BtnCafe from '../../assets/images/btn_cafe.png';
 import BtnShopping from '../../assets/images/btn_shopping.png';
 import BtnRandom from '../../assets/images/btn_random.png';
 
 import MainHeader from 'components/Header/MainHeader';
-
 
 function RandomSpotPush() {
     const backStyle = {
@@ -49,10 +49,6 @@ function RandomSpotPush() {
       width: '35vw',
       height: '35vw'
     };
-
-    const handleShoppingBtn = () => {
-      window.location.href = '/randomSpotResult';
-    };
   
     return (
       <div style={containerStyle}>
@@ -63,7 +59,7 @@ function RandomSpotPush() {
             <div style={buttonContainerStyle}>
                 <img src={BtnFood} alt="Food" style={buttonStyle} />
                 <img src={BtnCafe} alt="Cafe" style={buttonStyle} />
-                <img src={BtnShopping} alt="Shopping" style={buttonStyle} onClick={handleShoppingBtn}/>
+                <img src={BtnShopping} alt="Shopping" style={buttonStyle} onClick={() => navigate('/randomSpotResult')}/>
                 <img src={BtnRandom} alt="Random" style={buttonStyle} />
             </div>
           </div>

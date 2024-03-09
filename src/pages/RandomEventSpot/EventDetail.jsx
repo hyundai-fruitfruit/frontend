@@ -6,6 +6,8 @@
  * @desc 랜덤 스팟 - 이벤트 상세
  */
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 // import EventBanner from '../../assets/images/event3.png';
 import EventBanner from '../../assets/images/event1.png';
 import StoreBanner from '../../assets/images/event2.png';
@@ -17,6 +19,8 @@ import MainHeader from 'components/Header/MainHeader';
 //import BlackButton from '../../components/Button/BlackButton';
 
 function EventDetail() {
+    const navigate = useNavigate();
+
     const containerStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -55,23 +59,15 @@ function EventDetail() {
         marginTop: '2vh',
         marginBottom: '5vh'
     };
-    
-    const routeToStoreDetail = async () => {
-        window.location.href = '/storeDetail/2';
-    };
-
-    const routeToEventDetail = async () => {
-        window.location.href = '/couponTab';
-    };
 
     return (
       <div style={containerStyle}>
         <MainHeader />
         <div style={storeStyle}></div>
         {/* 이후 매장 상세는 챗봇에 연결하기! */}
-        <img src={BtnStore} style={buttonStyle} alt="BtnStore" onClick={routeToStoreDetail}/>
+        <img src={BtnStore} style={buttonStyle} alt="BtnStore" onClick={() => navigate('/storeDetail/2')}/>
         <div style={eventStyle}></div>
-        <img src={BtnEvent} style={buttonStyle} alt="BtnEvent" onClick={routeToEventDetail} />
+        <img src={BtnEvent} style={buttonStyle} alt="BtnEvent" onClick={() => navigate('/couponTab')}/>
       </div>
     );
 }
