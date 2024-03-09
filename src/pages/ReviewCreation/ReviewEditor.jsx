@@ -1,22 +1,49 @@
-/**
- * @author 오수영
- * @email osy9757@gmail.com
- * @create date 2024-02-22 03:37:46
- * @modify date 2024-03-02 15:33:50
- * @desc 리뷰 글 작성및 이미지 첨부 페이지
- */
-
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-//component
 import Header from 'components/Header/Header';
 import InputRatingStar from 'components/RatingStar/InputRatingStar';
 import HashtagElement from 'components/StoreReview/HashtagElement';
 import ImageScroll from 'components/ImageSlide/ImageScroll';
-//hook
-import useCreateReview from 'hooks/useCreateReview';
-//assets
+import BlackButton from 'components/Button/BlackButton';
 import cameraIcon from 'assets/icons/camera_icon.png';
+import axios from 'axios';
+
+const createReview = async (storeId, reviewReqDto, imageList, memberId) => {
+  console.log()
+
+  try {
+    const formData = new FormData();
+    //formData.append('reviewReqDto', JSON.stringify(reviewReqDto)); // reviewReqDto를 문자열로 변환하여 FormData에 추가
+    // const reviewReqDto = JSON.stringify(reviewReqDto);
+    
+    formData.append('reviewReqDto', new Blob([reviewReqDto], {type: 'application/json'}));
+    
+    if (imageList) {
+      imageList.forEach((image, index) => {
+        formData.append(`imageList[${index}]`, image); // imageList의 각 이미지를 FormData에 추가
+      });
+    }
+
+    const response = await axios.post(
+      `http://localhost:8080/api/v1/stores/${storeId}/reviews`,
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzMiIsImlhdCI6MTcwNzk3MzU3MiwiZXhwIjoyMDcwODUzNTcyfQ.XwBiQxnJUzSSdhLOQQj3aKS5erufHTuIgD0mGNw576iHLZmGjc5ei8ks2MgVV6m6SvNE3EjuK8GqnZqxhOKvXQ', // 필요한 경우에만 토큰을 추가
+        },
+        params: { memberId }, // URL에 쿼리 파라미터로 memberId를 전달할 경우
+      }
+    );
+
+    console.log('리뷰 작성 결과:', response);
+    return response;
+  } catch (error) {
+    console.error('리뷰 작성 중 오류 발생:', error);
+    //console.error('localStorage.getItem(at):', localStorage.getItem('accessToken'));
+    throw error; // 오류를 상위 컴포넌트로 전달하거나 처리
+  }
+};
 
 function ReviewEditor() {
   const location = useLocation();
@@ -24,22 +51,29 @@ function ReviewEditor() {
   const { rating: initialRating, selectedTags, details } = location.state || {};
   const [userRating, setUserRating] = useState(initialRating || 0);
   const [reviewContent, setReviewContent] = useState('');
+  // const [selectedTagIds, setSelectedTagIds] = useState([]);
   const [attachedImages, setAttachedImages] = useState([]);
 
-  const { submitReview } = useCreateReview();
+  console.log("selectedTags : " + selectedTags)
+  console.log("selectedTags.type : " + typeof(selectedTags))
+  console.log("[101, 103].type : " + typeof([101, 103]))
+  console.log("Array.of(selectedTags) : " + Array.of(selectedTags))
 
   const handleReviewSubmission = async () => {
-    const reviewRequDto = {
+    const reviewReqDto = JSON.stringify({
       score: userRating,
       content: reviewContent,
-      hashtagIds: selectedTags.map((tag) => tag.id),
-    };
+      hashtagIds: [101, 103]
+    });
+
+  console.log("reviewReqDto : " + reviewReqDto.hashtagIds)
+
     try {
-      await submitReview(details.id, reviewRequDto);
-      console.log(details.id, reviewRequDto);
-      await '리뷰가 성공적으로 등록되었습니다.';
+      await createReview(details.id, reviewReqDto, attachedImages);
+      alert('리뷰가 성공적으로 등록되었습니다.');
       navigate('/storeDetail/2');
     } catch (error) {
+      console.log('리뷰 등록에 실패하였습니다');
       alert('리뷰 등록에 실패하였습니다.');
     }
   };
@@ -100,14 +134,7 @@ function ReviewEditor() {
           <ImageScroll images={attachedImages} size={'w-[10vh] h-[10vh] mx-1'} />
         </div>
       </div>
-      <div className="w-full">
-        <button
-          className="font-bold w-[90vw] bg-black text-white text-xl text-sm py-4 rounded-2xl fixed bottom-[5vh] left-[5vw]"
-          onClick={handleReviewSubmission}
-        >
-          리뷰 등록하기
-        </button>
-      </div>
+      <BlackButton onClick={handleReviewSubmission}>리뷰 작성하기</BlackButton>
     </div>
   );
 }

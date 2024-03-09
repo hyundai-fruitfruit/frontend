@@ -10,14 +10,16 @@ import DropdownMenu from 'components/DropdownMenu/DropdownMenu';
 import StoreReviewList from './StoreReviewList';
 
 function StoreReviewPage({ details }) {
+  
   const reviewCount = Array.isArray(details.reviews) ? details.reviews.length : 0;
 
   return (
     <div>
       <div className="flex flex-row justify-between">
-        <p className="m-4 text-lg">총 {reviewCount}개의 리뷰</p>
+        <p className="ml-10 m-4 text-lg">총 {reviewCount}개의 리뷰</p>
         <DropdownMenu />
       </div>
+      {/* 전체 리뷰들 리스트 */}
       <div>
         <StoreReviewList details={details} />
       </div>

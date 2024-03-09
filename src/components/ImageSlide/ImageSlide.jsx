@@ -25,7 +25,9 @@ const ImageSlide = ({ images }) => {
             className={`duration-700 ease-in-out ${index === activeIndex ? 'block' : 'hidden'}`}
             data-carousel-item
           >
-            <img src={image} className="w-full h-[40vh] p-2 rounded-extra" alt={`Slide ${index + 1}`} />
+          <div className="flex justify-center items-center">
+            <img src={image} className="w-[84vw] h-[38vh] p-2 rounded-extra" alt={`Slide ${index + 1}`} />
+          </div>
           </div>
         ))}
       </div>
@@ -34,7 +36,7 @@ const ImageSlide = ({ images }) => {
           <button
             key={index}
             type="button"
-            className={`w-3 h-3 rounded-full ${index === activeIndex ? 'bg-gray-500' : 'bg-gray-200'}`}
+            className={`w-2.5 h-2.5 rounded-full ${index === activeIndex ? 'bg-gray-500' : 'bg-gray-200'}`}
             aria-current={index === activeIndex ? 'true' : 'false'}
             aria-label={`Slide ${index + 1}`}
             onClick={() => goToSlide(index)}

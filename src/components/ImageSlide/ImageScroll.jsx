@@ -7,14 +7,17 @@
  */
 import React from 'react';
 
-function ImageScroll({ images = [], size = 'w-32 h-32 m-1' }) {
+const size = 'w-32 h-32 m-1'
+// { images = [],  }
+function ImageScroll(images) {
   if (!Array.isArray(images)) return null;
+  console.log("ImageScroll images => " + images);
 
   return (
     <div className="overflow-x-auto flex flex-row">
-      {images.map((src, index) => (
+      {images.map((imgUrl, index) => (
         <div key={index} className="flex-none">
-          <img className={`rounded-xl ${size}`} src={src} alt={`Image ${index + 1}`} />
+          <img className={`rounded-xl ${size}`} src={imgUrl} alt={`Image ${index + 1}`} />
         </div>
       ))}
     </div>

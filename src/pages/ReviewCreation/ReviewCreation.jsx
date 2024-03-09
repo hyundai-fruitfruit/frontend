@@ -12,6 +12,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Header from 'components/Header/Header';
 import InputRatingStar from 'components/RatingStar/InputRatingStar';
 import HashtagSelection from 'components/StoreReview/HashtagSelection';
+import BlackButton from 'components/Button/BlackButton';
 
 function ReviewCreation() {
   const location = useLocation();
@@ -44,14 +45,16 @@ function ReviewCreation() {
       <InputRatingStar rating={rating} setRating={setRating} />
       <hr className="m-8" />
       <HashtagSelection selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
-      <div className="w-full">
+      <BlackButton onClick={handleReviewPage}>다음으로</BlackButton>
+
+      {/* <div className="w-full">
         <button
           className="font-bold w-[94vw] bg-black text-white text-sm py-4 rounded-2xl fixed bottom-[0vh] left-[3vw]"
           onClick={handleReviewPage}
         >
           다음으로
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
