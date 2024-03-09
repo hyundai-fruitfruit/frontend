@@ -30,6 +30,7 @@ function RandomSpotPush() {
     };
 
     const containerStyle = {
+      marginTop: '1vh',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'flex-start',
@@ -38,14 +39,15 @@ function RandomSpotPush() {
     };
   
     const buttonContainerStyle = {
+      marginTop: '1.5vh',
       display: 'grid',
       gridTemplateColumns: 'repeat(2, 1fr)',
       gridGap: '10px',
     };
   
     const buttonStyle = {
-      width: '36vw',
-      height: '36vw'
+      width: '35vw',
+      height: '35vw'
     };
 
     const handleShoppingBtn = () => {

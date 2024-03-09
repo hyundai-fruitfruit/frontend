@@ -9,7 +9,11 @@ import React from 'react';
 
 import ImageScroll from 'components/ImageSlide/ImageScroll';
 
-function StoreReview({ name, score, imageSrcs, review, date, likes }) {
+function StoreReview({ name, score, images, review }) {
+  console.log("images " + images);
+  console.log("score " + score);
+  console.log("name " + name);
+
   return (
     <div className="flex flex-col w-full border-b-8">
       <div className="p-4">
@@ -27,16 +31,16 @@ function StoreReview({ name, score, imageSrcs, review, date, likes }) {
           </div>
         </div>
         <div className="mt-2">
-          <ImageScroll images={imageSrcs} />
+          <ImageScroll images={images} />
           <p className="text-gray-700 text-sm mt-2">{review}</p>
         </div>
-        <div className="flex items-center justify-between mt-2">
+        {/* <div className="flex items-center justify-between mt-2">
           <div className="text-xs text-gray-600">{date}</div>
           <div className="flex items-center text-xs text-gray-600 border p-1 rounded-md">
             <span>👍 </span>
             <span className="ml-1 pl-1">{likes}</span>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

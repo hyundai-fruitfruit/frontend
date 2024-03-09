@@ -19,6 +19,7 @@ import useStoreDetails from 'hooks/useStoreDetails';
 
 const imagePaths = ['/images/smt_lounge1.jpeg', '/images/smt_lounge2.jpeg', '/images/smt_lounge3.jpeg'];
 
+
 const shopDetails = {
   name: 'SMT 라운지',
   floor: '6층',
@@ -44,18 +45,24 @@ function storeDetail() {
   const tabComponents = {
     mainMenu: <StoreMenuList />,
     review: <StoreTotalReview image={imagePaths[0]} shopName={shopDetails.name} details={details} />,
+    // review: <StoreTotalReview id = {id}/>,
     visitVerification: <div>visitVerification</div>,
   };
+  console.log('storeDetail ');
+
   console.log(id);
   console.log(details);
 
   return (
     <div className="flex flex-col w-full overflow-auto">
+      <div className="flex flex-col px-7 mt-5">
+      </div>
       <Header text={'매장 정보'} />
-      <div className="flex flex-col px-7">
+      <div className="flex flex-col px-7 mt-5">
           <ImageSlide images={imagePaths} />
           <DisplayShopDetails details={details} />
       </div>
+      
       <div className="flex flex-col items-center justify-start min-h-[50vh]  w-full">
         <div className=" w-full h-[7vh]">
           <DisplayShopTabs activeTab={activeTab} setActiveTab={setActiveTab} />

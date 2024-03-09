@@ -15,10 +15,15 @@ const useStoreDetails = (storeId) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+
+
     const fetchDetails = async () => {
       try {
         const response = await fetchStoreDetails(storeId);
         setDetails(response);
+
+        console.log("useStoreDetails => response 출력" + response.data );
+
       } catch (error) {
         setError(error);
       } finally {
