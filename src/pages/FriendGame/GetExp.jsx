@@ -16,7 +16,7 @@ function GetExp({ type, start, end }) {
     <div className="h-full">
       <div className="bg-[url('assets/images/heendy-background.png')] h-full">
         <div className="w-56 mx-auto pt-56">
-          <img src={imageUrl} className='mb-8'/>
+          <img src={imageUrl} className='mb-6'/>
           <ProgressBar fromValue={start} toValue={end} />
           <div className="grid grid-rows-1 grid-flow-col grid-cols-2 mb-6 items-end text-gray-300 font-bold">
             <span className='text-left'>Level 1</span>
