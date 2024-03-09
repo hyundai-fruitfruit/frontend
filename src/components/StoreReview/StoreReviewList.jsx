@@ -41,6 +41,9 @@ import StoreReview from './StoreReview';
 
 function StoreReviewList({ details }) {
   console.log(details);
+  console.log(details.reviews[2].images);
+
+
   return (
     <div>
       {details.reviews.map((review) => (
@@ -48,11 +51,18 @@ function StoreReviewList({ details }) {
           key={review.id}
           name={review.name}
           score={review.score}
-          imageSrcs={review.imageSrcs}
+          images={review.images}
           review={review.content}
-          date={review.date}
-          likes={review.likes}
         />
+      //   <StoreReview
+      //   key={review.id}
+      //   name={review.name}
+      //   score={review.score}
+      //   images={review.images}
+      //   review={review.content}
+      //   date={review.date}
+      //   likes={review.likes}
+      // />
       ))}
     </div>
   );

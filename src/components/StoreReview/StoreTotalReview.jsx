@@ -12,12 +12,19 @@ import StoreHashTag from './StoreHashTag';
 import StoreReviewPage from './StoreReviewPage';
 import BlackButton from 'components/Button/BlackButton';
 
+
+
 function StoreTotalReview({ image, shopName, details }) {
+// function StoreTotalReview({id}) {
+
+  console.log("StoreTotalReview => details 출력" + details );
+
   const navigate = useNavigate();
 
   const handleReviewPage = () => {
     navigate('/reviewCreation', { state: { image, shopName, details } });
   };
+
   return (
     <div className="w-full h-full">
       <div className="w-full h-full">

@@ -45,8 +45,11 @@ function storeDetail() {
   const tabComponents = {
     mainMenu: <StoreMenuList />,
     review: <StoreTotalReview image={imagePaths[0]} shopName={shopDetails.name} details={details} />,
+    // review: <StoreTotalReview id = {id}/>,
     visitVerification: <div>visitVerification</div>,
   };
+  console.log('storeDetail ');
+
   console.log(id);
   console.log(details);
 
