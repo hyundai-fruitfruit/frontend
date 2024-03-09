@@ -13,12 +13,14 @@
  * @desc 랜덤스팟 이벤트 참여 페이지 CSS 수정
  */
 import React, { useEffect }  from 'react';
+import { useNavigate } from 'react-router-dom';
 import MainHeader from 'components/Header/MainHeader';
 import BlackButton from 'components/Button/BlackButton';
 import EventCardDetail from 'assets/images/event-card-detail.png'
 import useFirework from 'hooks/animation/useFirework';
 
 function RandomEventSpotQRSuccess() {
+  const navigate = useNavigate();
   const firework = useFirework();
 
   useEffect(() => {
@@ -32,7 +34,7 @@ function RandomEventSpotQRSuccess() {
         <p className='text-center mb-6 text-base text-gray-600 font-bold'>이벤트에 참여해줘서 고마워</p>
         <img src={EventCardDetail} className='mb-6'/>
       </div>
-      <BlackButton>경험치 보상받기</BlackButton>
+      <BlackButton onClick={() => navigate('/getExp/encourage')}>경험치 보상받기</BlackButton>
     </div>
   );
 }

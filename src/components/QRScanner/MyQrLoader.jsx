@@ -47,7 +47,7 @@ function MyQrLoader() {
 
     return (
         <div className="flex items-center h-[40vh] mx-4 border-2 border-black rounded-xl overflow-hidden">
-            <img src={qrData} alt="QR code" className="w-full" />
+            <img src={qrData} className="w-full" />
         </div>
     )
 }

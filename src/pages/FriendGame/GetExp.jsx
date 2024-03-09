@@ -18,7 +18,7 @@ import ProgressBar from 'components/ModalBubbleContent/ProgressBar';
 const typeMap = {
   water: { exp: 10, route: '/friendGame', routeText: '친구 페이지로' }, // 친구 게임
   power: { exp: 20, route: '/main', routeText: '메인으로' }, // GPS
-  sandwich: { exp: 10, route: '/friendGame', routeText: '친구 페이지로' }, // 온라인 게임
+  sandwich: { exp: 10, route: '/storeDetail/2', routeText: '매장 페이지로' }, // 리뷰
   encourage: { exp: 30, route: '/main', routeText: '메인으로' }, // 이벤트
 };
 
