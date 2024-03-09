@@ -60,8 +60,8 @@ function RandomSpotResult() {
         <MainHeader />
         <div style={backStyle}>
             <div style={buttonContainerStyle}>
-                <img src={BtnNo} style={noBtnStyle} alt="No" onClick={() => navigate('/eventDetail')}/>
-                <img src={BtnYes} style={yesBtnStyle} alt="Yes" onClick={() => navigate('/main')}/>
+                <img src={BtnNo} style={noBtnStyle} alt="No" onClick={() => navigate('/main')}/>
+                <img src={BtnYes} style={yesBtnStyle} alt="Yes" onClick={() => navigate('/eventDetail')}/>
             </div>
         </div>
       </div>
