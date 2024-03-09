@@ -7,6 +7,7 @@
  * @desc 흰디 챗봇 - 매장 추천
  */
 
+import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import CaptainHeendyAsk from 'assets/images/captain_heendy.png';
 import BtnHeendyChatbot from 'assets/images/btn_heendy1.png';
@@ -14,6 +15,8 @@ import BtnEventNotice from 'assets/images/btn_heendy2.png';
 import MainHeader from 'components/Header/MainHeader';
 
 function CaptainHeendy() {
+    const navigate = useNavigate();
+
     const containerStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -49,11 +52,12 @@ function CaptainHeendy() {
 
     // TODO: 챗봇 페이지와 연결하기
     const handleHeendyChatbot = () => {
-      window.location.href = '/';
+      navigate('/chatBot');
+
     };
 
     const handleEventNotice = () => {
-      window.location.href = '/eventNotice';
+      navigate('/eventNotice');
     };
 
     return (
