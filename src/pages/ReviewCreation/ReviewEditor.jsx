@@ -71,7 +71,7 @@ function ReviewEditor() {
     try {
       await createReview(details.id, reviewReqDto, attachedImages);
       alert('리뷰가 성공적으로 등록되었습니다.');
-      navigate('/storeDetail/2');
+      navigate('/getExp/sandwich');
     } catch (error) {
       console.log('리뷰 등록에 실패하였습니다');
       alert('리뷰 등록에 실패하였습니다.');
