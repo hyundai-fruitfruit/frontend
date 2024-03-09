@@ -6,15 +6,20 @@
  * @modify date 2024-02-24 04:35:36
  * @desc 흰디 메인페이지
  */
-import React, { Suspense, useEffect } from 'react';
+/**
+ * @author 엄상은
+ * @email sangeun.e.9@gmail.com
+ * @create date 2024-03-08 20:31:19
+ * @modify date 2024-03-08 20:31:19
+ * @desc 흰디 메인페이지 레이아웃 조정
+ */
+import React, { Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 // redux
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 // 3d 관련
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-//redux
-import { addExperience } from 'store/features/LevelSlice';
 //component
 import SpeechBubble from 'components/SpeechBubble/SpeechBubble';
 import IconMenu from 'components/IconMenu/IconMenu';
@@ -72,20 +77,12 @@ function MainPage() {
   const selectedBackOption = useSelector((state) => state.room.selectedBackOption);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const experience = useSelector((state) => state.exp.experience);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      dispatch(addExperience(0));
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [dispatch]);
+  const level = useSelector((state) => state.exp.level);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center">
       {/* 헤더 두 개 */}
       <MainHeader />
       <SubHeader />
@@ -97,7 +94,7 @@ function MainPage() {
         <SpeechBubble boldText={'안녕, 나는 흰디야! 같이 모험할래?'} arrowPostion="right" />
       </div> */}
 
-      <div className="w-3/4 mb-8 relative h-[42vh] mx-auto">
+      <div className="w-3/4 mb-8 relative h-[46vh] mx-auto">
         <div className="mt-5vh mb-5vh w-full h-full">
           <Canvas className="mb-5vh bg-gray-100">
             <OrbitControls />
@@ -112,11 +109,11 @@ function MainPage() {
         </div>
       </div>
 
-      <div className="w-5/6 border rounded-2xl px-4 py-4 mb-[8vh]">
+      <div className="w-5/6 border rounded-2xl px-5 py-5">
         <div className="grid grid-rows-1 grid-flow-col grid-cols-3 text-center mb-6 items-end">
-          <span className="text-left font">초심자</span>
-          <span className="text-xl font">흰둥이</span>
-          <span className="text-right font">{experience}%</span>
+          <span className="text-left font font-semibold">Level {level}</span>
+          <span className="font font-semibold">흰둥이</span>
+          <span className="text-right font font-semibold">{experience}%</span>
         </div>
         <div className="mb-5">
           <ProgressBar fromValue={0} toValue={experience} />

@@ -50,23 +50,13 @@ function CaptainHeendy() {
         marginBottom: '2vh',
     };
 
-    // TODO: 챗봇 페이지와 연결하기
-    const handleHeendyChatbot = () => {
-      navigate('/chatBot');
-
-    };
-
-    const handleEventNotice = () => {
-      navigate('/eventNotice');
-    };
-
     return (
         <div style={containerStyle}>
             <MainHeader />
             <div style={backStyle}>
                 <div style={buttonContainerStyle}>
-                    <img src={BtnHeendyChatbot} style={buttonStyle} alt="Heendy Chatbot" onClick={handleHeendyChatbot}/>
-                    <img src={BtnEventNotice} style={buttonStyle} alt="EventNotice" onClick={handleEventNotice}/>
+                    <img src={BtnHeendyChatbot} style={buttonStyle} alt="Heendy Chatbot" onClick={() => navigate('/chatbot')}/>
+                    <img src={BtnEventNotice} style={buttonStyle} alt="EventNotice" onClick={() => navigate('/eventNotice')}/>
                 </div>
             </div>
         </div>

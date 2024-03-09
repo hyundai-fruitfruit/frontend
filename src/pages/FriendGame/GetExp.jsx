@@ -2,39 +2,52 @@
  * @author 엄상은
  * @email sangeun.e.9@gmail.com
  * @create date 2024-03-03 14:37:25
- * @modify date 2024-03-03 14:37:25
+ * @modify date 2024-03-09 10:46:19
  * @desc 경험치 얻는 페이지
  */
 
-import React, { useEffect, useState } from 'react';
-import startHeendy from 'assets/images/startHeendy.png';
-import SpeechBubble from 'components/SpeechBubble/SpeechBubble';
+import React, { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { addExperience } from 'store/features/LevelSlice';
 
-function GetExp({ type, start, end }) {
-  const imageUrl = `https://fruitfruit.s3.ap-northeast-2.amazonaws.com/dice/exp-${type}.png`;
+import MainHeader from 'components/Header/MainHeader';
+import BlackButton from 'components/Button/BlackButton';
+import ProgressBar from 'components/ModalBubbleContent/ProgressBar';
 
-  const [width, setWidth] = useState(`${start}%`);
+const typeMap = {
+  water: { exp: 10, route: '/friendGame', routeText: '친구 페이지로' }, // 친구 게임
+  power: { exp: 20, route: '/main', routeText: '메인으로' }, // GPS
+  sandwich: { exp: 10, route: '/friendGame', routeText: '친구 페이지로' }, // 온라인 게임
+  encourage: { exp: 30, route: '/main', routeText: '메인으로' }, // 이벤트
+};
+
+function GetExp() {
+  const { type } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const prevExperience = useSelector((state) => state.exp.experience);
+  const level = useSelector((state) => state.exp.level);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setWidth(`${end}%`);
-    }, 500);
+    dispatch(addExperience(typeMap[type].exp));
+  }, []);
 
-    return () => clearTimeout(timer);
-  }, [end]);
+  const imageUrl = `https://fruitfruit.s3.ap-northeast-2.amazonaws.com/dice/exp-${type}.png`;
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
-      <SpeechBubble addStyle={"flex flex-col justify-center items-center h-2/6"} boldText={"친구와 게임하고 경험치를 얻었어"}>
-        <img src={imageUrl} alt="경험치" className="h-44" />
-        <div className='relative w-32 h-2.5 bg-black'>
-          <div className='absolute left-0 top-0 h-full bg-white transition-all duration-1000 ease-in-out' style={{ width }}></div>
+    <div className="h-screen bg-[url('assets/images/heendy-background.png')] ">
+      <MainHeader />
+      <div className="w-56 mx-auto pt-56">
+        <img src={imageUrl} className='mb-6'/>
+        <ProgressBar fromValue={prevExperience} toValue={prevExperience+10} />
+        <div className="grid grid-rows-1 grid-flow-col grid-cols-2 mb-6 items-end text-gray-300 font-bold">
+          <span className='text-left'>Level {level}</span>
+          <span className='text-right'>Level {level+1}</span>
         </div>
-      </SpeechBubble>
-      <div className="flex justify-center items-center h-56">
-          <img className="h-full" src={startHeendy} />
       </div>
-    </div>
+      <BlackButton onClick={() => navigate(typeMap[type].route)}>{typeMap[type].routeText}</BlackButton>
+  </div>
   );
 }
 

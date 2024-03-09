@@ -20,7 +20,8 @@ import { findFriendList } from 'apis/request';
 
 // component
 import MainHeader from 'components/Header/MainHeader';
-import IconMenu from 'components/IconMenu/IconMenu';
+import FriendMenu from 'components/IconMenu/FriendMenu';
+import ProgressBar from 'components/ModalBubbleContent/ProgressBar';
 
 // 3d 관련
 import { Canvas } from '@react-three/fiber';
@@ -46,13 +47,12 @@ function FriendGame() {
   }, []);
 
   return (
-    <div className="h-full">
+    <div className="flex flex-col items-center">
       <MainHeader />
-      <div className="mt-20 h-15">
-        {iconsData && <IconMenu icons={iconsData} />} 
+      <div className="pt-[6vh] w-3/4 h-36">
+        {iconsData && <FriendMenu icons={iconsData} />} 
       </div>
-
-      <div className="w-3/4 h-[64vh] mx-auto relative mt-1vh mb-10vh flex flex-col items-center justify-between">
+      <div className="w-3/4 h-[46vh] mx-auto relative mb-8">
         <div className="mt-5vh mb-5vh w-full h-full">
           <Canvas className="mb-5vh bg-gray-100">
             <OrbitControls />
@@ -63,21 +63,27 @@ function FriendGame() {
             </Suspense>
           </Canvas>
         </div>
+      </div>
+
+      <div className="w-5/6 border rounded-2xl px-5 py-5">
+        <div className="grid grid-rows-1 grid-flow-col grid-cols-3 text-center mb-6 items-end">
+          <span className="text-left font font-semibold">Level 3</span>
+          <span className="font font-semibold">새싹</span>
+          <span className="text-right font font-semibold">70%</span>
         </div>
-
-
-      <div className='border border-gray-200 rounded-xl mx-6 flex flex-col justify-around items-center h-52'>
-        <p>흰순이와 게임할래?</p>
-        <div className='flex justify-between items-center w-full px-7'>
+        <div className="mb-5">
+          <ProgressBar fromValue={70} toValue={70}/>
+        </div>
+        <div className='flex justify-between items-center w-full text-sm'>
           <div className='border border-gray-200 rounded-2xl flex flex-col justify-center items-center bg-gray-100 w-36 h-32' onClick={() => navigate('/dice')} >
             <img src="https://fruitfruit.s3.ap-northeast-2.amazonaws.com/icon/icon-dice.png" className='w-11 h-11 mb-3' />
-            <p>주사위 게임</p>
+            <p className='font-bold'>주사위 게임</p>
             <p>기다리는 중</p>
           </div>
           <div className='border border-gray-200 rounded-2xl flex flex-col justify-center items-center bg-gray-100 w-36 h-32' onClick={() => navigate('/dice')} >
             <img src="https://fruitfruit.s3.ap-northeast-2.amazonaws.com/icon/icon-mbti.png" className='w-11 h-11 mb-3' />
-            <p>친구 성향 분석</p>
-            <p>완료</p>
+            <p className='font-bold'>친구 쇼핑성향</p>
+            <p>은둔고수 쇼퍼</p>
           </div>
         </div>
       </div>
