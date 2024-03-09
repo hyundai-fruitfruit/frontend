@@ -90,7 +90,7 @@ function CameraControls() {
 
 function DiceBoard() {
   return (
-    <div style={{width: '430px', height: '932px', margin: '0 auto'}}>
+    <div style={{width: '430px', height: '872px', margin: '52px auto'}}>
       <Canvas>
         <ambientLight intensity={Math.PI * 2} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI * 2} />

@@ -29,7 +29,7 @@ function RandomEventSpotQRSuccess() {
     <div className="h-screen bg-[url('assets/images/heendy-background.png')]">
       <MainHeader />
       <div className="w-56 mx-auto pt-56">
-        <p className='text-center mb-6 text-base text-gray-700'>이벤트에 참여해줘서 고마워</p>
+        <p className='text-center mb-6 text-base text-gray-600 font-bold'>이벤트에 참여해줘서 고마워</p>
         <img src={EventCardDetail} className='mb-6'/>
       </div>
       <BlackButton>경험치 보상받기</BlackButton>
