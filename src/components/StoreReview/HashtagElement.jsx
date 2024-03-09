@@ -17,8 +17,8 @@ function HashtagElement({ id, count, isSelected }) {
 
   return (
     <div className={elementClass}>
-      <span className="text-base ml-1">{hashtag?.text}</span>
-      {count > 0 && <span className="mr-1 text-gray-400">{count}</span>}
+      <span className="text-base pt-1 pb-1">{hashtag?.text}</span>
+      {count > 0 && <span className="mr-1 text-gray-600">{count}</span>}
     </div>
   );
 }

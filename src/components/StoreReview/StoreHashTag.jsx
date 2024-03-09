@@ -18,14 +18,16 @@ function StoreHashTag({ details }) {
   });
 
   return (
-    <div className="m-3 border-b-8">
-      <p className="m-5 font-bold ">이런점이 좋았어요</p>
+    <div>
+    <div className="m-9">
+      <p className="m-5 font-bold text-lg	">이런 점이 좋았어요</p>
       {hashtagsWithCount.map((hashtag) => (
         <div key={hashtag.id} className="items-center my-2">
           <HashtagElement id={hashtag.id} name={hashtag.name} count={hashtag.count} />
         </div>
       ))}
-      <p className="mb-4"></p>
+    </div>
+    <div className="bg-gray-100 h-3 mb-8" />
     </div>
   );
 }

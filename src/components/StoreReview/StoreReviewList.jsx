@@ -40,8 +40,9 @@ import StoreReview from './StoreReview';
 // ];
 
 function StoreReviewList({ details }) {
-  console.log(details);
-  console.log(details.reviews[2].images);
+  console.log("StoreReviewList ");
+  console.log("StoreReviewList " + details);
+  console.log(details.reviews[0].images);
 
 
   return (
@@ -54,15 +55,6 @@ function StoreReviewList({ details }) {
           images={review.images}
           review={review.content}
         />
-      //   <StoreReview
-      //   key={review.id}
-      //   name={review.name}
-      //   score={review.score}
-      //   images={review.images}
-      //   review={review.content}
-      //   date={review.date}
-      //   likes={review.likes}
-      // />
       ))}
     </div>
   );

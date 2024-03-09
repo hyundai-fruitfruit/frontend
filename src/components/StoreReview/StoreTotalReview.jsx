@@ -12,10 +12,9 @@ import StoreHashTag from './StoreHashTag';
 import StoreReviewPage from './StoreReviewPage';
 import BlackButton from 'components/Button/BlackButton';
 
-
-
 function StoreTotalReview({ image, shopName, details }) {
-// function StoreTotalReview({id}) {
+//function StoreTotalReview({id}) {
+  // const { id } = useParams();
 
   console.log("StoreTotalReview => details 출력" + details );
 
