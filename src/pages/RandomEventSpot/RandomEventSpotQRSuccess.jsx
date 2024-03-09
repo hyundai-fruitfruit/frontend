@@ -12,12 +12,19 @@
  * @modify date 2024-03-09 11:52:05
  * @desc 랜덤스팟 이벤트 참여 페이지 CSS 수정
  */
-import React from 'react';
+import React, { useEffect }  from 'react';
 import MainHeader from 'components/Header/MainHeader';
 import BlackButton from 'components/Button/BlackButton';
 import EventCardDetail from 'assets/images/event-card-detail.png'
+import useFirework from 'hooks/animation/useFirework';
 
 function RandomEventSpotQRSuccess() {
+  const firework = useFirework();
+
+  useEffect(() => {
+      firework();
+  }, []);
+
   return (
     <div className="h-screen bg-[url('assets/images/heendy-background.png')]">
       <MainHeader />
