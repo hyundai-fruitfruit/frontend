@@ -13,15 +13,13 @@
  * @modify date 2024-03-08 20:31:19
  * @desc 흰디 메인페이지 레이아웃 조정
  */
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 // redux
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 // 3d 관련
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-//redux
-import { addExperience } from 'store/features/LevelSlice';
 //component
 import SpeechBubble from 'components/SpeechBubble/SpeechBubble';
 import IconMenu from 'components/IconMenu/IconMenu';
@@ -79,17 +77,9 @@ function MainPage() {
   const selectedBackOption = useSelector((state) => state.room.selectedBackOption);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const experience = useSelector((state) => state.exp.experience);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      dispatch(addExperience(0));
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [dispatch]);
+  const level = useSelector((state) => state.exp.level);
 
   return (
     <div className="flex flex-col items-center">
@@ -121,7 +111,7 @@ function MainPage() {
 
       <div className="w-5/6 border rounded-2xl px-5 py-5">
         <div className="grid grid-rows-1 grid-flow-col grid-cols-3 text-center mb-6 items-end">
-          <span className="text-left font font-semibold">Level 1</span>
+          <span className="text-left font font-semibold">Level {level}</span>
           <span className="font font-semibold">흰둥이</span>
           <span className="text-right font font-semibold">{experience}%</span>
         </div>
