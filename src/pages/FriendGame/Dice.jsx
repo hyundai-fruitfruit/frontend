@@ -2,7 +2,7 @@
  * @author 엄상은
  * @email sangeun.e.9@gmail.com
  * @create date 2024-03-03 01:41:25
- * @modify date 2024-03-03 01:41:25
+ * @modify date 2024-03-09 15:16:16
  * @desc 주사위 페이지
  */
 
@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 import MainHeader from 'components/Header/MainHeader';
 import BlackButton from 'components/Button/BlackButton';
 import DiceBoard from 'components/Dice/DiceBoard';
-import GetExp from 'pages/FriendGame/GetExp';
 
 function Dice() {
   const [page, setPage] = useState(1);
@@ -29,11 +28,7 @@ function Dice() {
       setButtonText("경험치 받기");
       setPage(3);
     } else if (page === 3) {
-      setImageUrl(null);
-      setButtonText("메인으로");
-      setPage(4);
-    } else {
-      navigate('/friendGame')
+      navigate('/getExp/water')
     }
   };
 
@@ -47,7 +42,6 @@ function Dice() {
     <div style={styles}>
       <MainHeader />
       {page === 2 ? <DiceBoard /> : null}
-      {page === 4 ? <GetExp type="water" start={10} end={20} /> : null}
       <BlackButton onClick={nextPage}>{buttonText}</BlackButton>
     </div>
   );

@@ -52,8 +52,8 @@ function CaptainHeendy() {
 
     // TODO: 챗봇 페이지와 연결하기
     const handleHeendyChatbot = () => {
+      window.location.href = '/chatbot';
       navigate('/chatBot');
-
     };
 
     const handleEventNotice = () => {
