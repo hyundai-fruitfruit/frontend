@@ -28,7 +28,7 @@ function DisplayShopDetails({ details }) {
       </div>
       <div className="flex items-center mb-6 text-base">
         <img src={ratingIcon} className="h-4 mr-4 ml-2" alt="Rating icon" /> 
-        <InputRatingStar rating={avgScore} readOnly={true} /> 
+        <InputRatingStar rating={avgScore} readOnly={true} isStoreStar={true} /> 
         <p className='ml-3 text-base'>{avgScore}점</p>
       </div>
       <p className="text-sm">{description}</p> 

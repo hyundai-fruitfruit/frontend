@@ -8,6 +8,7 @@
 import React from 'react';
 
 import ImageScroll from 'components/ImageSlide/ImageScroll';
+import InputRatingStar from 'components/RatingStar/InputRatingStar';
 
 function StoreReview({ name, score, images, review }) {
   console.log("StoreReview score " + score);
@@ -16,21 +17,22 @@ function StoreReview({ name, score, images, review }) {
   console.log("StoreReview images " + images);
   console.log("StoreReview images " + JSON.stringify(images));
 
-
   return (
     <div>
     <div className="flex flex-col w-full">
-      <div className="p-4 m-5">
+      <div className="p-4 ml-5 mr-5 mb-3 mt-2">
         <div className="flex items-center">
-          <div className="rounded-full bg-gray-100 h-10 w-10"></div>
+          <div className="rounded-full bg-gray-100 h-14 w-14"></div>
           <div className="ml-5 mr-5">
-            <div className="text-sm font-semibold">{name}</div>
+            <div className="text-sm font-semibold">흰둥이</div>
             <div className="flex items-center mt-1">
-              <span className="text-pink-500 text-xs mr-1">
-                {'★'.repeat(score)}
-                {'☆'.repeat(5 - score)}
-              </span>
-              <span className="ml-1 text-gray-600 text-xs">{score}</span>
+              <div className="">
+                <InputRatingStar 
+                  rating={score} 
+                  isStoreStar={false}
+                  />
+              </div>
+              {/* <span className="ml-1 text-gray-600 text-xs">{score}</span> */}
             </div>
           </div>
         </div>

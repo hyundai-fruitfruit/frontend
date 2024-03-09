@@ -27,7 +27,7 @@ function StoreHashTag({ details }) {
         </div>
       ))}
     </div>
-    <div className="bg-gray-100 h-3 mb-8" />
+    <div className="bg-gray-100 h-3 mb-5" />
     </div>
   );
 }
