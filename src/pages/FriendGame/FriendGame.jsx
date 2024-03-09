@@ -72,7 +72,7 @@ function FriendGame() {
           <span className="text-right font font-semibold">70%</span>
         </div>
         <div className="mb-5">
-          <ProgressBar fromValue={0} toValue={70}/>
+          <ProgressBar fromValue={70} toValue={70}/>
         </div>
         <div className='flex justify-between items-center w-full text-sm'>
           <div className='border border-gray-200 rounded-2xl flex flex-col justify-center items-center bg-gray-100 w-36 h-32' onClick={() => navigate('/dice')} >

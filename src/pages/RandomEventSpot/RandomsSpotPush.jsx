@@ -18,6 +18,7 @@ import BtnRandom from '../../assets/images/btn_random.png';
 import MainHeader from 'components/Header/MainHeader';
 
 function RandomSpotPush() {
+    const navigate = useNavigate();
     const backStyle = {
       backgroundImage: `url(${RandomspotSelect})`,
       backgroundSize: 'cover',
