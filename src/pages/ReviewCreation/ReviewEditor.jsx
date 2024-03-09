@@ -99,9 +99,10 @@ function ReviewEditor() {
       <div className="mt-8 mb-2">
         <Header text="리뷰 작성" />
       </div>
-      <div className="flex flex-col items-center jusity-center">
-        <div className="mb-6">
-          <InputRatingStar rating={userRating} setRating={setUserRating} />
+      <div className="flex flex-col items-center jusity-center mr-4 ml-4">
+        <div className="mb-6 ">
+  
+          <InputRatingStar rating={userRating} setRating={setUserRating} starSize={30} isStoreStar={false}/>
         </div>
         <div className="tags-info mb-4 space-y-4">
           <div className="flex flex-wrap">

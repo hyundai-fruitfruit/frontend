@@ -11,7 +11,7 @@ import { Hashtags } from 'assets/data/Hashtags';
 
 function HashtagElement({ id, count, isSelected }) {
   const hashtag = Hashtags.find((tag) => tag.id === id);
-  const elementClass = `flex justify-between items-center rounded-xl py-1 px-4 mx-4 border${
+  const elementClass = `flex justify-between items-center rounded-xl py-0.5 px-2 mx-4 border${
     isSelected ? ' bg-black text-white' : ''
   }`;
 

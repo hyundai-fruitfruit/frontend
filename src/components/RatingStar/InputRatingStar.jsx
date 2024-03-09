@@ -9,7 +9,7 @@
 import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
-const InputRatingStar = ({ rating, setRating, readOnly = false, isStoreStar }) => {
+const InputRatingStar = ({ rating, setRating, readOnly = false, isStoreStar, starSize }) => {
   const [hover, setHover] = useState(null);
 
   
@@ -31,7 +31,7 @@ const InputRatingStar = ({ rating, setRating, readOnly = false, isStoreStar }) =
               />
             <span style={{ marginRight: isStoreStar ? '2vw' : '1.5vw', display: 'flex', alignItems: 'center' }}>
               <FaStar
-                size={isStoreStar ? 22 : 16}
+                size={starSize}
                 onMouseEnter={() => !readOnly && setHover(ratingValue)}
                 onMouseLeave={() => !readOnly && setHover(null)}
                 color={ratingValue <= (hover || Math.floor(rating)) ? '#E6706C' : '#e4e5e9'}

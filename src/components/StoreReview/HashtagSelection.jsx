@@ -27,7 +27,7 @@ function HashtagSelection({ selectedTags, setSelectedTags }) {
   };
 
   return (
-    <div className="space-y-4 pb-16">
+    <div className="space-y-4 pb-16 ml-8 mr-8">
       {Object.entries(categories).map(([category, tags]) => (
         <div key={category}>
           <h3 className="font-bold text-base mb-2 pl-4 ml-4">{category}</h3>

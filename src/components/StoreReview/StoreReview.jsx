@@ -30,6 +30,7 @@ function StoreReview({ name, score, images, review }) {
                 <InputRatingStar 
                   rating={score} 
                   isStoreStar={false}
+                  starSize={16}
                   />
               </div>
               {/* <span className="ml-1 text-gray-600 text-xs">{score}</span> */}

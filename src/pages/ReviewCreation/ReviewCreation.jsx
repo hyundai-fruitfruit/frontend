@@ -38,23 +38,14 @@ function ReviewCreation() {
         </div>
       </div>
       <hr className="m-8" />
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center mb-5">
         <p className="text-lg font-semibold mb-1">마음에 드셨나요?</p>
         <p className="text-gray-500">이 가게를 별점으로 평가해주세요</p>
       </div>
-      <InputRatingStar rating={rating} setRating={setRating} />
+      <InputRatingStar rating={rating} setRating={setRating} isStoreStar={true} starSize={26} />
       <hr className="m-8" />
       <HashtagSelection selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
       <BlackButton onClick={handleReviewPage}>다음으로</BlackButton>
-
-      {/* <div className="w-full">
-        <button
-          className="font-bold w-[94vw] bg-black text-white text-sm py-4 rounded-2xl fixed bottom-[0vh] left-[3vw]"
-          onClick={handleReviewPage}
-        >
-          다음으로
-        </button>
-      </div> */}
     </div>
   );
 }
