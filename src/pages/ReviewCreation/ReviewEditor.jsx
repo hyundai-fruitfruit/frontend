@@ -7,7 +7,6 @@ import ImageScrollEdit from './ImageScrollEdit';
 import BlackButton from 'components/Button/BlackButton';
 import cameraIcon from 'assets/icons/carmeraIcon.png';
 import axios from 'axios';
-// const [imageList, setImageList] = useState(new FormData());
 
 const createReview = async (storeId, reviewReqDto, imageList) => {
   try {
@@ -17,6 +16,8 @@ const createReview = async (storeId, reviewReqDto, imageList) => {
     Array.from(imageList).forEach((file) => {
       formData.append('imageList', file);
     });
+
+    console.log('formData :', formData);
 
     // if (imageList) {
     //   imageList.forEach((image) => {
@@ -76,10 +77,10 @@ function ReviewEditor() {
     Array.from(files).forEach((file) => {
       uploadImages.push(file);
     });
-
-
-    setImageList(uploadImages);
   
+    setImageList((prevImageList) => [...prevImageList, ...uploadImages]);
+    console.log('handleImageAttachment uploadImages ', uploadImages);
+    
     try {
       Array.from(files).forEach((file) => {
         const reader = new FileReader();

@@ -20,9 +20,7 @@ const hashtagStyle = {
   fontWeight: 400,
 };
 
-function StoreReview({ name, score, images, content, review }) {
-  console.log("StoreReview name " + name);
-
+function StoreReview({ review }) {
   return (
     <div>
     <div className="flex flex-col w-full">
@@ -41,7 +39,7 @@ function StoreReview({ name, score, images, content, review }) {
             <div className="flex items-center mt-1">
               <div className="">
                 <InputRatingStar 
-                  rating={score} 
+                  rating={review.score} 
                   isStoreStar={false}
                   starSize={16}
                   />
@@ -51,9 +49,9 @@ function StoreReview({ name, score, images, content, review }) {
           </div>
         </div>
         <div className="mt-5">
-          <ImageScroll images={images} />
-          <p className="text-gray-800 text-sm mt-2">{content}</p>
-          <div className="flex mt-2">
+          <ImageScroll images={review.images} />
+          <p className="text-gray-800 text-sm mt-2">{review.content}</p>
+          <div className="flex mt-4">
               {review.hashtags.map((tag) => (
                 <div
                   key={tag.id}
