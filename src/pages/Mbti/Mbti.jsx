@@ -21,16 +21,16 @@ const Mbti = () => {
     if (currentIndex < mbtiContent.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      navigate('/main');
+      navigate('/mbtiResult');
     }
   };
   return (
     <>
       <MainHeader/>
       <div className="flex flex-col items-center justify-center h-screen">
-        <SpeechBubble arrowPostion="right" backgroundColor="#FAFAFA" padding={'20px'} height={'50%'} width={'80%'}>
+        <SpeechBubble arrowPostion="right" backgroundColor="#FAFAFA" height={'50%'} width={'80%'}>
           <div className="my-10">
-            <p className={'text-center font-bold'}>
+            <p className='text-center text-2xl font-bold'>
               더현대 서울에서 쇼핑한다면
             </p>
             </div>

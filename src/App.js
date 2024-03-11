@@ -27,10 +27,12 @@ import HeendyLayout from 'pages/Layouts/HeendyLayout/HeendyLayout';
 import CouponTab from 'pages/CouponTab/CouponTab';
 import EventNotice from 'pages/MainPage/EventNotice';
 import Mbti from 'pages/Mbti/Mbti.jsx';
+import MbtiResult from 'pages/Mbti/MbtiResult';
 import CaptainHeendy from 'pages/CaptainHeendy/CaptainHeendy';
 import FriendGame from 'pages/FriendGame/FriendGame';
 import Dice from 'pages/FriendGame/Dice';
 import GetExp from 'pages/FriendGame/GetExp';
+import LevelUp from 'pages/FriendGame/LevelUp';
 import TheHyundaiMap from 'pages/TheHyundaiMap/TheHyundaiMap';
 import RandomsSpotPush from 'pages/RandomEventSpot/RandomsSpotPush';
 import RandomSpotResult from 'pages/RandomEventSpot/RandomSpotResult';
@@ -62,10 +64,12 @@ const router = createBrowserRouter([
       { path: 'couponTab', element: <CouponTab /> },
       { path: 'eventNotice', element: <EventNotice /> },
       { path: 'mbti', element: <Mbti /> },
+      { path: 'mbtiResult', element: <MbtiResult /> },
       { path: 'captainHeendy', element: <CaptainHeendy /> },
       { path: 'friendGame', element: <FriendGame /> },
       { path: 'dice', element: <Dice /> },
       { path: 'getExp/:type', element: <GetExp /> },
+      { path: 'levelUp/:id', element: <LevelUp /> },
       { path: 'theHyundaiMap', element: <TheHyundaiMap /> },
       { path: 'chatBot', element: <ChatBot /> },
       { path: 'randomsSpotPush', element: <RandomsSpotPush /> },

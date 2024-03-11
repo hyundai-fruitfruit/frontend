@@ -7,7 +7,7 @@
  */
 import { useEffect, useState } from 'react';
 
-const useProgress = (fromValue, toValue, duration = 1000) => {
+const useProgress = (fromValue, toValue, duration = 500) => {
   const [progress, setProgress] = useState(fromValue);
 
   useEffect(() => {

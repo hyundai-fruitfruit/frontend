@@ -27,7 +27,7 @@ function CouponCard2({ imgSrc, detail, addStyle, onClick }) {
     <div className={`flex flex-row items-center border rounded-2xl my-4 ${addStyle} ${clickedStyle}`} onClick={handleClick}>
       <img src={imgSrc} className="h-[4vh] mx-2 ml-6" /> 
       <div className="flex flex-col justify-center mx-6 my-10 ml-2"> 
-        <p className="text-sm font-medium text-center">{detail}</p>
+        <p className="text-lg font-bold text-center">{detail}</p>
       </div>
     </div>
   );
