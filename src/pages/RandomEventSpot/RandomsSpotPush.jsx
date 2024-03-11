@@ -6,8 +6,10 @@
  * @desc 랜덤 스팟 푸시 알림
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setExperience } from 'store/features/LevelSlice';
 
 import RandomspotSelect from '../../assets/images/randomspot_back.png';
 import BtnFood from '../../assets/images/btn_food.png';
@@ -18,7 +20,13 @@ import BtnRandom from '../../assets/images/btn_random.png';
 import MainHeader from 'components/Header/MainHeader';
 
 function RandomSpotPush() {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    useEffect(() => {
+      dispatch(setExperience(50));
+    }, []);
+
     const backStyle = {
       backgroundImage: `url(${RandomspotSelect})`,
       backgroundSize: 'cover',

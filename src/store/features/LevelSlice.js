@@ -25,6 +25,9 @@ export const levelSlice = createSlice({
         state.levelUp = true;
       }
     },
+    setExperience: (state, action) => {
+      state.experience = action.payload;
+    },
     resetLevelUp: (state) => {
       state.levelUp = false;
     },
@@ -35,6 +38,6 @@ export const levelSlice = createSlice({
   },
 });
 
-export const { addExperience, resetLevelUp, levelUp } = levelSlice.actions;
+export const { addExperience, setExperience, resetLevelUp, levelUp } = levelSlice.actions;
 
 export default levelSlice.reducer;

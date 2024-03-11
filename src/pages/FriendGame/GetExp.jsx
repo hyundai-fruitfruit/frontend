@@ -9,28 +9,27 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { addExperience } from 'store/features/LevelSlice';
+import { setExperience } from 'store/features/LevelSlice';
 
 import MainHeader from 'components/Header/MainHeader';
 import BlackButton from 'components/Button/BlackButton';
 import ProgressBar from 'components/ModalBubbleContent/ProgressBar';
 
 const typeMap = {
-  water: { exp: 10, route: '/friendGame', routeText: '친구 페이지로' }, // 친구 게임
-  power: { exp: 20, route: '/main', routeText: '메인으로' }, // GPS
-  sandwich: { exp: 10, route: '/storeDetail/2', routeText: '매장 페이지로' }, // 리뷰
-  encourage: { exp: 30, route: '/main', routeText: '메인으로' }, // 이벤트
+  power: { start: 0, end: 30, route: '/main', routeText: '메인으로' }, // GPS
+  sandwich: { start: 30, end: 40, route: '/storeDetail/2', routeText: '매장 페이지로' }, // 리뷰 // TODO: 들어갔을 때 State 바꾸기
+  water: { start: 40, end: 50, route: '/friendGame', routeText: '친구 페이지로' }, // 친구 게임
+  encourage: { start: 50, end: 100, route: '/levelUp/2', routeText: '메인으로' }, // 랜덤스팟 이벤트
 };
 
 function GetExp() {
   const { type } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const prevExperience = useSelector((state) => state.exp.experience);
   const level = useSelector((state) => state.exp.level);
 
   useEffect(() => {
-    dispatch(addExperience(typeMap[type].exp));
+    dispatch(setExperience(typeMap[type].end));
   }, []);
 
   const imageUrl = `https://fruitfruit.s3.ap-northeast-2.amazonaws.com/dice/exp-${type}.png`;
@@ -40,7 +39,7 @@ function GetExp() {
       <MainHeader />
       <div className="w-56 mx-auto pt-56">
         <img src={imageUrl} className='mb-6'/>
-        <ProgressBar fromValue={prevExperience} toValue={prevExperience+10} />
+        <ProgressBar fromValue={typeMap[type].start} toValue={typeMap[type].end} />
         <div className="grid grid-rows-1 grid-flow-col grid-cols-2 mb-6 items-end text-gray-300 font-bold">
           <span className='text-left'>Level {level}</span>
           <span className='text-right'>Level {level+1}</span>
