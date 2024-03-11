@@ -3,9 +3,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Header from 'components/Header/Header';
 import InputRatingStar from 'components/RatingStar/InputRatingStar';
 import HashtagElement from 'components/StoreReview/HashtagElement';
-import ImageScroll from 'components/ImageSlide/ImageScroll';
+import ImageScrollEdit from './ImageScrollEdit';
 import BlackButton from 'components/Button/BlackButton';
-import cameraIcon from 'assets/icons/camera_icon.png';
+import cameraIcon from 'assets/icons/carmeraIcon.png';
 import axios from 'axios';
 
 const createReview = async (storeId, reviewReqDto, imageList, memberId) => {
@@ -17,6 +17,7 @@ const createReview = async (storeId, reviewReqDto, imageList, memberId) => {
     // const reviewReqDto = JSON.stringify(reviewReqDto);
     
     formData.append('reviewReqDto', new Blob([reviewReqDto], {type: 'application/json'}));
+    console.log('createReview imageList' + imageList);
     
     if (imageList) {
       imageList.forEach((image, index) => {
@@ -25,7 +26,8 @@ const createReview = async (storeId, reviewReqDto, imageList, memberId) => {
     }
 
     const response = await axios.post(
-      `http://localhost:8080/api/v1/stores/${storeId}/reviews`,
+      
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/stores/${storeId}/reviews`,
       formData,
       {
         headers: {
@@ -66,7 +68,8 @@ function ReviewEditor() {
       hashtagIds: [101, 103]
     });
 
-  console.log("reviewReqDto : " + reviewReqDto.hashtagIds)
+  console.log("reviewReqDto.hashtagIds : " + reviewReqDto.hashtagIds)
+  console.log("attachedImages : " + attachedImages)
 
     try {
       await createReview(details.id, reviewReqDto, attachedImages);
@@ -81,17 +84,25 @@ function ReviewEditor() {
   const handleImageAttachment = (e) => {
     const files = e.target.files;
     const newImages = [];
+    console.log('handleImageAttachment # ' + files);
 
-    Array.from(files).forEach((file) => {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        newImages.push(event.target.result);
-        if (newImages.length === files.length) {
-          setAttachedImages((prev) => [...prev, ...newImages]);
-        }
-      };
-      reader.readAsDataURL(file);
-    });
+    try {
+      Array.from(files).forEach((file) => {
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          newImages.push(event.target.result);
+          if (newImages.length === files.length) {
+            setAttachedImages((prev) => [...prev, ...newImages]);
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    } catch (error) {
+      console.log('이미지 등록에 실패하였습니다');
+    }
+
+
   };
 
   return (
@@ -118,21 +129,21 @@ function ReviewEditor() {
             placeholder="리뷰를 작성해주세요."
             value={reviewContent}
             onChange={(e) => setReviewContent(e.target.value)}
-            className="w-[90vw] h-[25vh] border rounded-lg px-4 py-2 mt-4 ml-[5vw]"
+            className="w-[80vw] h-[25vh] border rounded-lg px-4 py-2 mt-4 ml-[5vw]"
             rows={4}
           />
         </div>
       </div>
-      <div className="flex flex-row justify-start items-center mt-4 w-[95vw]">
+      <div className="flex flex-row justify-start items-center mt-4 w-[95vw] ml-8 ">
         <label
           htmlFor="file-upload"
           className="flex-none cursor-pointer border items-center justify-center rounded-xl p-4 ml-[5vw] w-[10vh] h-[10vh]"
         >
-          <img src={cameraIcon} className="w-10 h-10 mr-2 w-[6vh] h-[6vh]" />
+          <img src={cameraIcon} className="w-[6vh] h-[6vh]" />
           <input id="file-upload" type="file" multiple onChange={handleImageAttachment} style={{ display: 'none' }} />
         </label>
-        <div className="h-[10vh] ml-1">
-          <ImageScroll images={attachedImages} size={'w-[10vh] h-[10vh] mx-1'} />
+        <div className="h-[10vh] mb-16">
+          <ImageScrollEdit images={attachedImages} size={'w-[10vh] h-[10vh]'} />
         </div>
       </div>
       <BlackButton onClick={handleReviewSubmission}>리뷰 작성하기</BlackButton>
