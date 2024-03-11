@@ -11,6 +11,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import ChatBotHeendy from 'components/SpeechBubble/ChatBotHeendy';
 import ChatBotUser from 'components/SpeechBubble/ChatBotUser';
 import Header from 'components/Header/Header';
+import StoreHeendy from 'components/SpeechBubble/StoreHeendy';
 
 //hook
 import { useHeendyGuide } from 'hooks/useHeendyGuide';
@@ -25,8 +26,12 @@ function ChatBot() {
   const { events: typeEvents, loading: typeLoading, error: typeError } = useHeendyGuideType(selectedGuideType);
   const messagesEndRef = useRef(null);
 
+  const [showStoreHeendy, setShowStoreHeendy] = useState(false);
+
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 0);
   };
 
   useEffect(() => {
@@ -56,12 +61,24 @@ function ChatBot() {
 
     const selectedEvent = typeEvents.find((event) => event.title === korean);
 
+    const lastSystemMessage = conversation.findLast((message) => message.type === 'system');
+    const mockAnswer = '해시태그에 대한 답변';
+
     if (selectedEvent && selectedEvent.hashtags) {
       const hashtagMessages = selectedEvent.hashtags.map((hashtag) => ({ korean: hashtag.name }));
       setConversation((prev) => [
         ...prev,
         { title: '어떤 해시 태그가 좋아?', type: 'system', messages: hashtagMessages },
       ]);
+    }
+
+    if (lastSystemMessage && lastSystemMessage.title === '어떤 해시 태그가 좋아?') {
+      setTimeout(() => {
+        setConversation((prev) => [...prev, { title: mockAnswer, type: 'system', messages: [] }]);
+      });
+    }
+    if (lastSystemMessage && lastSystemMessage.title === '어떤 해시 태그가 좋아?') {
+      setShowStoreHeendy(true);
     }
   };
 
@@ -73,13 +90,17 @@ function ChatBot() {
           <div key={index} className="flex justify-end">
             <ChatBotUser key={index} text={message.text} />
           </div>
+        ) : showStoreHeendy && index === conversation.length - 1 ? (
+          <StoreHeendy key={index} />
         ) : (
-          <ChatBotHeendy
-            key={index}
-            title={message.title}
-            messages={message.messages}
-            onMessageClick={handleMessageClick}
-          />
+          <div key={index}>
+            <ChatBotHeendy
+              key={index}
+              title={message.title}
+              messages={message.messages}
+              onMessageClick={handleMessageClick}
+            />
+          </div>
         ),
       )}
       <div ref={messagesEndRef} />
