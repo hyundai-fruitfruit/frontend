@@ -8,36 +8,6 @@
 import React from 'react';
 import StoreReview from './StoreReview';
 
-// import BeefSteakTaco from 'assets/images/beef_steak_taco.png';
-// import Lazji from 'assets/images/Lazji.png';
-// import SzechunaSpicyEggplant from 'assets/images/Szechuan_Spicy_Eggplant.png';
-
-// const reviewsData = [
-//   {
-//     name: '홍길동',
-//     score: '5.0',
-//     imageSrcs: [Lazji, BeefSteakTaco, SzechunaSpicyEggplant, Lazji, BeefSteakTaco, SzechunaSpicyEggplant],
-//     review: '정말 맛있는 식당이에요. 다음에 또 올게요!',
-//     date: '2024년 3월 14일',
-//     likes: 12,
-//   },
-//   {
-//     name: '김철수',
-//     score: '4.5',
-//     imageSrcs: [BeefSteakTaco],
-//     review: '서비스가 좋았고 음식도 맛있습니다.',
-//     date: '2024년 3월 15일',
-//     likes: 9,
-//   },
-//   {
-//     name: '맛집 좋아',
-//     score: '2',
-//     imageSrcs: [SzechunaSpicyEggplant],
-//     review: '서비스가 좋았고 음식도 맛있습니다.',
-//     date: '2024년 3월 15일',
-//     likes: 9,
-//   },
-// ];
 
 function StoreReviewList({ details }) {
   console.log("StoreReviewList ");
@@ -53,7 +23,8 @@ function StoreReviewList({ details }) {
           name={review.name}
           score={review.score}
           images={review.images}
-          review={review.content}
+          content={review.content}
+          review={review}
         />
       ))}
     </div>
