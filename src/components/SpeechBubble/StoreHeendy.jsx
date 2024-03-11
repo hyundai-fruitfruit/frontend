@@ -5,6 +5,45 @@ import CapHeendy from 'assets/icons/CapHeendy.png';
 
 import { useNavigate } from 'react-router-dom';
 
+
+const storeData = {
+  id: 2,
+  name: "SMT 라운지",
+  description: "SM 엔터테인먼트가 운영하는 프라이빗 레스토랑 브랜드 'SMT HOUSE'의 새로운 브랜드입니다. 'Chinatown in Mexico City'라는 컨셉으로 준비한 이국적인 테라스 공간에서 로컬 스파이스와 고수를 공통분모로 한 홍콩식 요리와 멕시칸 요리를 선보입니다.",
+  phone: 0,
+  floor: 6,
+  avgScore: 3.2,
+  popularHashtags: [
+    {
+      id: 101,
+      name: "🙂 음식이 맛있어요",
+      category: "FOOD"
+    },
+    {
+      id: 103,
+      name: "🍃 재료가 신선해요",
+      category: "FOOD"
+    },
+    {
+      id: 102,
+      name: "🍜 양이 많아요",
+      category: "FOOD"
+    },
+    {
+      id: 201,
+      name: "뷰가 좋아요",
+      category: "ATMOSPHERE"
+    },
+    {
+      id: 202,
+      name: "로맨틱해요",
+      category: "ATMOSPHERE"
+    }
+  ]
+};
+
+
+
 function StoreHeendy() {
   const navigate = useNavigate();
 
@@ -19,8 +58,9 @@ function StoreHeendy() {
           <div>
             <ul>
               <div>
+                <div>{storeData.name}</div>
                 <img src={SMT} />
-                <div>내용내용내용</div>
+                <div>{storeData.description}</div>
                 <button
                   className="border py-1 px-8 m-1 rounded-2xl bg-white inline-flex"
                   onClick={() => navigate('/storeDetail/2')}
