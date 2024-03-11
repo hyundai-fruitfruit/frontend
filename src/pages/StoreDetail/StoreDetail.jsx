@@ -14,6 +14,7 @@ import DisplayShopDetails from 'components/DisplayShopDetails/DisplayShopDetails
 import DisplayShopTabs from 'components/DisplayShopTabs/DisplayShopTabs';
 import StoreMenuList from 'components/StoreMenu/StoreMenuList';
 import StoreTotalReview from 'components/StoreReview/StoreTotalReview';
+import MainHeader from 'components/Header/MainHeader';
 
 import useStoreDetails from 'hooks/useStoreDetails';
 
@@ -55,19 +56,22 @@ function storeDetail() {
 
   return (
     <div className="flex flex-col w-full overflow-auto">
-      <div className="flex flex-col px-7 mt-5">
-      </div>
-      <Header text={'매장 정보'} />
-      <div className="flex flex-col px-7 mt-5">
-          <ImageSlide images={imagePaths} />
-          <DisplayShopDetails details={details} />
-      </div>
-      
-      <div className="flex flex-col items-center justify-start min-h-[50vh]  w-full">
-        <div className=" w-full h-[7vh]">
-          <DisplayShopTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+      <MainHeader />
+      <div className="mt-10">
+        <div className="flex flex-col px-7 mt-5">
         </div>
-        <div className="w-full">{tabComponents[activeTab]}</div>
+        <Header text={'매장 정보'} />
+        <div className="flex flex-col px-7 mt-5">
+            <ImageSlide images={imagePaths} />
+            <DisplayShopDetails details={details} />
+        </div>
+        
+        <div className="flex flex-col items-center justify-start min-h-[50vh]  w-full">
+          <div className=" w-full h-[7vh]">
+            <DisplayShopTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+          </div>
+          <div className="w-full">{tabComponents[activeTab]}</div>
+        </div>
       </div>
     </div>
   );

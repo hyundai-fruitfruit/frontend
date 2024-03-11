@@ -10,25 +10,36 @@ import React from 'react';
 import ImageScroll from 'components/ImageSlide/ImageScroll';
 import InputRatingStar from 'components/RatingStar/InputRatingStar';
 
-function StoreReview({ name, score, images, review }) {
-  console.log("StoreReview score " + score);
-  console.log("StoreReview name " + name);
-  console.log("StoreReview review " + review);
-  console.log("StoreReview images " + images);
-  console.log("StoreReview images " + JSON.stringify(images));
+const hashtagStyle = {
+  backgroundColor: '#FDF1F1',
+  color: 'black',
+  padding: '0.2rem 0.5rem',
+  borderRadius: '0.5rem',
+  marginRight: '0.5rem',
+  fontSize: '0.875rem',
+  fontWeight: 400,
+};
 
+function StoreReview({ review }) {
   return (
     <div>
     <div className="flex flex-col w-full">
       <div className="p-4 ml-5 mr-5 mb-3 mt-2">
         <div className="flex items-center">
-          <div className="rounded-full bg-gray-100 h-14 w-14"></div>
+          <div
+            className="rounded-full h-14 w-14 border border-gray-300"
+            style={{
+              backgroundImage: `url(${review.profile})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          ></div>
           <div className="ml-5 mr-5">
-            <div className="text-sm font-semibold">흰둥이</div>
+            <div className="text-sm font-semibold">{review.nickname}</div>
             <div className="flex items-center mt-1">
               <div className="">
                 <InputRatingStar 
-                  rating={score} 
+                  rating={review.score} 
                   isStoreStar={false}
                   starSize={16}
                   />
@@ -38,8 +49,18 @@ function StoreReview({ name, score, images, review }) {
           </div>
         </div>
         <div className="mt-5">
-          <ImageScroll images={images} />
-          <p className="text-gray-800 text-sm mt-2">{review}</p>
+          <ImageScroll images={review.images} />
+          <p className="text-gray-800 text-sm mt-2">{review.content}</p>
+          <div className="flex mt-4">
+              {review.hashtags.map((tag) => (
+                <div
+                  key={tag.id}
+                  style={hashtagStyle} 
+                >
+                  {tag.name}
+                </div>
+              ))}
+            </div>
         </div>
         {/* <div className="flex items-center justify-between mt-2">
           <div className="text-xs text-gray-600">{date}</div>
