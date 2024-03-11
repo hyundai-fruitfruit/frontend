@@ -7,19 +7,41 @@
  */
 import React from 'react';
 
-const size = 'w-32 h-32 m-1'
-// { images = [],  }
+
+const containerStyle = {
+  display: 'flex',
+  gap: '10px',
+};
+
+const imageStyle = {
+  width: '34vw',
+  height: '34vw',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  border: 'none', 
+  borderRadius: '15%',
+};
+
+
 function ImageScroll(images) {
-  if (!Array.isArray(images)) return null;
-  console.log("ImageScroll images => " + images);
+  console.log('ImageScroll images' + JSON.stringify(images));
+  const imagesArray = Object.values(images.images);
+
+  if (!Array.isArray(imagesArray)) return null;
+  console.log("ImageScroll images => " + imagesArray);
 
   return (
-    <div className="overflow-x-auto flex flex-row">
-      {images.map((imgUrl, index) => (
+    <div className="overflow-x-auto flex flex-row mb-6 mt-6">
+      {/* {imageList.map((imgUrl, index) => (
         <div key={index} className="flex-none">
           <img className={`rounded-xl ${size}`} src={imgUrl} alt={`Image ${index + 1}`} />
         </div>
-      ))}
+      ))} */}
+      <div className="image-container" style={containerStyle}>
+        {imagesArray.map((imgObj, index) => (
+          <div key={index} className="flex-none" style={{ ...imageStyle, backgroundImage: `url(${imgObj.imgUrl})` }} />
+          ))}
+      </div>
     </div>
   );
 }

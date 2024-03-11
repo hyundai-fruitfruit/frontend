@@ -17,9 +17,9 @@ const DropdownMenu = () => {
   };
 
   return (
-    <div className="relative mt-4 mr-6">
+    <div className="relative mt-1 mr-6">
       <button onClick={() => setIsOpen(!isOpen)} className="px-4 py-2 ho rounded-md focus:outline-none">
-        {selectedItem} ↓
+        {selectedItem}
       </button>
 
       {isOpen && (

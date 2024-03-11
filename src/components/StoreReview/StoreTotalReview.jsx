@@ -12,10 +12,9 @@ import StoreHashTag from './StoreHashTag';
 import StoreReviewPage from './StoreReviewPage';
 import BlackButton from 'components/Button/BlackButton';
 
-
-
 function StoreTotalReview({ image, shopName, details }) {
-// function StoreTotalReview({id}) {
+//function StoreTotalReview({id}) {
+  // const { id } = useParams();
 
   console.log("StoreTotalReview => details 출력" + details );
 
@@ -34,14 +33,7 @@ function StoreTotalReview({ image, shopName, details }) {
         <StoreReviewPage details={details} />
       </div>
       <BlackButton onClick={handleReviewPage}>리뷰 작성하기</BlackButton>
-      {/* <div className="w-full">
-        <button
-          className="font-bold w-[94vw] bg-black text-white text-sm py-4 rounded-md fixed bottom-[0vh] left-[3vw]"
-          onClick={handleReviewPage}
-        >
-          리뷰 작성하기
-        </button>
-      </div> */}
+      <div className="bg-white h-20" />
     </div>
   );
 }

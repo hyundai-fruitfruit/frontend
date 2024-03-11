@@ -16,7 +16,7 @@ function StoreReviewPage({ details }) {
   return (
     <div>
       <div className="flex flex-row justify-between">
-        <p className="ml-10 m-4 text-lg">총 {reviewCount}개의 리뷰</p>
+        <p className="flex items-center ml-10 text-lg">총 {reviewCount}개의 리뷰</p>
         <DropdownMenu />
       </div>
       {/* 전체 리뷰들 리스트 */}

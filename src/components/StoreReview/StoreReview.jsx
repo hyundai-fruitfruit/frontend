@@ -8,31 +8,38 @@
 import React from 'react';
 
 import ImageScroll from 'components/ImageSlide/ImageScroll';
+import InputRatingStar from 'components/RatingStar/InputRatingStar';
 
 function StoreReview({ name, score, images, review }) {
-  console.log("images " + images);
-  console.log("score " + score);
-  console.log("name " + name);
+  console.log("StoreReview score " + score);
+  console.log("StoreReview name " + name);
+  console.log("StoreReview review " + review);
+  console.log("StoreReview images " + images);
+  console.log("StoreReview images " + JSON.stringify(images));
 
   return (
-    <div className="flex flex-col w-full border-b-8">
-      <div className="p-4">
+    <div>
+    <div className="flex flex-col w-full">
+      <div className="p-4 ml-5 mr-5 mb-3 mt-2">
         <div className="flex items-center">
-          <div className="rounded-full bg-gray-200 h-10 w-10"></div>
-          <div className="ml-2">
-            <div className="text-sm font-semibold">{name}</div>
+          <div className="rounded-full bg-gray-100 h-14 w-14"></div>
+          <div className="ml-5 mr-5">
+            <div className="text-sm font-semibold">흰둥이</div>
             <div className="flex items-center mt-1">
-              <span className="text-yellow-400 text-xs mr-1">
-                {'★'.repeat(score)}
-                {'☆'.repeat(5 - score)}
-              </span>
-              <span className="ml-1 text-gray-600 text-xs">{score}</span>
+              <div className="">
+                <InputRatingStar 
+                  rating={score} 
+                  isStoreStar={false}
+                  starSize={16}
+                  />
+              </div>
+              {/* <span className="ml-1 text-gray-600 text-xs">{score}</span> */}
             </div>
           </div>
         </div>
-        <div className="mt-2">
+        <div className="mt-5">
           <ImageScroll images={images} />
-          <p className="text-gray-700 text-sm mt-2">{review}</p>
+          <p className="text-gray-800 text-sm mt-2">{review}</p>
         </div>
         {/* <div className="flex items-center justify-between mt-2">
           <div className="text-xs text-gray-600">{date}</div>
@@ -42,6 +49,8 @@ function StoreReview({ name, score, images, review }) {
           </div>
         </div> */}
       </div>
+      <div className="bg-gray-100 h-3" />
+    </div>
     </div>
   );
 }
