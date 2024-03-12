@@ -110,7 +110,7 @@ function MainPage() {
       </div>
 
       <div className="w-5/6 border rounded-2xl px-5 py-5">
-        <div className="grid grid-rows-1 grid-flow-col grid-cols-3 text-center mb-6 items-end">
+        <div className="grid grid-rows-1 grid-flow-col grid-cols-3 text-center mb-6 items-end" onClick={() => navigate('/randomsSpotPush')}>
           <span className="text-left font font-semibold">Level {level}</span>
           <span className="font font-semibold">흰둥이</span>
           <span className="text-right font font-semibold">{experience}%</span>
