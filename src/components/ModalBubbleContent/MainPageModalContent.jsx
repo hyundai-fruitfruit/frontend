@@ -60,10 +60,9 @@ const getCurrentPosition = () => {
   });
 };
 
-
 export const AdventureStartContent = ({ openModal, closeModal }) => {
   const targetArea = { latitude: 37.5603219, longitude: 127.0645185 };
-  const allowedDistance = 50; 
+  const allowedDistance = 50;
 
   const handleAdventureStart = async () => {
     openModal(<LoadingModal />);
@@ -101,9 +100,19 @@ export const AdventureStartContent = ({ openModal, closeModal }) => {
         <img src={hiHeendy} alt="Hi Heendy" />
       </div>
       <div className="flex flex-row h-[6vh]">
-        <ClaymorphicButton text="다음에 갈게" addStyle="m-1" />
-        {/* 인증 결과를 바로 반영할 수 없으므로 버튼은 상태 변경만을 트리거합니다. */}
-        <ClaymorphicButton text="모험을 시작할게" addStyle="m-1" onClick={handleAdventureStart} />
+        <button
+          type="button"
+          className="flex-1  m-1 rounded-xl bg-white px-2 py-1 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        >
+          다음에 갈게
+        </button>
+        <button
+          type="button"
+          className="flex-1 m-1 border rounded-xl bg-black px-2 py-1 text-slate-50 font-semibold text-gray-900 shadow-sm"
+          onClick={handleAdventureStart}
+        >
+          모험을 시작할게
+        </button>
       </div>
     </div>
   );
