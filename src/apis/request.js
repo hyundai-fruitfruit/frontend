@@ -202,7 +202,7 @@ export const getPushAlarmByLocalStorage = async () => {
       {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: localStorage.getItem('accessToken'),
+          Authorization: process.env.REACT_APP_API_AUTH_TOKEN,
         },
       },
     );
@@ -227,7 +227,7 @@ export const getPushAlarmByDeviceToken = async (token) => {
       {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: localStorage.getItem('accessToken'),
+          Authorization: process.env.REACT_APP_API_AUTH_TOKEN,
         },
       },
     );
@@ -243,7 +243,7 @@ export const getPushAlarm = async () => {
     const response = await api.get('/api/v1/fcm-push', {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: localStorage.getItem('accessToken'),
+        Authorization: process.env.REACT_APP_API_AUTH_TOKEN,
       },
     });
     return response.data;

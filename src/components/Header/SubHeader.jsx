@@ -12,27 +12,13 @@ import { requestPermission } from '../../firebase-messaging-sw';
 
 const handleRequestPermission = async () => {
   try {
-    alert('handleRequestPermission 전');
-
     // FCM 권한 요청
     requestPermission();
-
-    // 위치 정보 권한 요청
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          alert('위치 정보 접근 허용됨', position);
-        },
-        (error) => {
-          alert('위치 정보 접근 거부됨: ' + error.message);
-        },
-      );
-    } else {
-      alert('이 브라우저에서는 Geolocation이 지원되지 않습니다.');
+      navigator.geolocation.getCurrentPosition();
     }
-    alert('handleRequestPermission 후');
   } catch (error) {
-    alert('handleRequestPermission 호출 중 오류 발생: ' + error.message);
+    console.log("error")
   }
 };
 
@@ -61,9 +47,9 @@ const SubHeader = () => {
         <img src={iconMood} className="h-6 ml-3" />
         <span className="flex h-[3vh] ml-2 mr-3 p-0 text-sm items-center">기분</span>
       </div>
-      <div className="flex border rounded-xl h-10 items-center">
+      <div className="flex border rounded-xl h-10 items-center" onClick={() => navigate('/friendGame')}>
         <img src={iconLoveLetter} className="h-6 ml-3" />
-        <span className="flex h-[3vh] ml-2 mr-3 p-0 text-sm items-center" onClick={() => navigate('/friendGame')}>
+        <span className="flex h-[3vh] ml-2 mr-3 p-0 text-sm items-center">
           친구
         </span>
       </div>
