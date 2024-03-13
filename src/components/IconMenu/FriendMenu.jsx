@@ -1,3 +1,11 @@
+/**
+ * @author 엄상은
+ * @email sangeun.e.9@gmail.com
+ * @create date 2024-03-02 17:01:12
+ * @modify date 2024-03-02 17:01:12
+ * @desc 친구목록
+ */
+
 import React from 'react';
 
 function FriendMenu({ icons }) {

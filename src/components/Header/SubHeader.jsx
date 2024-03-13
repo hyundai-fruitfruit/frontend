@@ -1,3 +1,10 @@
+/**
+ * @author 오수영
+ * @email osy9757@gmail.com
+ * @create date 2024-02-18 10:18:42
+ * @modify date 2024-03-07 09:50:19
+ * @desc 서브헤더
+ */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 

@@ -14,6 +14,8 @@ import Onboarding from 'pages/Onboarding/Onboarding';
 import MyRoom from './pages/MyRoom/MyRoom';
 import KakaoCallback from './pages/Login/KakaoCallback';
 import MainPage from './pages/MainPage/Mainpage';
+import Gps from 'pages/Location/GPSPage';
+import GpsSuccess from 'pages/Location/GPSSuccess';
 import LocationPage from './pages/Location/LocationPage';
 import QRScannerPage from './pages/QRScannerPage/QRScannerPage';
 import RandomEventSpot from './pages/RandomEventSpot/RandomEventSpot';
@@ -49,6 +51,8 @@ const router = createBrowserRouter([
       { path: 'login', element: <KakaoCallback /> },
       { path: 'onboarding', element: <Onboarding /> },
       { path: 'main', element: <MainPage /> },
+      { path: 'gps', element: <Gps /> },
+      { path: 'gpsSuccess', element: <GpsSuccess /> },
       { path: 'location', element: <LocationPage /> },
       { path: 'login', element: <Login /> },
       { path: 'qrscanner', element: <QRScannerPage /> },
