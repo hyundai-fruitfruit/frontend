@@ -5,8 +5,15 @@
  * @modify date 2024-02-21 01:52:03
  * @desc 이미지 슬라이드 캐러셀 버튼 x, 구분 x
  */
-import React from 'react';
 
+/**
+ * @author 황수영
+ * @email sooyoung.h8@gmail.com
+ * @create date 2024-03-10
+ * @modify date 2024-03-10
+ * @desc 배열 방식으로 변경하여 이미지 매핑
+ */
+import React from 'react';
 
 const containerStyle = {
   display: 'flex',
@@ -21,7 +28,6 @@ const imageStyle = {
   border: 'none', 
   borderRadius: '15%',
 };
-
 
 function ImageScroll(images) {
   console.log('ImageScroll images' + JSON.stringify(images));

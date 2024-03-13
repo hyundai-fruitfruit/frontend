@@ -1,3 +1,19 @@
+/**
+ * @author 오수영
+ * @email osy9757@gmail.com
+ * @create date 2024-02-22 02:50:08
+ * @modify date 2024-02-22 02:50:08
+ * @desc 리뷰 작성시 내용 및 이미지 페이지
+ */
+
+/**
+ * @author 황수영
+ * @email sooyoung.h8@gmail.com
+ * @create date 2024-03-10
+ * @modify date 2024-03-10
+ * @desc 이미지 다중 업로드 및 이미지 리사이징
+ */
+
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Header from 'components/Header/Header';
@@ -6,7 +22,25 @@ import HashtagElement from 'components/StoreReview/HashtagElement';
 import ImageScrollEdit from './ImageScrollEdit';
 import BlackButton from 'components/Button/BlackButton';
 import cameraIcon from 'assets/icons/carmeraIcon.png';
-import axios from 'axios';
+import { postReview } from "../../apis/request"
+import Resizer from "react-image-file-resizer";
+
+const resizeFile = (file) =>
+  new Promise((resolve) => {
+    Resizer.imageFileResizer(
+      file, // Blob
+      100, // maxWidth.
+      100, // maxHeight
+      "PNG",
+      100,
+      0,
+      (uri) => {
+        resolve(uri);
+      },
+      "base64"
+    );	
+  }
+);
 
 const createReview = async (storeId, reviewReqDto, imageList) => {
   try {
@@ -14,27 +48,12 @@ const createReview = async (storeId, reviewReqDto, imageList) => {
     formData.append('reviewReqDto', new Blob([reviewReqDto], {type: 'application/json'}));
 
     Array.from(imageList).forEach((file) => {
-      formData.append('imageList', file);
+      const compressedFile = resizeFile(file);
+      formData.append('imageList', compressedFile);
     });
 
     console.log('formData :', formData);
-
-    // if (imageList) {
-    //   imageList.forEach((image) => {
-    //     formData.append(`imageList`, image.data);
-    //   });
-    // }
-    const response = await axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/stores/${storeId}/reviews`,
-      formData,
-      {
-        headers: {
-          charset: 'utf-8',
-          'Content-Type': 'multipart/form-data',
-          Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzMiIsImlhdCI6MTcwNzk3MzU3MiwiZXhwIjoyMDcwODUzNTcyfQ.XwBiQxnJUzSSdhLOQQj3aKS5erufHTuIgD0mGNw576iHLZmGjc5ei8ks2MgVV6m6SvNE3EjuK8GqnZqxhOKvXQ', // 필요한 경우에만 토큰을 추가
-        }
-      }
-    );
+    const response = postReview(formData, storeId);
     console.log('리뷰 작성 결과:', response);
     return response;
   } catch (error) {
@@ -56,14 +75,13 @@ function ReviewEditor() {
     const reviewReqDto = JSON.stringify({
       score: userRating,
       content: reviewContent,
-      hashtagIds: [101, 103]
+      hashtagIds: [105, 201, 205]
     });
 
     try {
       await createReview(details.id, reviewReqDto, imageList);
       console.log('리뷰 등록에 성공하였습니다');
       navigate('/getExp/sandwich');
-
     } catch (error) {
       console.log('리뷰 등록에 실패하였습니다');
     }
@@ -75,11 +93,9 @@ function ReviewEditor() {
     const uploadImages = [];
 
     Array.from(files).forEach((file) => {
-      uploadImages.push(file);
+      uploadImages.push((file));
     });
-  
     setImageList((prevImageList) => [...prevImageList, ...uploadImages]);
-    console.log('handleImageAttachment uploadImages ', uploadImages);
     
     try {
       Array.from(files).forEach((file) => {

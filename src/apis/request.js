@@ -250,3 +250,22 @@ export const getPushAlarm = async () => {
     console.error(`getPushAlarm 에러 발생 : ${error}`);
   }
 };
+
+/**
+ * @author 황수영
+ * @email sooyoung.h8@gmail.com
+ * @create date 2024-03-01
+ * @modify date 2024-03-01
+ * @desc 리뷰 작성(다중 이미지, 별점, 해시태그, 내용)
+ */
+export const postReview =  async (formData, storeId) =>  {
+  `${process.env.REACT_APP_API_BASE_URL}/api/v1/stores/${storeId}/reviews`,
+  formData,
+  {
+    headers: {
+      charset: 'utf-8',
+      'Content-Type': 'multipart/form-data',
+      Authorization: localStorage.getItem('accessToken')
+    }
+  }
+};
