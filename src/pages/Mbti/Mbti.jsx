@@ -30,7 +30,7 @@ const Mbti = () => {
       <div className="flex flex-col items-center justify-center h-screen">
         <SpeechBubble arrowPostion="right" backgroundColor="#FAFAFA" height={'50%'} width={'80%'}>
           <div className="my-10">
-            <p className='text-center text-2xl font-bold'>
+            <p className='text-center text-xl font-bold'>
               더현대 서울에서 쇼핑한다면
             </p>
             </div>
