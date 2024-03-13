@@ -1,3 +1,11 @@
+/**
+ * @author 황수영
+ * @email sooyoung.h8@gmail.com
+ * @create date 2024-03-01
+ * @modify date 2024-03-01
+ * @desc 지도
+ */
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import MapDetail from '../../assets/images/map.png';
@@ -12,7 +20,7 @@ function Map() {
     backgroundPosition: 'center',
     width: '100%',
     height: '100vh',
-    position: 'relative', // Ensure the container is relatively positioned
+    position: 'relative', 
   };
 
   const captainHeendyStyle = {
@@ -20,10 +28,10 @@ function Map() {
     width: '50vw',
     height: '50vw',
     borderRadius: '50%',
-    border: '0.5px solid grey', // Adding border
-    position: 'absolute', // Make the image absolute to position it relative to its parent
+    border: '0.5px solid grey', 
+    position: 'absolute',
     bottom: '10vw',
-    right: '10vw', // Adjust as needed for right positioning
+    right: '10vw',
   };
 
   const handleCaptainHeendyAsk = () => {
