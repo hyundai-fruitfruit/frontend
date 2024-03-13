@@ -21,7 +21,7 @@ function LevelUp() {
   return (
     <div className="h-screen" style={{ backgroundImage: `url(${imageUrl})` }}>
       <MainHeader />
-      <BlackButton onClick={() => navigate('/couponTab')}>쿠폰 확인하러 가기</BlackButton>
+      <BlackButton onClick={() => navigate('/couponTab', { state: { active: "MyCoupon"} })}>쿠폰 확인하러 가기</BlackButton>
     </div>
   );
 }

@@ -13,6 +13,7 @@
  * @desc QR코드 API 연결 및 소켓 연결
  */
 import React, { useState } from 'react';
+import { useLocation } from "react-router-dom";
 
 //component
 import MainHeader from 'components/Header/MainHeader';
@@ -21,8 +22,9 @@ import MyQrLoader from 'components/QRScanner/MyQrLoader';
 //hook
 import useGetUserCouponList from 'hooks/useGetUserCouponList';
 
-function CouponTab({ active="QR" }) {
-  const [activeTab, setActiveTab] = useState(active);
+function CouponTab() {
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(location.state?.active || 'QR');
   const { events, loading, error } = useGetUserCouponList();
 
   if (loading) return <div>Loading...</div>;
