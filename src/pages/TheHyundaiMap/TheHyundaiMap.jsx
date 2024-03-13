@@ -17,8 +17,9 @@ function Map() {
 
   const captainHeendyStyle = {
     backgroundImage: `url(${CaptainHeendy})`,
-    width: '50vw',
-    height: '50vw',
+    backgroundSize: '20vw 20vw',
+    width: '20vw',
+    height: '20vw',
     borderRadius: '50%',
     border: '0.5px solid grey', // Adding border
     position: 'absolute', // Make the image absolute to position it relative to its parent
