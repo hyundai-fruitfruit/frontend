@@ -20,10 +20,6 @@ function StoreReviewList({ details }) {
       {details.reviews.map((review) => (
         <StoreReview
           key={review.id}
-          name={review.name}
-          score={review.score}
-          images={review.images}
-          content={review.content}
           review={review}
         />
       ))}

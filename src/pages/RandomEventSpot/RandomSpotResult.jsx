@@ -22,7 +22,7 @@ function RandomSpotResult() {
         justifyContent: 'flex-start',
         alignItems: 'center',
         height: '100%',
-        paddingTop: '20px', // Add padding top to move buttons down
+        paddingTop: '20px',
     };
 
     const backStyle = {
@@ -44,7 +44,7 @@ function RandomSpotResult() {
     };
 
     const yesBtnStyle = {
-        width: '45%', // Reduce button size
+        width: '45%',
         height: 'auto',
     
     };

@@ -35,13 +35,8 @@ import Pizza from 'assets/models/Pizza';
 import Empty from 'assets/models/Empty';
 import Deer from 'assets/models/Deer';
 
-
-// FCM 푸시 알림 시연용
-// import { getPushAlarm, getPushAlarmByDeviceToken, getPushAlarmByLocalStorage } from '../../apis/request';
-
 const categories = ['소품', '배경', '벽지', '효과'];
 
-// api 매핑
 const foodOptionsWithBack = [
   { name: 'Hamburger', backgroundImageUrl: 'popcorn-background.jpg' },
   { name: 'Pizza', backgroundImageUrl: 'pizza-background.jpg' },
@@ -61,7 +56,6 @@ const backOptionsWithBack = [
 ];
 
 function MyRoom() {
-  // 간단한 옵션 데이터 - 파일로 빼기
   const foodOptions = {
     Hamburger: <Hamburger />,
     Pizza: <Pizza />,
@@ -100,43 +94,8 @@ function MyRoom() {
     setSelectedBackOption(reduxSelectedBackOption);
   }, [reduxSelectedFoodOption, reduxSelectedBackOption]);
 
-  // const handlePushAlarmByLocalStorage = async () => {
-  //   try {
-  //     // 여기서 API 호출
-  //     const response = await getPushAlarmByLocalStorage();
-  //     console.log(response);
-  //   } catch (error) {
-  //     console.error("handlePushAlarmByLocalStorage 호출 중 오류 발생:", error);
-  //   }
-  // };
-
-
-  // const handlePushAlarm = async () => {
-  //   try {
-  //     // 여기서 API 호출
-  //     const response = await getPushAlarm();
-  //     console.log(response);
-  //   } catch (error) {
-  //     console.error("API 호출 중 오류 발생:", error);
-  //   }
-  // };
-
-  // const handlePushAlarmByDeviceToken = async () => {
-  //   try {
-  //     // 여기서 API 호출
-  //     const token = localStorage.getItem('fcmDeviceToken');
-  //     console.error("getPushAlarmByDeviceToken 호출 중 device token :" + token);
-
-  //     const response = await getPushAlarmByDeviceToken(token);
-  //     console.log(response);
-  //   } catch (error) {
-  //     console.error("getPushAlarmByDeviceToken 호출 중 오류 발생:", error);
-  //   }
-  // };
-
   return (
     <div className="flex flex-col">
-      {/* 헤더 두 개 */}
       <MainHeader />
       <SubHeader />
 

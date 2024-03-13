@@ -20,7 +20,6 @@ import useStoreDetails from 'hooks/useStoreDetails';
 
 const imagePaths = ['/images/smt_lounge1.jpeg', '/images/smt_lounge2.jpeg', '/images/smt_lounge3.jpeg'];
 
-
 const shopDetails = {
   name: 'SMT 라운지',
   floor: '6층',
@@ -46,11 +45,9 @@ function storeDetail() {
   const tabComponents = {
     mainMenu: <StoreMenuList />,
     review: <StoreTotalReview image={imagePaths[0]} shopName={shopDetails.name} details={details} />,
-    // review: <StoreTotalReview id = {id}/>,
     visitVerification: <div>visitVerification</div>,
   };
   console.log('storeDetail ');
-
   console.log(id);
   console.log(details);
 

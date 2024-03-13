@@ -6,7 +6,7 @@
  * @modify date 2024-02-28 04:35:36
  * @desc 3d 모델
  */
-import React, {useRef} from 'react'
+import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 

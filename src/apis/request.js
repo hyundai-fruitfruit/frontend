@@ -212,7 +212,6 @@ export const getPushAlarmByLocalStorage = async () => {
   }
 };
 
-//const DEVICE_TOKEN = process.env.REACT_APP_API_DEVICE_TOKEN;
 // FCM 푸시 알림 요청2 - 각 브라우저별 디바이스 토큰 전송
 export const getPushAlarmByDeviceToken = async (token) => {
   try {
