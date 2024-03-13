@@ -12,7 +12,7 @@ import CapHeendy from 'assets/icons/CapHeendy.png';
 function ChatBotHeendy({ title, messages, onMessageClick }) {
   console.log('messages', messages);
   return (
-    <div className="grid grid-cols-10 auto-cols-max">
+    <div className="grid grid-cols-10 auto-cols-max mb-8">
       <div className="flex flex-col items-center mx-4 place-self-end col-span-2">
         <img src={CapHeendy} className="border rounded-full h-[5vh]" alt="Cap Heendy" />
         <span className="font-bold text-sm">대장 흰디</span>

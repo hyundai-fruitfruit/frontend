@@ -48,21 +48,22 @@ export const RandomSpotContent = ({ data }) => {
   );
 };
 
-const getCurrentPosition = () => {
-  return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(resolve, reject);
-  });
-};
-
 const LoadingModal = () => (
   <div className="flex flex-col justify-center">
     <img src={loadingRolling} alt="Loading..." />
   </div>
 );
 
+const getCurrentPosition = () => {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+
 export const AdventureStartContent = ({ openModal, closeModal }) => {
   const targetArea = { latitude: 37.5603219, longitude: 127.0645185 };
-  const allowedDistance = 50; // 미터 단위
+  const allowedDistance = 50; 
 
   const handleAdventureStart = async () => {
     openModal(<LoadingModal />);
