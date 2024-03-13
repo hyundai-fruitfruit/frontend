@@ -18,6 +18,7 @@ const handleRequestPermission = async () => {
       navigator.geolocation.getCurrentPosition();
     }
   } catch (error) {
+    console.log("error")
   }
 };
 

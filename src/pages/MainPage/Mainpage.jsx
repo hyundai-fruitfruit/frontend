@@ -25,11 +25,11 @@ import SpeechBubble from 'components/SpeechBubble/SpeechBubble';
 import IconMenu from 'components/IconMenu/IconMenu';
 import ModalComponent from 'components/ModalComponent/ModalComponent';
 import useModal from 'hooks/useModal';
-import {
-  // SpeechBubbleContent,
-  AdventureStartContent,
-  // CertificationFail,
-} from 'components/ModalBubbleContent/MainPageModalContent';
+// import {
+//   // SpeechBubbleContent,
+//   AdventureStartContent,
+//   // CertificationFail,
+// } from 'components/ModalBubbleContent/MainPageModalContent';
 import ProgressBar from 'components/ModalBubbleContent/ProgressBar';
 //assets
 import ModalHeendy from 'assets/images/modal_heendy.png';
@@ -72,7 +72,7 @@ function MainPage() {
     Empty: <Empty />,
   };
 
-  const { isModalOpen, modalContent, openModal, closeModal } = useModal();
+  const { isModalOpen, modalContent, closeModal } = useModal();
   const selectedFoodOption = useSelector((state) => state.room.selectedFoodOption);
   const selectedBackOption = useSelector((state) => state.room.selectedBackOption);
 
@@ -110,9 +110,9 @@ function MainPage() {
       </div>
 
       <div className="w-5/6 border rounded-2xl px-5 py-5">
-        <div className="grid grid-rows-1 grid-flow-col grid-cols-3 text-center mb-6 items-end" onClick={() => navigate('/randomsSpotPush')}>
+        <div className="grid grid-rows-1 grid-flow-col grid-cols-3 text-center mb-6 items-end" onClick={() => navigate("/randomsspotpush")}>
           <span className="text-left font font-semibold">Level {level}</span>
-          <span className="font font-semibold">흰둥이</span>
+          <span className="font font-semibold">디어</span>
           <span className="text-right font font-semibold">{experience}%</span>
         </div>
         <div className="mb-5">
@@ -122,7 +122,8 @@ function MainPage() {
           icons={iconsData}
           onIconClick={(iconName) => {
             if (iconName === 'start') {
-              openModal(<AdventureStartContent openModal={openModal} closeModal={closeModal} />);
+              // openModal(<AdventureStartContent openModal={openModal} closeModal={closeModal} />);
+              navigate('/gps');
             } else if (iconName === 'item') {
               navigate('/myroom');
             } else if (iconName === 'display') {
