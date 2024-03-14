@@ -25,11 +25,11 @@ import SpeechBubble from 'components/SpeechBubble/SpeechBubble';
 import IconMenu from 'components/IconMenu/IconMenu';
 import ModalComponent from 'components/ModalComponent/ModalComponent';
 import useModal from 'hooks/useModal';
-// import {
-//   // SpeechBubbleContent,
-//   AdventureStartContent,
-//   // CertificationFail,
-// } from 'components/ModalBubbleContent/MainPageModalContent';
+import {
+  // SpeechBubbleContent,
+  AdventureStartContent,
+  // CertificationFail,
+} from 'components/ModalBubbleContent/MainPageModalContent';
 import ProgressBar from 'components/ModalBubbleContent/ProgressBar';
 //assets
 import ModalHeendy from 'assets/images/modal_heendy.png';
@@ -72,7 +72,7 @@ function MainPage() {
     Empty: <Empty />,
   };
 
-  const { isModalOpen, modalContent, closeModal } = useModal();
+  const { isModalOpen, modalContent, openModal, closeModal } = useModal();
   const selectedFoodOption = useSelector((state) => state.room.selectedFoodOption);
   const selectedBackOption = useSelector((state) => state.room.selectedBackOption);
 
@@ -122,8 +122,7 @@ function MainPage() {
           icons={iconsData}
           onIconClick={(iconName) => {
             if (iconName === 'start') {
-              // openModal(<AdventureStartContent openModal={openModal} closeModal={closeModal} />);
-              navigate('/gps');
+              openModal(<AdventureStartContent openModal={openModal} closeModal={closeModal} />);
             } else if (iconName === 'item') {
               navigate('/myroom');
             } else if (iconName === 'display') {

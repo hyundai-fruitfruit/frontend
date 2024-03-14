@@ -34,7 +34,7 @@ function EventDetail() {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       width: '100vw',
-      height: '50vh',
+      height: '55vh',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
