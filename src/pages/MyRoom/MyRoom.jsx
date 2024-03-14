@@ -14,7 +14,6 @@ import '../../firebase-messaging-sw';
 import MainHeader from 'components/Header/MainHeader';
 import SubHeader from 'components/Header/SubHeader';
 
-
 // redux
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -35,6 +34,14 @@ import Pizza from 'assets/models/Pizza';
 import Empty from 'assets/models/Empty';
 import Deer from 'assets/models/Deer';
 
+import HamburgerIcon from 'assets/icons/hamburger_icon.png';
+import PizzaIcon from 'assets/icons/pizza_icon.png';
+import PopcornIcon from 'assets/icons/popcorn_icon.png';
+import UndefinedIcon from 'assets/icons/undefined_icon.png';
+// import GreenTree from 'assets/icons/pink_tree.png';
+import GreenTree2 from 'assets/icons/green_tree.png';
+import GreenTree3 from 'assets/icons/green_tree2.png';
+import GreenTree4 from 'assets/icons/green_tree3.png';
 
 // FCM 푸시 알림 시연용
 // import { getPushAlarm, getPushAlarmByDeviceToken, getPushAlarmByLocalStorage } from '../../apis/request';
@@ -43,21 +50,25 @@ const categories = ['소품', '배경', '벽지', '효과'];
 
 // api 매핑
 const foodOptionsWithBack = [
-  { name: 'Hamburger', backgroundImageUrl: 'popcorn-background.jpg' },
-  { name: 'Pizza', backgroundImageUrl: 'pizza-background.jpg' },
-  { name: 'Popcorn', backgroundImageUrl: 'empty-background.jpg' },
-  { name: 'Empty', backgroundImageUrl: 'flower-background.jpg' },
-  { name: 'Tree1', backgroundImageUrl: 'pizza-background.jpg' },
-  { name: 'Tree2', backgroundImageUrl: 'pizza-background.jpg' },
-  { name: 'Hamburger', backgroundImageUrl: 'popcorn-background.jpg' },
-  { name: 'Empty', backgroundImageUrl: 'flower-background.jpg' },
+  { name: 'Hamburger', backgroundImageUrl: 'popcorn-background.jpg', icon: HamburgerIcon },
+  { name: 'Pizza', backgroundImageUrl: 'pizza-background.jpg', icon: PizzaIcon },
+  { name: 'Popcorn', backgroundImageUrl: 'empty-background.jpg', icon: PopcornIcon },
+  { name: 'Empty', backgroundImageUrl: 'flower-background.jpg', icon: UndefinedIcon },
+  { name: 'Tree1', backgroundImageUrl: 'pizza-background.jpg', icon: UndefinedIcon },
+  { name: 'Tree2', backgroundImageUrl: 'pizza-background.jpg', icon: UndefinedIcon },
+  { name: 'Hamburger', backgroundImageUrl: 'popcorn-background.jpg', icon: UndefinedIcon },
+  { name: 'Empty', backgroundImageUrl: 'flower-background.jpg', icon: UndefinedIcon },
 ];
 
 const backOptionsWithBack = [
-  { name: 'Hamburger', backgroundImageUrl: 'popcorn-background.jpg' },
-  { name: 'Tree1', backgroundImageUrl: 'pizza-background.jpg' },
-  { name: 'Tree2', backgroundImageUrl: 'pizza-background.jpg' },
-  { name: 'Empty', backgroundImageUrl: 'empty-background.jpg' },
+  { name: 'Hamburger', backgroundImageUrl: 'popcorn-background.jpg', icon: GreenTree4 },
+  { name: 'Tree1', backgroundImageUrl: 'pizza-background.jpg', icon: GreenTree2 },
+  { name: 'Tree2', backgroundImageUrl: 'pizza-background.jpg', icon: GreenTree3 },
+  { name: 'Empty', backgroundImageUrl: 'empty-background.jpg', icon: UndefinedIcon },
+  { name: 'Empty', backgroundImageUrl: 'empty-background.jpg', icon: UndefinedIcon },
+  { name: 'Empty', backgroundImageUrl: 'empty-background.jpg', icon: UndefinedIcon },
+  { name: 'Empty', backgroundImageUrl: 'empty-background.jpg', icon: UndefinedIcon },
+  { name: 'Empty', backgroundImageUrl: 'empty-background.jpg', icon: UndefinedIcon },
 ];
 
 function MyRoom() {
@@ -109,7 +120,6 @@ function MyRoom() {
   //     console.error("handlePushAlarmByLocalStorage 호출 중 오류 발생:", error);
   //   }
   // };
-
 
   // const handlePushAlarm = async () => {
   //   try {
