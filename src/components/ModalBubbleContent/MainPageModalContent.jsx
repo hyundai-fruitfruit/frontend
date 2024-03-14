@@ -120,6 +120,8 @@ export const AdventureStartContent = ({ openModal, closeModal }) => {
 
 export const CertificationSuccess = () => {
   const firework = useFirework();
+  const navigate = useNavigate();
+
   useEffect(() => {
     firework();
   });
@@ -129,6 +131,13 @@ export const CertificationSuccess = () => {
       <div className="flex justify-center">
         <img src={hiHeendy} />
       </div>
+      <button
+        type="button"
+        className="flex-1 m-1 border rounded-xl bg-black px-2 py-1 text-slate-50 font-semibold text-gray-900 shadow-sm"
+        onClick={() => navigate('/getExp/power')}
+      >
+        경험치 받기
+      </button>
     </div>
   );
 };
