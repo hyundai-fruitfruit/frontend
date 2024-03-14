@@ -58,16 +58,20 @@ function CouponTab() {
           </div>
         ) : (
           <div>
-            {events.data.map((events) => (
-              <CouponCard
-                key={events.id}
-                imgSrc={events.iconUrl}
-                title={events.title}
-                detail={events.content || '더현대 서울 이벤트'}
-                useByDate={`기간 : ${events.startedAt} ~ ${events.finishedAt}`}
-                addStyle={'mx-8'}
-              />
-            ))}
+            <CouponCard
+              key={events.id}
+              imgSrc={"https://fruitfruit.s3.ap-northeast-2.amazonaws.com/icon/icon-restaurant.png"}
+              title={"식당 10% 할인 쿠폰"}
+              useByDate={`사용 기한: 2025년 3월 14일`}
+              addStyle={'mx-8'}
+            />
+            <CouponCard
+              key={events.id}
+              imgSrc={"https://fruitfruit.s3.ap-northeast-2.amazonaws.com/icon/icon-clothes.png"}
+              title={"의류 10% 할인 쿠폰"}
+              useByDate={`사용 기한: 2025년 3월 14일`}
+              addStyle={'mx-8'}
+            />
           </div>
         )}
       </div>
